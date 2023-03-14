@@ -1,6 +1,6 @@
 {
-  "name": "baseinfo",
-  "version": "1.0.0",
+  "name": "knowledge-book",
+  "version": "0.0.2",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
