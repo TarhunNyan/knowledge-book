@@ -1,0 +1,178 @@
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#регулярные-выражения"><li>Регулярные выражения</li></a><a href="#как-создать"><li>Как создать</li></a><a href="#шаблоны"><li>Шаблоны</li></a><ul><a href="#поиск-обычных-последовательностей"><li>Поиск обычных последовательностей</li></a><a href="#наборы-символов"><li>Наборы символов</li></a><a href="#поиск-повторяющихся-последовательностей"><li>Поиск повторяющихся последовательностей</li></a><a href="#шаблон-с-запоминанием"><li>Шаблон с запоминанием</li></a><a href="#шаблоны-с-условием"><li>Шаблоны с условием</li></a></ul><a href="#используются-в-функциях"><li>Используются в функциях</li></a><ul><a href="#match-vs-exec---поиск-совпадения-в-строке"><li>match VS exec - поиск совпадения в строке</li></a><a href="#test-vs-search---поиск-совпадения-в-строке"><li>test VS search - поиск совпадения в строке</li></a><a href="#replace-и-replaceall---замена-найденных-подстрок"><li>replace и replaceAll - замена найденных подстрок</li></a><a href="#split---разделение-строки"><li>split - разделение строки</li></a></ul><a href="#флаги"><li>Флаги</li></a></ul></div></div><div class="main"><link rel="stylesheet" href="..\..\..\static\style.css "><h1 id="регулярные-выражения">Регулярные выражения</h1>
+<p>Нужны для поиска в тексте по шаблону</p>
+<h1 id="как-создать">Как создать</h1>
+<p>Прекомпелированное регулярное выражение</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/&lt;regexp&gt;/</span>;
+</code></pre>
+<p>Компилирует регулярное выражение в RunTime</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> regexp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RegExp</span>(<span class="hljs-string">&quot;ab+c&quot;</span>);
+</code></pre>
+<h1 id="шаблоны">Шаблоны</h1>
+<h2 id="поиск-обычных-последовательностей">Поиск обычных последовательностей</h2>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/abc/</span>; <span class="hljs-comment">// Поиск обычной последовательности</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/^It/</span>; <span class="hljs-comment">// Поиск It в начале строки</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/end$/</span>; <span class="hljs-comment">// Поиск end в конце строки</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/\b/</span>; <span class="hljs-comment">// Граница(находит и начало и конец) слов</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/./</span>; <span class="hljs-comment">// Поиск любого символа кроме переноса строки</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/\B/</span>; <span class="hljs-comment">// Поиск несловобразующей границы</span>
+<span class="hljs-comment">// Проще: между двумя словобразующими символами или двумя неслообразующими символами</span>
+</code></pre>
+<h2 id="наборы-символов">Наборы символов</h2>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/[xyz]/</span>;     <span class="hljs-comment">// Поиск любого символа из перечисленных</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/[^xyz]/</span>;    <span class="hljs-comment">// Поиск любого символа НЕ из перечисленных</span>
+
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/[0-9]/</span>;     <span class="hljs-comment">// Все цифры</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/\d/</span>;
+
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/[^0-9]/</span>;    <span class="hljs-comment">// Все НЕ цифры</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/\D/</span>;
+
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/[0-9a-zA-Z_]/</span>; <span class="hljs-comment">// Все цифробуквенные символы и нижнее подчеркивание</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/\w/</span>;
+
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/[^0-9a-zA-Z_]/</span>; <span class="hljs-comment">// Все НЕ цифробуквенные символы и нижнее подчеркивание</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/\W/</span>;
+
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/\s/</span>; <span class="hljs-comment">// Соответствует одиночному символу пустого пространства, включая пробел, табуляция, прогон страницы, перевод строки.</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/\S/</span>; <span class="hljs-comment">// Соответствует одиночному символу непустого пространства</span>
+
+<span class="hljs-comment">// Поиск специальных символов</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/\*/</span>;
+</code></pre>
+<h2 id="поиск-повторяющихся-последовательностей">Поиск повторяющихся последовательностей</h2>
+<pre><code class="hljs language-js"><span class="hljs-comment">// {n} - соответствует предыдущему символу повторенному n раз</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/Vasia{4}/</span>; <span class="hljs-comment">// Соответствует: Vasiaaaa</span>
+
+<span class="hljs-comment">// {n, m} - соответствует предыдущему символу повторенному минимум n и максимум m раз</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/Vasia{2,3}/</span>; <span class="hljs-comment">// Соответствует: Vasiaa, Vasiaaa</span>
+
+<span class="hljs-comment">// * - соответствует предыдущему символу повторенному 0 или более раз</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/Yeah*/</span>; <span class="hljs-comment">// Соответствует: Yea, Yeah, Yeahhh</span>
+
+<span class="hljs-comment">// + - соответствует предыдущему символу повторенному 1 или более раз</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/Yeah+/</span>; <span class="hljs-comment">// Соответствует: Yeah, Yeahhh</span>
+
+<span class="hljs-comment">// ? - соответствует предыдущему символу повторенному 0 или 1 раз</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/Yeah?/</span>; <span class="hljs-comment">// Соответствует: Yea, Yeah</span>
+</code></pre>
+<h2 id="шаблон-с-запоминанием">Шаблон с запоминанием</h2>
+<pre><code class="hljs language-js"><span class="hljs-comment">// ( ... ) - запоминает соответствие. Кладет в результрующий массив [1]</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/c(ont)ent/</span>; <span class="hljs-comment">// Соответствует: content</span>
+
+<span class="hljs-comment">// ( ?&lt;name&gt;... ) - запоминает соответствие. Кладет в словарь group. Достается с указанием &lt;name&gt;. Данная возможность поддерживается не всеми браузерами</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/c(?&lt;partWord&gt;ont)ent/</span>; <span class="hljs-comment">// Соответствует: content</span>
+
+<span class="hljs-comment">// ( ?:... ) - НЕ запоминает соответствие. Не кладет в результрующий массив [1]</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/c(?:.*)ent/</span>; <span class="hljs-comment">// Соответствует: content</span>
+
+<span class="hljs-comment">// \n - получает значение из результирующего массива. Значение считается с конца</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/petia(,) vasia\n jenia/</span>; <span class="hljs-comment">// Соответствует: petia, vasia, jenia</span>
+</code></pre>
+<h2 id="шаблоны-с-условием">Шаблоны с условием</h2>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/abc|def/</span>; <span class="hljs-comment">// Находит либо abc, либо def</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/abc(?=def)/</span>; <span class="hljs-comment">// Находит abc, только если за ним следует def</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/abc(?!def)/</span>; <span class="hljs-comment">// Находит abc, только если за ним НЕ следует def</span>
+</code></pre>
+<h1 id="используются-в-функциях">Используются в функциях</h1>
+<h2 id="match-vs-exec---поиск-совпадения-в-строке">match VS exec - поиск совпадения в строке</h2>
+<p>Значения для примеров ниже</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;[99].[76].[34]&quot;</span>
+<span class="hljs-keyword">var</span> regExp = <span class="hljs-regexp">/\d+/</span>
+<span class="hljs-keyword">var</span> globalRegExp = <span class="hljs-regexp">/\d+/g</span>
+</code></pre>
+<p>Без флага g</p>
+<pre><code class="hljs language-js">str.<span class="hljs-title function_">match</span>( regExp )
+<span class="hljs-comment">// =&gt; [&quot;99&quot;, index: 1, input: &quot;[99].[76].[34]&quot;, groups: [undefined]]</span>
+regExp.<span class="hljs-title function_">exec</span>( str )
+<span class="hljs-comment">// =&gt; [&quot;99&quot;, index: 1, input: &quot;[99].[76].[34]&quot;, groups: [undefined]]</span>
+</code></pre>
+<p>С флагом g</p>
+<pre><code class="hljs language-js">str.<span class="hljs-title function_">match</span>( globalRegExp )
+<span class="hljs-comment">// =&gt; [&quot;99&quot;, &quot;76&quot;, &quot;34&quot;]</span>
+
+<span class="hljs-comment">// exec с флагом g, меняет globalRegExp.lastIndex. С каждый вызов использует lastIndex как точку начала для поиска</span>
+globalRegExp.<span class="hljs-title function_">exec</span>( str )
+<span class="hljs-comment">// =&gt; [&quot;99&quot;, index: 1, input: &quot;[99].[76].[34]&quot;, groups: [undefined]]</span>
+globalRegExp.<span class="hljs-title function_">exec</span>( str )
+<span class="hljs-comment">// =&gt; [&quot;76&quot;, index: 6, input: &quot;[99].[76].[34]&quot;, groups: [undefined]]</span>
+globalRegExp.<span class="hljs-property">lastIndex</span>;
+<span class="hljs-comment">// =&gt; 11</span>
+</code></pre>
+<h2 id="test-vs-search---поиск-совпадения-в-строке">test VS search - поиск совпадения в строке</h2>
+<pre><code class="hljs language-js">regex.<span class="hljs-title function_">test</span>(str)
+<span class="hljs-comment">// Проверяет есть ли вхождения в строке. Если есть - true, иначе false</span>
+
+str.<span class="hljs-title function_">search</span>(regex)
+<span class="hljs-comment">// Проверяет есть ли вхождения в строке. Если есть - вернет его index, иначе -1</span>
+</code></pre>
+<h2 id="replace-и-replaceall---замена-найденных-подстрок">replace и replaceAll - замена найденных подстрок</h2>
+<p>replace с флагом g и replaceAll работают одинаково</p>
+<p>Значения для примеров ниже</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;[99].[76].[34]&quot;</span>
+</code></pre>
+<p>Второй аргумент строка</p>
+<pre><code class="hljs language-js">str.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/\d+/g</span>, <span class="hljs-string">&#x27;fox&#x27;</span>) <span class="hljs-comment">// константа</span>
+<span class="hljs-comment">// =&gt; [[fox].[fox].[fox]]</span>
+str.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/\d+/g</span>, <span class="hljs-string">&#x27;$&amp; $&amp;&#x27;</span>) <span class="hljs-comment">// то что нашли</span>
+<span class="hljs-comment">// =&gt; [[99 99].[76 76].[34 34]]</span>
+str.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/76/g</span>, <span class="hljs-string">&quot;$` $&#x27;&quot;</span>) <span class="hljs-comment">// слева от найденного и справа от найденного</span>
+<span class="hljs-comment">// =&gt; [99]. .[34]</span>
+
+str.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/(\d)(\d)/g</span>, <span class="hljs-string">&#x27;$1 - $2&#x27;</span>) <span class="hljs-comment">// 1 и 2 сохраненные значения</span>
+<span class="hljs-comment">// =&gt; [[9 - 9].[7 - 6].[3 - 4]]</span>
+str.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/(?&lt;num&gt;\d\d)/g</span>, <span class="hljs-string">&#x27;1$&lt;num&gt;&#x27;</span>) <span class="hljs-comment">// значение сохраненное под именем &lt;num&gt;</span>
+<span class="hljs-comment">// =&gt; [[199].[176].[134]]</span>
+</code></pre>
+<p>Вторым аргументом может быть функция. Функция принимает:</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">replacer</span>(<span class="hljs-params">
+    match,                  <span class="hljs-comment">// найденная подстрока</span>
+    p1, p2, <span class="hljs-comment">/* …, */</span> pN,    <span class="hljs-comment">// сохраненные значения</span>
+    offset,                 <span class="hljs-comment">// index смещения найденной подстроки</span>
+    string,                 <span class="hljs-comment">// вся исследуемая строка</span>
+    groups                  <span class="hljs-comment">// (?&lt;name&gt;...)</span>
+</span>) {
+  <span class="hljs-keyword">return</span> replacement;       <span class="hljs-comment">// то на что заменяем</span>
+}
+</code></pre>
+<h2 id="split---разделение-строки">split - разделение строки</h2>
+<p>Стандартный split, но разделяет по найденному регулярному выражению</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;[99].[76].[34]&quot;</span>
+str.<span class="hljs-title function_">split</span>(<span class="hljs-regexp">/]?\.?\[/</span>)
+<span class="hljs-comment">// =&gt; [ &#x27;&#x27;, &#x27;99&#x27;, &#x27;76&#x27;, &#x27;34]&#x27; ]</span>
+</code></pre>
+<h1 id="флаги">Флаги</h1>
+<p>Пишутся в конце:</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> regexp = <span class="hljs-regexp">/regexp/gimy</span>;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Флаг</th>
+<th style="text-align:left">Общее описание</th>
+<th style="text-align:left">Комментарий</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">g</td>
+<td style="text-align:left">глобальный поиск</td>
+<td style="text-align:left">в примерах выше применен везде, где на что-то влияет</td>
+</tr>
+<tr>
+<td style="text-align:center">i</td>
+<td style="text-align:left">регистронезависимый поиск</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">m</td>
+<td style="text-align:left">многострочный поиск</td>
+<td style="text-align:left">На странице regexp с MDN, есть две пометки когда флаг на что-то влияет, но я так и не понял зачем он нужен</td>
+</tr>
+<tr>
+<td style="text-align:center">y</td>
+<td style="text-align:left">применяет регулярку прямо в позиции lastIndex</td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+</div>

@@ -1,0 +1,31 @@
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#коротко-про-branch"><li>Коротко про Branch</li></a><a href="#обычный-процесс-работы"><li>Обычный процесс работы</li></a><ul><a href="#создаем-ветку"><li>Создаем ветку</li></a><a href="#удаляем-ветку"><li>Удаляем ветку</li></a><a href="#список-веток"><li>Список веток</li></a><a href="#переключаемся-на-другую-ветку"><li>Переключаемся на другую ветку</li></a><a href="#добавляем-ветку-в-удаленный-репозиторий"><li>Добавляем ветку в удаленный репозиторий</li></a><a href="#объединяем-текущую-ветку-с-указанной"><li>Объединяем текущую ветку с указанной</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="..\..\\static\style.css"><h1 id="коротко-про-branch">Коротко про Branch</h1>
+<p>В GIT используется понятие веток. Ветки, это разные версии программы, развиваемые паралельно</p>
+<p>После эти изменения можно совместить(merge), чтобы получить финальную версию со всеми внесенными изменениями</p>
+<h1 id="обычный-процесс-работы">Обычный процесс работы</h1>
+<h2 id="создаем-ветку">Создаем ветку</h2>
+<pre><code class="hljs language-bash">git branch another_branch
+</code></pre>
+<h2 id="удаляем-ветку">Удаляем ветку</h2>
+<pre><code class="hljs language-bash">git branch -D another_branch
+</code></pre>
+<h2 id="список-веток">Список веток</h2>
+<pre><code class="hljs language-bash">git branch
+&gt;&gt; * master
+&gt;&gt;   another_branch
+</code></pre>
+<h2 id="переключаемся-на-другую-ветку">Переключаемся на другую ветку</h2>
+<p>Изменит содержимое проекта на то, которое в выбранной ветке</p>
+<pre><code class="hljs language-bash">git checkout another_branch
+</code></pre>
+<h2 id="добавляем-ветку-в-удаленный-репозиторий">Добавляем ветку в удаленный репозиторий</h2>
+<p>Пушим в репозиторий origin, в ветку another_branch</p>
+<pre><code class="hljs language-bash">git push origin another_branch
+</code></pre>
+<p>То же что и команда выше, но --set-upstream запоминает и при следующем пуше достаточно прописать просто git push</p>
+<pre><code class="hljs language-bash">git push -u origin another_branch
+git push --set-upstream origin another_branch
+</code></pre>
+<h2 id="объединяем-текущую-ветку-с-указанной">Объединяем текущую ветку с указанной</h2>
+<pre><code class="hljs language-bash">git merge another_branch
+</code></pre>
+</div>

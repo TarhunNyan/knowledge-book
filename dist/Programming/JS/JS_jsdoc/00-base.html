@@ -1,0 +1,177 @@
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#jsdoc"><li>JSDoc</li></a><a href="#базовое-использование"><li>Базовое использование</li></a><a href="#ссылки"><li>Ссылки</li></a><a href="#необязательные-параметры"><li>Необязательные параметры</li></a><a href="#несколько-принимаемых-типов"><li>Несколько принимаемых типов</li></a><a href="#описание-object-и-его-аттрибутов"><li>Описание Object и его аттрибутов</li></a><a href="#описание-array-и-его-элементов"><li>Описание Array и его элементов</li></a><a href="#typedef"><li>Typedef</li></a><a href="#callback"><li>Callback</li></a><a href="#указываем-тип-мягкая-типизация"><li>Указываем тип (мягкая типизация)</li></a><a href="#штуки-которые-мне-показались-полезными"><li>Штуки которые мне показались полезными</li></a></ul></div></div><div class="main"><link rel="stylesheet" href="..\..\..\\static\style.css"><h1 id="jsdoc">JSDoc</h1>
+<p>Почти полная копия javadoc, но для js</p>
+<p>Изначально на основе комментариев можно собрать html'ку с документациуй. Удобненько синергирует с VSCode и другими редакторами</p>
+<h1 id="базовое-использование">Базовое использование</h1>
+<pre><code class="hljs language-js"><span class="hljs-comment">/** 
+ * Описание функции 
+ * <span class="hljs-doctag">@constructor</span>
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">string</span>} param1 Это первый вхожной параметр
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">numeric</span>} param2 А это второй входной параметрпараметр с начальным значением
+ * <span class="hljs-doctag">@return</span> {<span class="hljs-type">string</span>} Кокатинация param1 и param2
+*/</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params">param1, param2</span>) {
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-keyword">return</span> param1 + param2
+}
+</code></pre>
+<h1 id="ссылки">Ссылки</h1>
+<pre><code class="hljs language-js"><span class="hljs-comment">/**
+ * Создаем какое-нибудь значение
+ * <span class="hljs-doctag">@typedef</span> {<span class="hljs-type">(number|string)</span>} <span class="hljs-variable">MyClass</span>
+ */</span>
+
+<span class="hljs-comment">/**
+ * {<span class="hljs-doctag">@link</span> MyClass} ссылка на класс
+ * {<span class="hljs-doctag">@link</span> MyClass#foo} ссылка на аттрибут класса
+ * {<span class="hljs-doctag">@link</span> MyClass.foo} ссылка на статический аттрибут. Как я понимаю, речь о Prototype
+ * {<span class="hljs-doctag">@link</span> https://github.com GitHub} ссылка на сайт
+ */</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">someFunction</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<h1 id="необязательные-параметры">Необязательные параметры</h1>
+<pre><code class="hljs language-js"><span class="hljs-comment">/** 
+ * Описание функции 
+ * <span class="hljs-doctag">@constructor</span>
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">numeric</span>} [param1] А это опциональный параметр
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">string</span>} [param2=&#x27;p4&#x27;] А это опциональный параметрпараметр с начальным значением
+*/</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params">param1, param2</span>) {
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-keyword">return</span> param1 + param2
+}
+</code></pre>
+<h1 id="несколько-принимаемых-типов">Несколько принимаемых типов</h1>
+<pre><code class="hljs language-js"><span class="hljs-comment">/** 
+ * Описание функции 
+ * <span class="hljs-doctag">@constructor</span>
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">*</span>} param0 Принимает любой тип
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">(numeric|string)</span>} param1 Принимает строку или число
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">(string|string[])</span>} [param2=&#x27;p4&#x27;] Принимает строку или массив строк, да еще начальное значение
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">(numeric|string)[]</span>} [param3] Принимает массив в котором могут быть чилса или строки
+*/</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params">param0, param1, param2=<span class="hljs-string">&#x27;p4&#x27;</span>, param3</span>) {
+    <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<h1 id="описание-object-и-его-аттрибутов">Описание Object и его аттрибутов</h1>
+<pre><code class="hljs language-js"><span class="hljs-comment">/** 
+ * Описание функции 
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">Object</span>} obj Это объект. Ниже описываются его параметры
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">string</span>} [obj.name] Имя объекта. Необязательное поле
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">numeric</span>} obj.id Id объекта
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">Object[]</span>} obj.obj массив объектов
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">string</span>} obj.obj[].tittle объект в массиве объектов должен иметь поле tittle
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">numeric</span>} obj.obj[].count объект в массиве объектов должен иметь поле count
+*/</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params">obj</span>) {
+    <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<h1 id="описание-array-и-его-элементов">Описание Array и его элементов</h1>
+<pre><code class="hljs language-js"><span class="hljs-comment">/** 
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">(string|string[])</span>} [param0] Принимает строку или массив строк, да еще начальное значение
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">(numeric|string)[]</span>} [param1] Принимает массив в котором могут быть числа или строки
+*/</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">foo</span>(<span class="hljs-params">param0, param1</span>) {
+    <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<h1 id="typedef">Typedef</h1>
+<p>Создает глобальный объект на который можно ссылаться</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">/**
+ * Глобально объявленный тип.
+ * <span class="hljs-doctag">@typedef</span> {<span class="hljs-type">(number|string)</span>} <span class="hljs-variable">NumberLike</span>
+ */</span>
+
+<span class="hljs-comment">/**
+ * Set the magic number.
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">NumberLike</span>} <span class="hljs-variable">x</span> - Задаем его параметру
+ */</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">setMagicNumber</span>(<span class="hljs-params">x</span>) {
+}
+</code></pre>
+<p>В typedef также можно использовать @param как это сделано в <a href="#%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-object-%D0%B8-%D0%B5%D0%B3%D0%BE-%D0%B0%D1%82%D1%82%D1%80%D0%B8%D0%B1%D1%83%D1%82%D0%BE%D0%B2">примере</a></p>
+<h1 id="callback">Callback</h1>
+<pre><code class="hljs language-js"><span class="hljs-comment">/**
+ * Это callback. Его имя тип `requestCallback`. Отображается как глобальный symbol
+ *
+ * <span class="hljs-doctag">@callback</span> <span class="hljs-variable">requestCallback</span>
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">number</span>} responseCode Описание первого принимаего аргумента
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">string</span>} responseMessage Второй аргумент callback&#x27;а
+ */</span>
+
+<span class="hljs-comment">/**
+ * Функция которая что-то делает и принимает callback
+ * <span class="hljs-doctag">@param</span> {<span class="hljs-type">requestCallback</span>} <span class="hljs-variable">cb</span> - функция Callback. Указывается шлобальный тип
+ */</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">doSomethingAsynchronously</span>(<span class="hljs-params">cb</span>) {
+    <span class="hljs-comment">// code</span>
+};
+</code></pre>
+<h1 id="указываем-тип-мягкая-типизация">Указываем тип (мягкая типизация)</h1>
+<p>Обычная типизация</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@type</span> {<span class="hljs-type">string</span>}
+ */</span>
+<span class="hljs-keyword">var</span> a;
+</code></pre>
+<p>Типизация объекта. (вопросик делает аттрибут не обязательным)</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@type</span> {<span class="hljs-type">{
+ *      array: (string|numeric)[],
+ *      tittle?: (string),
+ *      obj: {
+ *          id: (numeric)
+ *      </span>}
+ * }}
+ */</span>
+<span class="hljs-keyword">var</span> a;
+</code></pre>
+<p>Если использовать typeScript то будут подсказки исходя из типов описанных в комментариях к переменным. Чтобы заработало, добавь специальный комментарий в начале файла:</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">// @ts-check</span>
+</code></pre>
+<h1 id="штуки-которые-мне-показались-полезными">Штуки которые мне показались полезными</h1>
+<p>Указываем что функцию следует применять с <strong>new</strong></p>
+<pre><code class="hljs language-js"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@class</span>
+ * <span class="hljs-doctag">@classdesc</span> it&#x27;s class description
+ */</span>
+</code></pre>
+<p>Указываем константу и значение по умолчанию</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@constant</span> {<span class="hljs-type">number</span>} <span class="hljs-variable">red</span>
+ * <span class="hljs-doctag">@default</span> 0xff0000
+ */</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">RED</span> = <span class="hljs-number">0xff0000</span>
+</code></pre>
+<p>Пример использования внутри документации</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@example</span> &lt;caption&gt;Example usage of method1.&lt;/caption&gt;
+ * // returns 2
+ * exFunc(5, 10);
+ */</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">exFunc</span>(<span class="hljs-params">a, b</span>) {
+    <span class="hljs-comment">// ...</span>
+};
+</code></pre>
+<p>TODO</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">/**
+* <span class="hljs-doctag">@todo</span> На доделать то-то
+* <span class="hljs-doctag">@todo</span> Надо доделать се-то
+*/</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">exFunc</span>(<span class="hljs-params">a, b</span>) {
+   <span class="hljs-comment">// ...</span>
+};
+</code></pre>
+<p>Описываем генератор</p>
+<pre><code class="hljs language-js"><span class="hljs-comment">/**
+* Generate numbers in the Fibonacci sequence.
+*
+* <span class="hljs-doctag">@generator</span>
+* <span class="hljs-doctag">@function</span> <span class="hljs-variable">fibonacci</span>
+* <span class="hljs-doctag">@yields</span> {<span class="hljs-type">number</span>} The next number in the Fibonacci sequence.
+*/</span>
+</code></pre>
+</div>

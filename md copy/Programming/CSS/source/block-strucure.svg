@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.1.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 181.5 138.6" style="enable-background:new 0 0 181.5 138.6;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#F9CC9D;}
+	.st1{fill:#FDDD9A;}
+	.st2{fill:#C3CF8A;}
+	.st3{fill:#8DB7C1;}
+	.st4{fill:#F9F182;}
+	.st5{font-family:'MyriadPro-Regular';}
+	.st6{font-size:12px;}
+	.st7{fill:#8EC96D;}
+	.st8{fill:#57A5CF;}
+	.st9{fill:#7C61AA;}
+	.st10{fill:#6D6E71;}
+	.st11{font-size:10px;}
+	.st12{fill:#939598;stroke:#939598;stroke-miterlimit:10;}
+</style>
+<rect class="st0" width="181.5" height="138.6"/>
+<rect x="15.5" y="19.5" class="st1" width="150.7" height="99.6"/>
+<rect x="30.8" y="39.9" class="st2" width="120.3" height="59.7"/>
+<rect x="50.6" y="59.4" class="st3" width="80.4" height="19.8"/>
+<text transform="matrix(1 0 0 1 5.3621 12.8939)" class="st4 st5 st6">margin</text>
+<text transform="matrix(1 0 0 1 21.3559 33.4129)" class="st7 st5 st6">border</text>
+<text transform="matrix(1 0 0 1 40.5025 53.1688)" class="st8 st5 st6">padding</text>
+<text transform="matrix(1 0 0 1 71.4787 73.3872)" class="st9 st5 st6">content</text>
+<text transform="matrix(1 0 0 1 85.1528 26.8584)" class="st10 st5 st11">top</text>
+<text transform="matrix(1 0 0 1 146.2238 72.5869)" class="st10 st5 st11">right</text>
+<text transform="matrix(1 0 0 1 78.5823 113.6199)" class="st10 st5 st11">bottom</text>
+<text transform="matrix(1 0 0 1 21.3558 72.5869)" class="st10 st5 st11">left</text>
+<g>
+	<line class="st12" x1="65" y1="70.7" x2="36.6" y2="70.7"/>
+	<line class="st12" x1="19.6" y1="70.7" x2="3.5" y2="70.7"/>
+	<polygon class="st12" points="3.2,70.7 6.8,72.8 6.8,68.6 	"/>
+</g>
+<g>
+	<line class="st12" x1="92.8" y1="60.5" x2="92.8" y2="30.8"/>
+	<line class="st12" x1="92.8" y1="18.7" x2="92.8" y2="2.6"/>
+	<polygon class="st12" points="92.9,2.3 90.8,5.9 95,5.9 	"/>
+</g>
+<g>
+	<line class="st12" x1="92.9" y1="81.3" x2="92.9" y2="105"/>
+	<line class="st12" x1="92.9" y1="117" x2="92.9" y2="133.1"/>
+	<polygon class="st12" points="92.9,133.4 95,129.8 90.8,129.8 	"/>
+</g>
+<g>
+	<line class="st12" x1="116.6" y1="70.7" x2="145" y2="70.7"/>
+	<line class="st12" x1="168.2" y1="70.7" x2="178.2" y2="70.7"/>
+	<polygon class="st12" points="178.5,70.7 174.9,68.6 174.9,72.8 	"/>
+</g>
+</svg>

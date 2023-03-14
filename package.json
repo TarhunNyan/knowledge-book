@@ -1,0 +1,17 @@
+{
+  "name": "baseinfo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "node ./ --build",
+    "dev": "node ./ --dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@iktakahiro/markdown-it-katex": "^4.0.1",
+    "markdown-it": "^13.0.1",
+    "markdown-it-highlightjs": "^4.0.1"
+  }
+}
