@@ -43,7 +43,13 @@ ssh-keygen
 
 Открываем GitHub -> Users -> SSH and GPG keys -> New SSH key -> Вводим название и вставляем SSH в Key -> Add SSH Key
 
-В репозитории GitHub выбираем не HTTP, а SSH сылку. В остальном ничем не отличается от создания по http:
+В репозитории GitHub выбираем не HTTP, а SSH сылку. SSH ссылка выглядит так:
+
+````bush
+git@github.com:<user-name>/<repository-name>.git
+````
+
+В остальном ничем не отличается от создания по http:
 - [Создание GIT клонированием с GitHub][cloneRemote]
 - [Создание GIT локально, с загрузкой на GitHub][gitLocal]
 
@@ -56,7 +62,7 @@ ssh-keygen
 1. Заменяет ссылку
 
 ````bash
-remove -v
+git remote -v
 >> https://github.com/CatOnDrugs/shandlebars-cli.git (fetch)
 >> https://github.com/CatOnDrugs/shandlebars-cli.git (push)
 git remote set-url origin git@github.com:CatOnDrugs/shandlebars-cli.git
@@ -74,7 +80,7 @@ git clone https://github.com/CatOnDrugs/shandlebars-cli.git
 git remote add origin https://gith...ars-cli.git
 git push -u origin master
 ````
-
+[Пояснение][ex_cloneRemote]
 ## Локально с загрузкой на GitHub
 [gitLocal]: #локально-с-загрузкой-на-github
 
