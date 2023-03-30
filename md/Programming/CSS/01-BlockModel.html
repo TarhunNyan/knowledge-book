@@ -1,4 +1,4 @@
-<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#блочная-модель"><li>Блочная модель</li></a><ul><a href="#устройство-блока"><li>Устройство блока</li></a></ul><a href="#внешний-тип"><li>Внешний тип</li></a><a href="#внутренний-тип"><li>Внутренний тип</li></a><a href="#layout-расположение-элементов"><li>Layout. Расположение элементов</li></a><ul><a href="#normal-flow"><li>Normal Flow</li></a><a href="#display"><li>Display</li></a><a href="#position"><li>Position</li></a><a href="#flex"><li>Flex</li></a><a href="#grid"><li>Grid</li></a><a href="#table"><li>Table</li></a><a href="#floats"><li>Floats</li></a><a href="#multi-column-layout"><li>Multi-column layout</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="блочная-модель">Блочная модель</h1>
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#блочная-модель"><li>Блочная модель</li></a><ul><a href="#устройство-блока"><li>Устройство блока</li></a><a href="#задание-размеров-блока"><li>Задание размеров блока</li></a><a href="#внешний-тип"><li>Внешний тип</li></a><a href="#внутренний-тип"><li>Внутренний тип</li></a></ul><a href="#layout-расположение-элементов"><li>Layout. Расположение элементов</li></a><ul><a href="#высота-элемента-z-index"><li>Высота элемента: z-index</li></a><a href="#normal-flow"><li>Normal Flow</li></a><a href="#display"><li>Display</li></a><a href="#position"><li>Position</li></a><a href="#flex"><li>Flex</li></a><a href="#grid"><li>Grid</li></a><a href="#table"><li>Table</li></a><a href="#floats"><li>Floats</li></a><a href="#multi-column-layout"><li>Multi-column layout</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="блочная-модель">Блочная модель</h1>
 <p>Основное понятие в CSS. То как элементы типа block и inline располагаются</p>
 <h2 id="устройство-блока">Устройство блока</h2>
 <ul>
@@ -8,7 +8,19 @@
 <li>content - содержание</li>
 </ul>
 <p>![Устройство блока](./source/block-strucure.svg =300x250)</p>
-<h1 id="внешний-тип">Внешний тип</h1>
+<h2 id="задание-размеров-блока">Задание размеров блока</h2>
+<p>Существует два способа задавать размеры элемента</p>
+<p>Через height и width задают размеры для контента. Отступы в эти размеры не входят:</p>
+<pre><code class="hljs language-css"><span class="hljs-attribute">box-sizing</span>: content-box;
+</code></pre>
+<p>Через height и width задаются размеры ВСЕГО блока. Отступы меняют размер самого содержимого, но не всего элемента:</p>
+<pre><code class="hljs language-css"><span class="hljs-attribute">box-sizing</span>: border-box;
+</code></pre>
+<p>Задать одну блочную модель для всех элементов:</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-tag">html</span> { <span class="hljs-attribute">box-sizing</span>: border-box; }
+*, *<span class="hljs-selector-pseudo">::before</span>, *<span class="hljs-selector-pseudo">::after</span> { <span class="hljs-attribute">box-sizing</span>: inherit; }
+</code></pre>
+<h2 id="внешний-тип">Внешний тип</h2>
 <p>Задает внешнее поведение</p>
 <table>
 <thead>
@@ -51,10 +63,21 @@
 </tr>
 </tbody>
 </table>
-<h1 id="внутренний-тип">Внутренний тип</h1>
+<h2 id="внутренний-тип">Внутренний тип</h2>
 <p>Задает внутреннее поведение блока</p>
 <p>К нему относят только flex, grid. Но лучше чекни <a href="#layout-%D1%80%D0%B0%D1%81%D0%BF%D0%BE%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5-%D1%8D%D0%BB%D0%B5%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2">Layout CSS</a></p>
 <h1 id="layout-расположение-элементов">Layout. Расположение элементов</h1>
+<h2 id="высота-элемента-z-index">Высота элемента: z-index</h2>
+<p>Управляет &quot;высотой&quot; элементов. Высокие значения - сверху</p>
+<pre><code class="hljs language-css"><span class="hljs-attribute">z-index</span>: <span class="hljs-number">10</span>;
+</code></pre>
+<p>Работает только:</p>
+<ul>
+<li>для элементов на одом уровне иерархии</li>
+<li>для позиционированных элементов(position которых НЕ static)</li>
+<li>для flex и grid элементов</li>
+<li>для элементо чей opacity &lt; 1, например 0.999</li>
+</ul>
 <h2 id="normal-flow">Normal Flow</h2>
 <p>Normal flow. Использует стандартные свойства у tag'ов для отоброжения. Поведение по умолчанию.</p>
 <p>Такое поведение описано <a href="#%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D0%B9-%D1%82%D0%B8%D0%BF">здесь</a></p>
@@ -65,27 +88,36 @@
 <span class="hljs-attribute">display</span>: block-inline;
 </code></pre>
 <h2 id="position">Position</h2>
-<p>Переместить из нормального потока в другое место.</p>
-<p>Все значения аттрибута position, кроме static, делают элемент позиционированным. То бишь, потомки располагаются относительно его нового положения</p>
-<p>Достаточно просто указать свойство position и работать с ним:
-position: static; - по умолчанию (просто Normal Flow)
-position: relative; - меняет положение относительно положения по умолчанию или относительно ближащго позиционированного предка
-position: absolute; - удаляет элемент из нормального потока так, будто бы на своем отдельном слое. Положение можно менять относительно html или относительно ближащго позиционированного предка
-position: fixed; - фиксирует элемент относительно viewport'а. Короче при прокрутке страницы элемент остается на месте
-position: sticky; - элемент ведет себя как static. После достижения определенной линии viewport прикрепляется к ней</p>
-<p>Располагаются элементы с помощью свойств: top / left / right / bottom</p>
-<p>z-index: ; - управляет &quot;высотой&quot; элементов. Высокие значения - сверху. Работает только:</p>
-<ul>
-<li>элементы должны находитсься на одном иерархическом уровне</li>
-<li>для позиционированных элементов(position которых НЕ static)</li>
-<li>для flex и grid элементов</li>
-<li>для элементо чей opacity &lt; 1, например 0.999</li>
-</ul>
+<p>Все значения аттрибута position, кроме static, убирают элемент из Normal Flow. Такой элемент становится &quot;позиционированным&quot;. По умолчанию позиционированный элемент - &lt;html&gt;</p>
+<p>Все потомки позционированного элемента переносятся на &quot;новый слой&quot; и определяют свое положение относительно него элемента</p>
+<pre><code class="hljs language-css"><span class="hljs-attribute">position</span>: static;       <span class="hljs-comment">/* поведение по умолчанию (просто Normal Flow) */</span>
+<span class="hljs-attribute">position</span>: relative;     <span class="hljs-comment">/* положение определяется относительно положения по умолчанию */</span>
+<span class="hljs-attribute">position</span>: absolute;     <span class="hljs-comment">/* удаляет элемент из нормального потока, элемент игнорирует остальные и залезает левый-верхний угол &quot;позиционированного&quot; родителя */</span>
+<span class="hljs-attribute">position</span>: fixed;        <span class="hljs-comment">/* фиксирует элемент относительно viewport&#x27;а. Короче при прокрутке страницы элемент остается на месте */</span>
+<span class="hljs-attribute">position</span>: sticky;       <span class="hljs-comment">/* элемент ведет себя как static. После достижения определенной линии viewport ведет себя как fixed */</span>
+</code></pre>
+<p>Управление позицией &quot;позиционированного&quot; элемента:</p>
+<pre><code class="hljs language-css"><span class="hljs-attribute">top</span>: <span class="hljs-number">10px</span>;
+<span class="hljs-attribute">left</span>: <span class="hljs-number">10%</span>;
+<span class="hljs-attribute">right</span>: <span class="hljs-number">20em</span>;
+<span class="hljs-attribute">bottom</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100%</span> - <span class="hljs-number">10px</span>);
+</code></pre>
 <h2 id="flex">Flex</h2>
-<p>Выставляет элементы либо в ряд либо в колонку</p>
-<p>Свойства flex-wrapper:
-display: flex; - указываем что это элемент-обертка типа flex. Расставляет block'и как flex-block
-display: inline-flex; - указываем что это элемент-обертка типа flex. Расставляет inline как flex-block</p>
+<p>Выставляет элементы либо в ряд либо горизонтально либо вертикально</p>
+<p>Flex делаится на две составляющие:</p>
+<ul>
+<li>flex-wrapper</li>
+<li>flex-block</li>
+</ul>
+<p>Дальше я буду назыать элемент flex-block, если он потомок flex-wrapper
+Дальше я буду назыать элемент flex-wrapper, если у него в CSS определен display как flex</p>
+<h3>Свойства flex-wrapper</h3>
+<p>Устанавливаем flex-wrapper:</p>
+<pre><code class="hljs language-css">// указываем что это элемент-обертка типа <span class="hljs-attribute">flex</span>. Расставляет block как <span class="hljs-attribute">flex</span>-block
+<span class="hljs-attribute">display</span>: flex;
+// указываем что это элемент-обертка типа <span class="hljs-attribute">flex</span>. Расставляет inline как <span class="hljs-attribute">flex</span>-block
+<span class="hljs-attribute">display</span>: inline-flex; - указываем что это элемент-обертка типа <span class="hljs-attribute">flex</span>. Расставляет inline как <span class="hljs-attribute">flex</span>-block
+</code></pre>
 <p>flex-direction: row | column | row-reverse | column-reverse; - распологать flex-block в строку/ряд/строку-задом-наперед/столбец-задом-наперед
 flex-wrap: wrap | no-wrap; - если flex-blok не помещается, то переносит/не-переносит на следующую строку</p>
 <p>align-items: stretch | center | flex-start | flex-end; - указывае где элемент находится на поперечной(перпендекулярна оси направления) оси. Значение stretch - растягивает элементы, все остальные выравнивают

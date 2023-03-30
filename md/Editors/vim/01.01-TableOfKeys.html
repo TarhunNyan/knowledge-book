@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <style>
+            .row, .column {
+                display: flex;
+                row-gap: 5px;
+                column-gap: 5px;
+            }
+            
+            .row { flex-direction: column; }
+            .column { flex-direction: row; }
+
+            .key-btn {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                row-gap: 6px;
+
+                padding: 0;
+                margin: 0;
+
+                width: 150px;
+                height: 150px;
+                min-width: 150px;
+                min-height: 150px;
+
+                border-width: 6px;
+                border-style: solid;
+                border-color: #202020;
+                background-color: #202020;
+                border-radius: 10px;
+            }
+
+            .block:first-child {
+                border-radius: 5px 5px 0 0;
+            }
+
+            .block:last-child {
+                border-radius: 0 0 5px 5px;
+            }
+
+            .command,
+            .motion,
+            .nothing,
+            .operation,
+            .extra {
+                flex-grow: 1;
+
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+            }
+            
+            .command { background-color: yellow; }
+            .motion { background-color: green; }
+            .nothing { background-color: #c0c0c0; }
+            .operation { background-color: orange; }
+            .extra { background-color: white; }
+
+            .to-insert-mode { color: red; }
+
+            .command__symbol {
+                font-size: 2rem;
+                font-weight: bold;
+                padding: 0 5px;
+            }
+
+            .command__text {
+                font-weight: bold;
+                text-align: center;
+                margin: auto;
+                padding-right: 5px;
+            }
+
+        </style>
+        <div class="row">
+            <div class="column">
+                <div class="key-btn">
+                    <div class="block command">
+                        <div class="command__symbol">~</div>
+                        <div class="command__text">смена<br>загл/строч</div>
+                    </div> 
+                    <div class="block motion">
+                        <div class="command__symbol">`</div>
+                        <div class="command__text">перейти к mark</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block operation">
+                        <div class="command__symbol">!</div>
+                        <div class="command__text">Внешний фильтр</div>
+                    </div> 
+                    <div class="block nothing">
+                        <div class="command__symbol">1</div>
+                        <div class="command__text"></div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block command">
+                        <div class="command__symbol">@</div>
+                        <div class="command__text">Запуск макроса</div>
+                    </div> 
+                    <div class="block nothing">
+                        <div class="command__symbol">2</div>
+                        <div class="command__text"></div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">#</div>
+                        <div class="command__text">пред вхож слова</div>
+                    </div> 
+                    <div class="block nothing">
+                        <div class="command__symbol">3</div>
+                        <div class="command__text"></div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">$</div>
+                        <div class="command__text">конец строки</div>
+                    </div> 
+                    <div class="block nothing">
+                        <div class="command__symbol">4</div>
+                        <div class="command__text"></div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">%</div>
+                        <div class="command__text">начало/конец блока</div>
+                    </div> 
+                    <div class="block nothing">
+                        <div class="command__symbol">5</div>
+                        <div class="command__text"></div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">^</div>
+                        <div class="command__text">первый не пустой симол в строке</div>
+                    </div> 
+                    <div class="block nothing">
+                        <div class="command__symbol">6</div>
+                        <div class="command__text"></div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block command">
+                        <div class="command__symbol">&amp;</div>
+                        <div class="command__text">хз</div>
+                    </div> 
+                    <div class="block nothing">
+                        <div class="command__symbol">7</div>
+                        <div class="command__text"></div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">*</div>
+                        <div class="command__text">найти след вхождение слова</div>
+                    </div> 
+                    <div class="block nothing">
+                        <div class="command__symbol">8</div>
+                        <div class="command__text"></div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">(</div>
+                        <div class="command__text">начало предложения</div>
+                    </div> 
+                    <div class="block nothing">
+                        <div class="command__symbol">9</div>
+                        <div class="command__text"></div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">)</div>
+                        <div class="command__text">конец предложения</div>
+                    </div> 
+                    <div class="block motion">
+                        <div class="command__symbol">0</div>
+                        <div class="command__text">начало строки</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">-</div>
+                        <div class="command__text">начало пред строки</div>
+                    </div> 
+                    <div class="block motion">
+                        <div class="command__symbol">_</div>
+                        <div class="command__text">начало строки начина с этой</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">+</div>
+                        <div class="command__text">начало след строки</div>
+                    </div> 
+                    <div class="block operation">
+                        <div class="command__symbol">=</div>
+                        <div class="command__text">Что-то с форматироанем</div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-left: 200px;" class="column">
+                <div class="key-btn">
+                    <div class="block command">
+                        <div class="command__symbol">Q</div>
+                        <div class="command__text">выполнить последний записанный макрос</div>
+                    </div> 
+                    <div class="block command">
+                        <div class="command__symbol">q</div>
+                        <div class="command__text">записать макрос</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">W</div>
+                        <div class="command__text">след слово после пробела</div>
+                    </div> 
+                    <div class="block motion">
+                        <div class="command__symbol">w</div>
+                        <div class="command__text">след слово</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">E</div>
+                        <div class="command__text">конец след слово перед пробелом</div>
+                    </div> 
+                    <div class="block motion">
+                        <div class="command__symbol">e</div>
+                        <div class="command__text">конец след слова</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block command">
+                        <div class="command__symbol to-insert-mode">R</div>
+                        <div class="command__text">режим замены</div>
+                    </div> 
+                    <div class="block command">
+                        <div class="command__symbol">r</div>
+                        <div class="command__text">заменить символ</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">T</div>
+                        <div class="command__text">идти до предыдущего симола в строке</div>
+                    </div> 
+                    <div class="block motion">
+                        <div class="command__symbol">t</div>
+                        <div class="command__text">идти до симола в строке</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block command">
+                        <div class="command__symbol">Y</div>
+                        <div class="command__text">копироать до конца строки</div>
+                    </div> 
+                    <div class="block operation">
+                        <div class="command__symbol">y</div>
+                        <div class="command__text">копировать</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block command">
+                        <div class="command__symbol">U</div>
+                        <div class="command__text">отменить все изменения в строке</div>
+                    </div> 
+                    <div class="block command">
+                        <div class="command__symbol">u</div>
+                        <div class="command__text">отменить прошлое действие</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block command">
+                        <div class="command__symbol to-insert-mode">I</div>
+                        <div class="command__text">запись с не пустого символа строки</div>
+                    </div> 
+                    <div class="block command">
+                        <div class="command__symbol to-insert-mode">i</div>
+                        <div class="command__text">начать запись</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block command">
+                        <div class="command__symbol to-insert-mode">O</div>
+                        <div class="command__text">создать пусту строку выше</div>
+                    </div> 
+                    <div class="block command">
+                        <div class="command__symbol to-insert-mode">o</div>
+                        <div class="command__text">создать пустую строку ниже</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block command">
+                        <div class="command__symbol">P</div>
+                        <div class="command__text">вставить из буфера до выше</div>
+                    </div> 
+                    <div class="block command">
+                        <div class="command__symbol">p</div>
+                        <div class="command__text">вставить из буффера после</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">{</div>
+                        <div class="command__text">начало параграфа</div>
+                    </div> 
+                    <div class="block motion">
+                        <div class="command__symbol">[</div>
+                        <div class="command__text">хз</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">}</div>
+                        <div class="command__text">конец параграфа</div>
+                    </div> 
+                    <div class="block motion">
+                        <div class="command__symbol">]</div>
+                        <div class="command__text">хз</div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-left: 240px;" class="column">
+                <div class="key-btn">
+                    <div class="block command">
+                        <div class="command__symbol to-insert-mode">A</div>
+                        <div class="command__text">начать запись в конце строки</div>
+                    </div> 
+                    <div class="block command">
+                        <div class="command__symbol to-insert-mode">a</div>
+                        <div class="command__text">начать запись после курсора</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block command">
+                        <div class="command__symbol to-insert-mode">S</div>
+                        <div class="command__text">запись вместо строки</div>
+                    </div> 
+                    <div class="block command">
+                        <div class="command__symbol to-insert-mode">s</div>
+                        <div class="command__text">запись вместо выделенного</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block command">
+                        <div class="command__symbol">D</div>
+                        <div class="command__text">удалить все до конца строки</div>
+                    </div> 
+                    <div class="block operation">
+                        <div class="command__symbol">d</div>
+                        <div class="command__text">удалить выбранно</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">F</div>
+                        <div class="command__text">поиск предыдущего символа в строке</div>
+                    </div> 
+                    <div class="block motion">
+                        <div class="command__symbol">f</div>
+                        <div class="command__text">поиск символа в строке</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">G</div>
+                        <div class="command__text">перейти в конец документа</div>
+                    </div> 
+                    <div class="block extra">
+                        <div class="command__symbol">g</div>
+                        <div class="command__text">спец команда с большим кол значений</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">H</div>
+                        <div class="command__text">переместить курсор вверх видимой области</div>
+                    </div> 
+                    <div class="block motion">
+                        <div class="command__symbol">h</div>
+                        <div class="command__text">курсор влево</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block command">
+                        <div class="command__symbol">J</div>
+                        <div class="command__text">переместить строку вниз</div>
+                    </div> 
+                    <div class="block motion">
+                        <div class="command__symbol">j</div>
+                        <div class="command__text">курсор вниз</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block command">
+                        <div class="command__symbol">K</div>
+                        <div class="command__text">переместить строку вверх</div>
+                    </div> 
+                    <div class="block motion">
+                        <div class="command__symbol">k</div>
+                        <div class="command__text">курсор вверх</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">L</div>
+                        <div class="command__text">переместить курсор вниз видимой области</div>
+                    </div> 
+                    <div class="block motion">
+                        <div class="command__symbol">l</div>
+                        <div class="command__text">курсор вправо</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block command">
+                        <div class="command__symbol">:</div>
+                        <div class="command__text">вызвать консоль</div>
+                    </div> 
+                    <div class="block motion">
+                        <div class="command__symbol">;</div>
+                        <div class="command__text">хз</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block extra">
+                        <div class="command__symbol">"</div>
+                        <div class="command__text">использовать значение из регистра</div>
+                    </div> 
+                    <div class="block motion">
+                        <div class="command__symbol">'</div>
+                        <div class="command__text">в начало строки где mark</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">|</div>
+                        <div class="command__text">перейти к столбцу</div>
+                    </div> 
+                    <div class="block extra">
+                        <div class="command__symbol">\</div>
+                        <div class="command__text">удаляет набраемую команду</div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-left: 280px;" class="column">
+                <div class="key-btn">
+                    <div class="block extra">
+                        <div class="command__symbol">ZZ</div>
+                        <div class="command__text">закрыть файл</div>
+                    </div> 
+                        <div class="block extra">
+                            <div class="command__symbol">z</div>
+                            <div class="command__text">спец команда с большим кол значений</div>
+                        </div>
+                    </div>
+                    <div class="key-btn">
+                        <div class="block command">
+                            <div class="command__symbol">X</div>
+                            <div class="command__text">как backspace</div>
+                        </div> 
+                        <div class="block command">
+                            <div class="command__symbol">x</div>
+                            <div class="command__text">удалить символ</div>
+                        </div>
+                    </div>
+                    <div class="key-btn">
+                        <div class="block command">
+                            <div class="command__symbol to-insert-mode">C</div>
+                            <div class="command__text">удалить все до конца строки</div>
+                        </div> 
+                        <div class="block operation">
+                            <div class="command__symbol to-insert-mode">c</div>
+                            <div class="command__text">удалить выбранно</div>
+                        </div>
+                    </div>
+                    <div class="key-btn">
+                        <div class="block command">
+                            <div class="command__symbol">V</div>
+                            <div class="command__text">выделение строками</div>
+                        </div> 
+                        <div class="block command">
+                            <div class="command__symbol">v</div>
+                            <div class="command__text">выделение</div>
+                        </div>
+                    </div>
+                    <div class="key-btn">
+                        <div class="block motion">
+                            <div class="command__symbol">B</div>
+                            <div class="command__text">пред слово после пробела</div>
+                        </div> 
+                        <div class="block motion">
+                            <div class="command__symbol">b</div>
+                            <div class="command__text">пред слово</div>
+                        </div>
+                    </div>
+                    <div class="key-btn">
+                        <div class="block motion">
+                            <div class="command__symbol">N</div>
+                            <div class="command__text">предыдущее вхождение искомой подстроки</div>
+                        </div> 
+                        <div class="block motion">
+                            <div class="command__symbol">n</div>
+                            <div class="command__text">следующее вхождение искомой подстроки</div>
+                        </div>
+                    </div>
+                    <div class="key-btn">
+                        <div class="block motion">
+                            <div class="command__symbol">M</div>
+                            <div class="command__text">центрировать область видимости по курсору</div>
+                        </div> 
+                        <div class="block command">
+                            <div class="command__symbol">m</div>
+                            <div class="command__text">установить mark</div>
+                        </div>
+                    </div>
+                    <div class="key-btn">
+                        <div class="block operation">
+                            <div class="command__symbol">&lt;</div>
+                            <div class="command__text">tab строки влево</div>
+                        </div> 
+                        <div class="block motion">
+                            <div class="command__symbol">,</div>
+                            <div class="command__text">хз</div>
+                        </div>
+                    </div>
+                    <div class="key-btn">
+                        <div class="block operation">
+                            <div class="command__symbol">&gt;</div>
+                        <div class="command__text">переместить курсор вниз видимой области</div>
+                    </div> 
+                    <div class="block command">
+                        <div class="command__symbol">.</div>
+                        <div class="command__text">поторить предыдущую клманду</div>
+                    </div>
+                </div>
+                <div class="key-btn">
+                    <div class="block motion">
+                        <div class="command__symbol">?</div>
+                        <div class="command__text">поиск подстроки в обратном напралении</div>
+                    </div> 
+                    <div class="block motion">
+                        <div class="command__symbol">/</div>
+                        <div class="command__text">поиск подстроки</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

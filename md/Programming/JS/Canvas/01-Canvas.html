@@ -1,0 +1,30 @@
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#canvas"><li>Canvas</li></a><ul><a href="#создание-canvas"><li>Создание Canvas</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../../static/style.css "><h1 id="canvas">Canvas</h1>
+<p>Благодаря Canvas мы можем рисовать с помощью Javascript</p>
+<p><a href="./02-Canvas2d.html">Супер база. Canvas и 2d графика</a></p>
+<h2 id="создание-canvas">Создание Canvas</h2>
+<p>В HTML создаем элемент в котором будем рисовать. Размеры элемента определяются как у обычного блока</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;current-canvas&quot;</span>&gt;</span>
+    Ваш браузер не поддрерживает Canvas
+<span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+</code></pre>
+<p>Получаем Canvas в Javascript</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> canvas = <span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;current-canvas&quot;</span>);
+</code></pre>
+<p>Получаем контекст. Совсем не очевидно, почему мы делаем так, но все просто. Мы выбираем что Canvas будет отображать:</p>
+<ul>
+<li><a href="./02-Canvas2d.html">2d</a></li>
+<li>3d</li>
+<li>bitmap</li>
+</ul>
+<pre><code class="hljs language-js"><span class="hljs-comment">// Контекст для рисоания векторной графики</span>
+<span class="hljs-keyword">var</span> ctx = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&quot;2d&quot;</span>);
+
+<span class="hljs-comment">// Контекст для рисоания 3d графики</span>
+<span class="hljs-comment">// webgl2 более современный чем webgl</span>
+<span class="hljs-keyword">var</span> ctx = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&quot;webgl&quot;</span>);
+<span class="hljs-keyword">var</span> ctx = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&quot;webgl2&quot;</span>);
+
+<span class="hljs-comment">// Контекст для рисоания растровых изображений(?)</span>
+<span class="hljs-keyword">var</span> ctx = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&quot;bitmaprenderer&quot;</span>);
+</code></pre>
+</div>

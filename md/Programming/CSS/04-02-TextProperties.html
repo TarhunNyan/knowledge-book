@@ -1,0 +1,88 @@
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#аттрибуты-текста"><li>Аттрибуты текста</li></a><ul><a href="#цвет-и-тень"><li>Цвет и тень</li></a><a href="#выравнивание-и-настройка-строчныхзаглавных-букв"><li>Выравнивание и настройка строчных/заглавных букв</li></a><a href="#декоративная-линия"><li>Декоративная линия</li></a><a href="#размеры-шрифта"><li>Размеры шрифта</li></a></ul><a href="#шрифты"><li>Шрифты</li></a><ul><a href="#толщина-курсив-жирный-и-тд"><li>Толщина, курсив, жирный и т.д.</li></a><a href="#задание-шрифта"><li>Задание шрифта</li></a><a href="#создание-своего-custom-шрифта"><li>Создание своего (Custom) шрифта</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="аттрибуты-текста">Аттрибуты текста</h1>
+<p>Почти все аттрибуты текста передаются от родителя потомкам</p>
+<h2 id="цвет-и-тень">Цвет и тень</h2>
+<pre><code class="hljs language-css"><span class="hljs-comment">/* цвет текста */</span>
+<span class="hljs-attribute">color</span>: &lt;color&gt;;
+<span class="hljs-comment">/* тень от текста. Сначала &lt;color&gt;, потом отступ по горизонтали, потом по вертикали, потом размытие(не обязательно). Если надо добавить еще тень, ставим запятую и  описыавем еще одну тень */</span>
+<span class="hljs-attribute">text-shadow</span>: ...;
+</code></pre>
+<h2 id="выравнивание-и-настройка-строчныхзаглавных-букв">Выравнивание и настройка строчных/заглавных букв</h2>
+<pre><code class="hljs language-css"><span class="hljs-comment">/* выровнять текст - слева/по центру/справа/растянуть */</span>
+<span class="hljs-attribute">text-align</span>: left | center | right | justify;
+<span class="hljs-comment">/* 
+ - none       - ничего
+ - uppercase  - текст заглавными
+ - lowercase  - текст мелким
+ - capitalize - слова начинается с заглавной
+ - full-width - делает моношрифт
+*/</span>
+<span class="hljs-attribute">text-transform</span>: none | uppercase | lowercase | capitalize | full-width;
+</code></pre>
+<h2 id="декоративная-линия">Декоративная линия</h2>
+<pre><code class="hljs language-css"><span class="hljs-comment">/* может иметь не одно, а несколько значений (чз пробел) */</span>
+<span class="hljs-attribute">text-decoration-line</span>: none | underline | overline | line-through;
+<span class="hljs-comment">/* форма линии сплошная/двойная/точечками/прерывистая/волна. Только один параметр для всех линий */</span>
+<span class="hljs-attribute">text-decoration-style</span>: solid | double | dotted | dashed | wavy;
+<span class="hljs-comment">/* цвет линий подчеркивания. Можно задать только один цвет для всех линий */</span>
+<span class="hljs-attribute">text-decoration-color</span>: &lt;color&gt;;
+<span class="hljs-comment">/* сокрщенная версия параметров выше */</span>
+<span class="hljs-comment">/* в любом порядке указываем: цвет, стиль, и где линии находятся (можно несколько) */</span>
+<span class="hljs-attribute">text-decoration</span>: ... ;
+</code></pre>
+<h2 id="размеры-шрифта">Размеры шрифта</h2>
+<pre><code class="hljs language-css"><span class="hljs-comment">/* разер шрифта. То бишь самих букв */</span>
+<span class="hljs-attribute">font-size</span>: &lt;length&gt; | &lt;precent&gt;;
+
+<span class="hljs-comment">/* высота линии. НЕ шрифта, а линии текста */</span>
+<span class="hljs-attribute">line-height</span>: &lt;length&gt; | &lt;precent&gt;;
+
+<span class="hljs-comment">/* расстояние между буквами; */</span>
+<span class="hljs-attribute">letter-spacing</span>: &lt;length&gt;;
+<span class="hljs-comment">/* расстояние между словами; */</span>
+word-spcing: &lt;length&gt;;
+</code></pre>
+<h1 id="шрифты">Шрифты</h1>
+<h2 id="толщина-курсив-жирный-и-тд">Толщина, курсив, жирный и т.д.</h2>
+<pre><code class="hljs language-css"><span class="hljs-comment">/* используется для задания курсива */</span>
+<span class="hljs-attribute">font-style</span>: normal | italic | oblique;
+<span class="hljs-comment">/* задает толщину шрифта */</span>
+<span class="hljs-attribute">font-weight</span>: light | normal | bold | extrabold | <span class="hljs-number">100</span>-<span class="hljs-number">900</span>;
+</code></pre>
+<h2 id="задание-шрифта">Задание шрифта</h2>
+<pre><code class="hljs language-css"><span class="hljs-comment">/* определяет список наиболее приорететных для применения шрифтов */</span>
+<span class="hljs-comment">/* если символ отсутствует в 1 шрифте, то он возьмется из второго и т.д.  */</span>
+<span class="hljs-attribute">font-family</span>: Georgia, serif, ...;
+</code></pre>
+<p>В идеале надо укзывать три семейства-шрифтов:</p>
+<ol>
+<li>Кастомный (Custom)      - какой-то свой, который добавлен(или не добавлен) через @font-face</li>
+<li>Системный (Safe Font)   - какой-нибудь распостраненный системный шрифт максимально близкий к Кастомному</li>
+<li>Семейство (Family Font) - шрифт из списка ниже. Этот шрифт 99.9% сработает, потому что это набор в него входят наборы пердустановленных шрифтов</li>
+</ol>
+<p>Список Family Font:</p>
+<ul>
+<li>serif      - шрифт с засечкам (считается удобным для длинных текстов)</li>
+<li>sans-serif - шрифт без засечек</li>
+<li>monospace  - шрифт с символами одной ширины</li>
+<li>cursive    - курсивный шрифт</li>
+<li>fantasy    - декоративный шрифт</li>
+<li>system-ui  - стандартный шрифт с устройства пользователя</li>
+</ul>
+<h2 id="создание-своего-custom-шрифта">Создание своего (Custom) шрифта</h2>
+<pre><code class="hljs language-css"><span class="hljs-keyword">@font-face</span> {
+    <span class="hljs-comment">/* Даем название кастомному шрифту */</span>
+    <span class="hljs-attribute">font</span>-famly: <span class="hljs-string">&#x27;nameOfFont&#x27;</span>;
+    <span class="hljs-comment">/* Чекаем, вдруг шрифт уже установлен на устройстве пользователя. Тогда используем его */</span>
+    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">local</span>(<span class="hljs-string">&#x27;Helvetica Neue Bold&#x27;</span>);
+    <span class="hljs-comment">/* Последовательно смотрим, может ли браузер использовать этот формат шрифта? Если да, то он его скачивает и использует */</span>
+    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&#x27;fonts/helveticaFont.ttf) format(&#x27;</span><span class="hljs-string">truetype&#x27;</span>);
+    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&#x27;fonts/helveticaFont.woff2) format(&#x27;</span><span class="hljs-string">woff2&#x27;</span>);
+    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&#x27;fonts/helveticaFont.woff) format(&#x27;</span><span class="hljs-string">woff&#x27;</span>);
+    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&#x27;fonts/helveticaFont.svg) format(&#x27;</span><span class="hljs-string">svg&#x27;</span>);
+    
+    <span class="hljs-comment">/* Значения font-weight и font-style при которых кастомный шрифт применяется*/</span>
+    <span class="hljs-attribute">font-weight</span>: normal;
+    <span class="hljs-attribute">font-style</span>: normal;
+}
+</code></pre>
+</div>

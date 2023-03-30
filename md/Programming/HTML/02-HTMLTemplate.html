@@ -1,0 +1,59 @@
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#template"><li>Template</li></a><ul><a href="#пояснения"><li>Пояснения</li></a></ul><a href="#подключение-javascript"><li>Подключение javascript</li></a><a href="#подключение-css"><li>Подключение CSS</li></a></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="template">Template</h1>
+<pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span> <span class="hljs-attr">profile</span>=<span class="hljs-string">&quot;SchemeName&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width,initial-scale=1&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<h2 id="пояснения">Пояснения</h2>
+<p>Указывает от какие DTD правила определяют XML объекты. Чисто исторически сохранившийся анохронизм</p>
+<pre><code class="hljs"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+</code></pre>
+<p>Весь документ должен быть обернут в этот тег</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p>Содержимое этого тега не отображается,  но помагает браузеру правильно работать со строницей и вообще вспомогательный элемент</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+</code></pre>
+<p>Видимый контент в этом теге. Кстати у него есть аттрибуты(типа цвет, музыка и т.д.), но лучше эти аттрибуты игнорироать</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+</code></pre>
+<p>Когда мобилки только появились, под них специально не делали сайты. Поэтому они отображали десктопную версию сайта. А чтобы это сделать надо было соврать о размере своего экрана, что они успешно и делали. Этот анохранизм остался с нами до сего дня</p>
+<p>Просим телефон не врать о размере соего экрана</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width,initial-scale=1&quot;</span>&gt;</span>
+</code></pre>
+<h1 id="подключение-javascript">Подключение javascript</h1>
+<p>Скрипт внутри html</p>
+<pre><code class="hljs language-js">&lt;script type=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;
+    <span class="hljs-comment">// Пишем скрипт прямо внтури html</span>
+&lt;/script&gt;
+</code></pre>
+<p>Подключаем внешний скрипт</p>
+<pre><code class="hljs language-js">&lt;script type=<span class="hljs-string">&quot;text/javascript&quot;</span> src=<span class="hljs-string">&quot;path-to-file.js&quot;</span>&gt;&lt;/script&gt;
+</code></pre>
+<h1 id="подключение-css">Подключение CSS</h1>
+<p>CSS внутри html</p>
+<pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-xml">
+            <span class="hljs-comment">&lt;!-- Прописываем стили --&gt;</span>
+        </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p>Подключаем внешний CSS</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;styles.css&quot;</span>&gt;</span>
+</code></pre>
+</div>

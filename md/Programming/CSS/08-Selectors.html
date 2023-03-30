@@ -1,0 +1,145 @@
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#selectors"><li>Selectors</li></a><ul><a href="#основные-селекторы"><li>Основные селекторы</li></a><a href="#селекторы-учитывающие-иерархию-наследования"><li>Селекторы учитывающие иерархию наследования</li></a><a href="#селектор-по-аттрибуту"><li>Селектор по аттрибуту</li></a></ul><a href="#псевдоклассы"><li>Псевдоклассы</li></a><ul><a href="#взаимодействие-с-мышкой"><li>Взаимодействие с мышкой</li></a><a href="#ссылки"><li>Ссылки</li></a><a href="#disabledenabled"><li>disabled/enabled</li></a><a href="#по-паттерну-через-один-элемент"><li>По паттерну (через один элемент)</li></a><a href="#по-дочерним-элементам"><li>По дочерним элементам</li></a><a href="#focus"><li>Focus</li></a><a href="#работа-с-input"><li>Работа с input</li></a><a href="#печать"><li>Печать</li></a><a href="#проигрывание-video-и-audio"><li>Проигрывание Video и Audio</li></a><a href="#еще"><li>Еще</li></a></ul><a href="#псевдоэлементы"><li>Псевдоэлементы</li></a></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="selectors">Selectors</h1>
+<h2 id="основные-селекторы">Основные селекторы</h2>
+<p>Селектор типа:</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-tag">span</span> {}
+</code></pre>
+<p>Селектор класса:</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-class">.class</span> {}
+</code></pre>
+<p>Селектор id:</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-id">#id</span> {}
+</code></pre>
+<h2 id="селекторы-учитывающие-иерархию-наследования">Селекторы учитывающие иерархию наследования</h2>
+<pre><code class="hljs language-css"><span class="hljs-comment">/* селектор потомка */</span>
+<span class="hljs-comment">/* Выбирает любых потомков &lt;span&gt; у &lt;p&gt;. Даже не прямых */</span>
+<span class="hljs-selector-tag">p</span> <span class="hljs-selector-tag">span</span> {}
+
+<span class="hljs-comment">/* дочерний комбинатор */</span>
+<span class="hljs-comment">/* Выбирает потомков только первого уровня */</span>
+<span class="hljs-selector-tag">p</span> &gt; <span class="hljs-selector-tag">span</span> {}
+
+<span class="hljs-comment">/* соседний родственный комбинатор */</span>
+<span class="hljs-comment">/* Выбирает элементы идущие друг за другом(на одном уровне иерархии) */</span>
+<span class="hljs-selector-tag">p</span> + <span class="hljs-selector-tag">span</span> {}
+
+<span class="hljs-comment">/* общий родственный комбинатор */</span>
+<span class="hljs-comment">/* Выбирает элементы с одним уровнем иерархии */</span>
+<span class="hljs-selector-tag">p</span> ~ <span class="hljs-selector-tag">span</span> {}
+</code></pre>
+<h2 id="селектор-по-аттрибуту">Селектор по аттрибуту</h2>
+<p>Вместо attr - пишем имя аттрибута:</p>
+<pre><code class="hljs language-css"><span class="hljs-comment">/* элемент содержит аттрибут attr */</span>
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-attr">[attr]</span>
+
+<span class="hljs-comment">/* значение аттрибута равно value */</span>
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-attr">[attr=<span class="hljs-string">&quot;value&quot;</span>]</span>
+
+<span class="hljs-comment">/* значение аттрибута разделенное пробелами среди которых есть value или просто полное совпадение*/</span>
+<span class="hljs-comment">/* Например: &quot;val1 val2 ... value ...&quot; */</span>
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-attr">[attr~=<span class="hljs-string">&quot;value&quot;</span>]</span>
+
+<span class="hljs-comment">/* значение начинается с value */</span>
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-attr">[attr^=<span class="hljs-string">&quot;value&quot;</span>]</span>
+
+<span class="hljs-comment">/* значение заканчивается на value */</span>
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-attr">[attr$=<span class="hljs-string">&quot;value&quot;</span>]</span>
+
+<span class="hljs-comment">/* значение где-то имеет вхождение подстроки value */</span>
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-attr">[attr*=<span class="hljs-string">&quot;value&quot;</span>]</span>
+
+<span class="hljs-comment">/* точно равно или начинается с value- */</span>
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-attr">[attr|=<span class="hljs-string">&quot;value&quot;</span>]</span>
+
+<span class="hljs-comment">/* убирает чувствительность к регистру */</span>
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-attr">[... i]</span>
+</code></pre>
+<h1 id="псевдоклассы">Псевдоклассы</h1>
+<h2 id="взаимодействие-с-мышкой">Взаимодействие с мышкой</h2>
+<pre><code class="hljs language-css"><span class="hljs-selector-pseudo">:active</span> <span class="hljs-comment">/* когда пользователь активирует(щелкает) на элемент */</span>
+<span class="hljs-selector-pseudo">:hover</span>  <span class="hljs-comment">/* элемент на который наведен курсор мыши */</span>
+</code></pre>
+<h2 id="ссылки">Ссылки</h2>
+<pre><code class="hljs language-css"><span class="hljs-selector-pseudo">:link</span>, <span class="hljs-selector-pseudo">:visited</span>, <span class="hljs-selector-pseudo">:any-link</span> <span class="hljs-comment">/* непосещенная/посещенная/любая ссылка */</span>
+<span class="hljs-selector-pseudo">:local-link</span>                <span class="hljs-comment">/* ссылки на тот же сайт где текущий документ */</span>
+<span class="hljs-selector-pseudo">:target</span>                    <span class="hljs-comment">/* элемент чей id соответствует текущему URL#id */</span>
+</code></pre>
+<h2 id="disabledenabled">disabled/enabled</h2>
+<pre><code class="hljs language-css"><span class="hljs-selector-pseudo">:disabled</span>, <span class="hljs-selector-pseudo">:enabled</span> <span class="hljs-comment">/* когда элемент отключен/включен */</span>
+</code></pre>
+<h2 id="по-паттерну-через-один-элемент">По паттерну (через один элемент)</h2>
+<pre><code class="hljs language-css"><span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:nth-child</span>(an+c)        <span class="hljs-comment">/* выбирает элементы по паттерну, и если &lt;p&gt;, то применяет стиль */</span>
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:nth-last-child</span>(an+c)   <span class="hljs-comment">/* тоже что и :nth-child, но паттерн идет с конца */</span>
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:nth-of-type</span>(an+c)      <span class="hljs-comment">/* выбирает все элементы &lt;/p&gt;&lt;p&gt;, и к ним применяет паттерн. Логика паттерна такая же как у nth-child */</span>
+<span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:nth-last-of-type</span>(an+c) <span class="hljs-comment">/* тоже что и :nth-of-type, но паттерн идет с конца */</span>
+<span class="hljs-selector-pseudo">:nth-child</span>(<span class="hljs-number">2</span>n)           <span class="hljs-comment">/* четные элементы */</span>
+<span class="hljs-selector-pseudo">:nth-child</span>(<span class="hljs-number">2</span>n+<span class="hljs-number">1</span>)         <span class="hljs-comment">/* нечетные элементы */</span>
+<span class="hljs-selector-pseudo">:nth-child</span>(<span class="hljs-number">3</span>n+<span class="hljs-number">4</span>)         <span class="hljs-comment">/* 4, 7, 10, 13, ... элементы */</span>
+<span class="hljs-selector-pseudo">:nth-child</span>(-n+<span class="hljs-number">3</span>)         <span class="hljs-comment">/* 1, 2, 3 элементы */</span>
+</code></pre>
+<h2 id="по-дочерним-элементам">По дочерним элементам</h2>
+<pre><code class="hljs language-css"><span class="hljs-selector-pseudo">:empty</span>         <span class="hljs-comment">/* нет дочерних элементов */</span>
+<span class="hljs-selector-pseudo">:only-child</span>    <span class="hljs-comment">/* элемент являющийся единственным потомком */</span>
+<span class="hljs-selector-pseudo">:only-of-type</span>  <span class="hljs-comment">/* единственный потомок такого типа */</span>
+<span class="hljs-selector-pseudo">:first</span>-child   <span class="hljs-comment">/* первый элемент среди дочерних элементов */</span>
+<span class="hljs-selector-pseudo">:first</span>-of-type <span class="hljs-comment">/* первый элемент среди дочерних, своего типа */</span>
+<span class="hljs-selector-pseudo">:last-child</span>    <span class="hljs-comment">/* последний элемент среди дочерних элементов */</span>
+<span class="hljs-selector-pseudo">:last-of-type</span>  <span class="hljs-comment">/* последний элемент среди дочерних, своего типа */</span>
+</code></pre>
+<h2 id="focus">Focus</h2>
+<pre><code class="hljs language-css"><span class="hljs-selector-pseudo">:focus</span>         <span class="hljs-comment">/* когда элемент в фокусе чз Tab, или нажат мышкой */</span>
+<span class="hljs-selector-pseudo">:focus</span>-within  <span class="hljs-comment">/* сам элемент в фокусе или его потомок в фокусе */</span>
+<span class="hljs-selector-pseudo">:focus</span>-visible <span class="hljs-comment">/* новая фича. Срабатывает, но только когда фокус не очевиден. Если жать мышкой или тачпадом - не работает. А если Tab, то работает */</span>
+</code></pre>
+<h2 id="работа-с-input">Работа с input</h2>
+<pre><code class="hljs language-css"><span class="hljs-selector-pseudo">:blank</span>                   <span class="hljs-comment">/* пустой input */</span>
+<span class="hljs-selector-pseudo">:in-range</span>, <span class="hljs-selector-pseudo">:out-of-range</span> <span class="hljs-comment">/* значения input&#x27;а в/вне диапозона */</span>
+<span class="hljs-selector-pseudo">:optional</span>, <span class="hljs-selector-pseudo">:required</span>     <span class="hljs-comment">/* необязательный/обязательный input. То бишь без/с аттрибута required */</span>
+<span class="hljs-selector-pseudo">:placeholder-shown</span>       <span class="hljs-comment">/* input, который показывает placeholder */</span>
+<span class="hljs-selector-pseudo">:invalid</span>, <span class="hljs-selector-pseudo">:valid</span>         <span class="hljs-comment">/* input с невалидным/валидным значеним. Валидация в стиле: type=&quot;url&quot; */</span>
+<span class="hljs-selector-pseudo">:read-only</span>               <span class="hljs-comment">/* input только для чтения */</span>
+<span class="hljs-selector-pseudo">:read-write</span>              <span class="hljs-comment">/* input который можно редактировать */</span>
+<span class="hljs-selector-pseudo">:default</span>                 <span class="hljs-comment">/* элементы которые хранят значение типа input Срабатывает когда значения стандартные */</span>
+<span class="hljs-selector-pseudo">:checked</span>                 <span class="hljs-comment">/* только для radiobutton и checkbox. Срабатывает если элемент выбран. Используют для изменения стилей выбранных боксов, или для хранения инфы без js, на чистом html (прячем checkbox, привязываем его к лейбе. После этого по клику на label checkbox будет true, а по второму клику false. И с помощью :checked надо просто проверять в CSS данный checkbox) */</span>
+</code></pre>
+<h2 id="печать">Печать</h2>
+<pre><code class="hljs language-css"><span class="hljs-selector-pseudo">:first</span> <span class="hljs-comment">/* первая страница постраничного носителя */</span>
+<span class="hljs-selector-pseudo">:left</span>  <span class="hljs-comment">/* левосторонние страницы */</span>
+<span class="hljs-selector-pseudo">:right</span> <span class="hljs-comment">/* правосторонние страницы */</span>
+</code></pre>
+<h2 id="проигрывание-video-и-audio">Проигрывание Video и Audio</h2>
+<pre><code class="hljs language-css">:playing
+:paused
+</code></pre>
+<h2 id="еще">Еще</h2>
+<pre><code class="hljs language-css"><span class="hljs-selector-pseudo">:lang</span>(en) <span class="hljs-comment">/* стиль применяется если установленданный язык */</span>
+<span class="hljs-selector-pseudo">:not</span>(<span class="hljs-selector-tag">p</span>)   <span class="hljs-comment">/* выберет все элементы, которые не p */</span>
+<span class="hljs-selector-pseudo">:is</span>()
+</code></pre>
+<h1 id="псевдоэлементы">Псевдоэлементы</h1>
+<p>Создают &quot;призрачные&quot; элементы, которые отсутстуют в дереве. Оформляются следующим образом</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-tag">span</span><span class="hljs-selector-pseudo">::after</span> { ... }
+</code></pre>
+<p>Псевдоэлементу можно задать innerHtml используя свойство content</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-tag">span</span><span class="hljs-selector-pseudo">:after</span> {
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">&quot; -&gt; &quot;</span>;
+}
+</code></pre>
+<p>Создает элемент после/до выбранного Selector'ом.</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-pseudo">::after</span>
+<span class="hljs-selector-pseudo">::before</span>
+</code></pre>
+<p>Оборачивает в псевдоэлемент первую строку/символ</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-pseudo">::first-line</span>
+<span class="hljs-selector-pseudo">::first-letter</span>
+</code></pre>
+<p>Создает псевдоэлемент для выделенного текста(эксперементальный)</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-pseudo">::selection</span>
+</code></pre>
+<p>работает с элементами и псевдоэлементами у которых display: list-item. Применяет стили к маркеру элемента списка</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-pseudo">::marker</span> 
+</code></pre>
+<p>Грамматичесая/орфографическая ошибка замеченная браузером</p>
+<pre><code class="hljs language-css"><span class="hljs-selector-pseudo">::grammar-error</span>
+<span class="hljs-selector-pseudo">::spelling-error</span>
+</code></pre>
+</div>
