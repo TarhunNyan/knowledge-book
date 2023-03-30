@@ -1,0 +1,122 @@
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#отступы"><li>Отступы</li></a><a href="#margin"><li>margin</li></a><ul><a href="#margin-collapsing"><li>Margin collapsing</li></a></ul><a href="#padding"><li>padding</li></a><a href="#border"><li>border</li></a><a href="#background"><li>background</li></a><a href="#overflow"><li>overflow</li></a></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="отступы">Отступы</h1>
+<h1 id="margin">margin</h1>
+<p>Внешний отступ.</p>
+<pre><code class="hljs language-css"><span class="hljs-comment">/* Может быть отрицательным */</span>
+<span class="hljs-attribute">margin</span>: &lt;length&gt;;
+<span class="hljs-comment">/* Задание margin и padding в %, работает так. Берется предок. У него смотрится inline размер(внутренний). От него берется процент */</span>
+<span class="hljs-attribute">margin</span>: &lt;precentage&gt;;
+<span class="hljs-comment">/* Отступ: сверху(1), справа(2), снизу(3), слева(4) */</span>
+<span class="hljs-attribute">margin</span>: <span class="hljs-number">1px</span>, <span class="hljs-number">2px</span>, <span class="hljs-number">3px</span>, <span class="hljs-number">4px</span>;
+</code></pre>
+<p>Отступ сверху/снизу/слева/справа. Работает так же как margin выше</p>
+<pre><code class="hljs language-css"><span class="hljs-attribute">margin-top</span>: ...;
+<span class="hljs-attribute">margin-bottom</span>: ...;
+<span class="hljs-attribute">margin-left</span>: ...;
+<span class="hljs-attribute">margin-right</span>: ...;
+</code></pre>
+<h2 id="margin-collapsing">Margin collapsing</h2>
+<p>Это когда margin'ы у top и bottom схлопываются в один. Размер получившегося margin'а равен наибольшему из top и bottom</p>
+<p>Схлопывание происходит:</p>
+<ul>
+<li>у соседних элементо &quot;братьев и сестер&quot;</li>
+<li>между родителем и потомком если отсутствуют: padding, border</li>
+<li>у пустых блоков без: padding, border, inline-content</li>
+</ul>
+<p>Схлопывание НЕ происходит:</p>
+<ul>
+<li>у float элементов</li>
+<li>у position: absolute элементов</li>
+</ul>
+<h1 id="padding">padding</h1>
+<p>Внутренний отступ</p>
+<pre><code class="hljs language-css"><span class="hljs-comment">/* Может быть отрицательным */</span>
+<span class="hljs-attribute">padding</span>: &lt;length&gt;;
+<span class="hljs-comment">/* Задание margin и padding в %, работает так. Берется предок. У него смотрится inline размер(внутренний). От него берется процент */</span>
+<span class="hljs-attribute">padding</span>: &lt;precentage&gt;;
+<span class="hljs-comment">/* Отступ: сверху(1), справа(2), снизу(3), слева(4) */</span>
+<span class="hljs-attribute">padding</span>: <span class="hljs-number">1px</span>, <span class="hljs-number">2px</span>, <span class="hljs-number">3px</span>, <span class="hljs-number">4px</span>;
+</code></pre>
+<h1 id="border">border</h1>
+<p>Ниже вместо ... подставляется border-top / border-right / border-bottom / border-left или border(задает параметры сразу сем четырем направлениям)</p>
+<p>border это рамка между pading и margin. Border это аттрибут, но у него много свойств:</p>
+<pre><code class="hljs language-css"><span class="hljs-comment">/* радиус скругления угла по окружности */</span>
+..<span class="hljs-selector-class">.-radius</span>: &lt;length&gt;;
+<span class="hljs-comment">/* радиус скругления угла по элипсу. Первый радиус - горизонтальный, Второй радиус - вертикальный */</span>
+..<span class="hljs-selector-class">.-radius</span>: &lt;length&gt;, &lt;length&gt;;
+<span class="hljs-comment">/* толщина рамки */</span>
+..<span class="hljs-selector-class">.-width</span>: &lt;length&gt;;
+<span class="hljs-comment">/* цвет рамки */</span>
+..<span class="hljs-selector-class">.-color</span>: ;
+<span class="hljs-comment">/* стиль линии. Например solid - сплошная линия */</span>
+..<span class="hljs-selector-class">.-style</span>: none | dotted |  dashed | solid | groove | inset;
+</code></pre>
+<p>Сокращенный вариант для свойств выше:</p>
+<pre><code class="hljs language-css"><span class="hljs-comment">/* Указываем -radius, -style, -color */</span>
+...: &lt;length&gt; &lt;style&gt; &lt;color&gt;;
+</code></pre>
+<p>Есть некоторые особенности у аттрибута border-radius:</p>
+<pre><code class="hljs language-css"><span class="hljs-comment">/* Задаем скругление  виде элипса для верхнего-левого(10px 5px) и верхнего-правого углов(25% 100em) */</span>
+<span class="hljs-attribute">border-radius</span>: <span class="hljs-number">10px</span> <span class="hljs-number">25%</span> / <span class="hljs-number">5px</span> <span class="hljs-number">100em</span>;
+</code></pre>
+<h1 id="background">background</h1>
+<p>Основное свойство:</p>
+<pre><code class="hljs language-css"><span class="hljs-comment">/* указываем путь до изображение на заднем фоне */</span> 
+<span class="hljs-attribute">background-image</span>: &lt;path&gt;;
+<span class="hljs-comment">/* может так же принимать Gradient в качестве значения */</span>
+<span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">linear-gradient</span>(&lt;angle&gt;, &lt;color&gt; <span class="hljs-number">10%</span>, &lt;color&gt; <span class="hljs-number">20px</span>, ...);
+<span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">radial-gradiant</span>( ... );
+<span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">repeating-linear-gradient</span>( ... );
+<span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">repeating-radial-gradient</span>( ... );
+<span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">conic-graident</span>( ... );
+</code></pre>
+<p>Настройки для изобрежения:</p>
+<pre><code class="hljs language-css"><span class="hljs-comment">/* фоновый цвет */</span> 
+<span class="hljs-comment">/* распостраняется на контент и отступы от него */</span>
+<span class="hljs-attribute">background-color</span>: &lt;color&gt;; 
+
+<span class="hljs-comment">/* позиция изображения */</span>
+<span class="hljs-attribute">background-position</span>: <span class="hljs-number">20px</span> <span class="hljs-number">10%</span>;
+<span class="hljs-comment">/* так же можно использовать top | right | bottom | left */</span>
+<span class="hljs-comment">/* 20 пикселей от верха и 10 пикселей справа */</span>
+<span class="hljs-attribute">background-position</span>: top <span class="hljs-number">20px</span> right <span class="hljs-number">10px</span>;
+
+<span class="hljs-comment">/* размер картинки на заднем фоне */</span>
+<span class="hljs-attribute">background-size</span>: <span class="hljs-number">100px</span> <span class="hljs-number">10%</span>;
+<span class="hljs-comment">/* так же может принимать значение cover(заполнит элемент) и contain(уменьшит изображение так, чтобы поместить в элемент) */</span>
+<span class="hljs-attribute">background-size</span>: cover;
+
+<span class="hljs-comment">/* повторение изображения заднего фона */</span>
+<span class="hljs-attribute">background-repeat</span>: no-repeat | repeat-x | repeat-y | repeat;
+
+<span class="hljs-comment">/* если указан scroll, то прокучивает как обычную картинку */</span> 
+<span class="hljs-comment">/* fixed прокуручивает так, словно элемент это &quot;окно&quot; смотрящее на background */</span>
+<span class="hljs-attribute">background</span>-attacment: sroll | fixed;
+</code></pre>
+<p>Все свойства ниже могут через запятую принимать несколько значений. Значения с одинаковым индексом применяются друг к другу. Например:</p>
+<pre><code class="hljs language-css"><span class="hljs-comment">/* изоюражения image(10px 20px) и image2(200px 0px) */</span>
+<span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">./image</span>), <span class="hljs-built_in">url</span>(<span class="hljs-string">./image2</span>);
+<span class="hljs-attribute">background-position</span>: <span class="hljs-number">10px</span> <span class="hljs-number">20px</span>, <span class="hljs-number">200px</span> <span class="hljs-number">0px</span>;
+</code></pre>
+<p>Если количество свойств и изображений неравное количество, то свойства зацикливаются. Например:</p>
+<pre><code class="hljs language-css"><span class="hljs-comment">/* изоюражения image(10px 20px), image2(200px 0px) и image3(10px 20px) */</span>
+<span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">./image</span>), <span class="hljs-built_in">url</span>(<span class="hljs-string">./image2</span>), <span class="hljs-built_in">url</span>(<span class="hljs-string">./image3</span>);
+<span class="hljs-attribute">background-position</span>: <span class="hljs-number">10px</span> <span class="hljs-number">20px</span>, <span class="hljs-number">200px</span> <span class="hljs-number">0px</span>;
+</code></pre>
+<h1 id="overflow">overflow</h1>
+<p>Определяет видимость контента за пределами блока</p>
+<pre><code class="hljs language-css"><span class="hljs-comment">/* стандартное значение видимости */</span>
+<span class="hljs-attribute">overflow</span>: visible;
+<span class="hljs-comment">/* если контент вылез за пределыконтейнера, то появляется полоса прокрутки */</span>
+<span class="hljs-attribute">overflow</span>: auto;
+<span class="hljs-comment">/* если контент вылез за блок, то его не видно */</span>
+<span class="hljs-attribute">overflow</span>: hidden;
+<span class="hljs-comment">/* горизонтальная и вертикальная полосы прокрутки */</span>
+<span class="hljs-attribute">overflow</span>: scroll;
+<span class="hljs-comment">/* прокрутка по вертикали */</span>
+<span class="hljs-attribute">overflow</span>: overflow-y;
+<span class="hljs-comment">/* прокрутка по горизонтали */</span>
+<span class="hljs-attribute">overflow</span>: overflow-x;
+<span class="hljs-comment">/* значения по вертикали и по горизонтали отдельно. По горизонтали полоса прокрутки , по вертикали невидно контент */</span>
+<span class="hljs-attribute">overflow</span>: scroll hiden;
+</code></pre>
+</div>

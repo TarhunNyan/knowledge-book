@@ -56,7 +56,7 @@ ssh-keygen
 1. Заменяет ссылку
 
 ````bash
-remove -v
+git remote -v
 >> https://github.com/CatOnDrugs/shandlebars-cli.git (fetch)
 >> https://github.com/CatOnDrugs/shandlebars-cli.git (push)
 git remote set-url origin git@github.com:CatOnDrugs/shandlebars-cli.git

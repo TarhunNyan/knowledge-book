@@ -1,0 +1,71 @@
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#работа-с-директориями"><li>Работа с директориями</li></a><ul><a href="#просмотр"><li>Просмотр</li></a><a href="#перемещение-между-директоиями"><li>Перемещение между директоиями</li></a><a href="#создание"><li>Создание</li></a><a href="#перемещение"><li>Перемещение</li></a><a href="#копировнаие"><li>Копировнаие</li></a><a href="#удаление"><li>Удаление</li></a></ul><a href="#работа-с-файлами"><li>Работа с файлами</li></a><a href="#ссылки"><li>Ссылки</li></a></ul></div></div><div class="main"><link rel="stylesheet" href="../static/style.css "><h1 id="работа-с-директориями">Работа с директориями</h1>
+<h2 id="просмотр">Просмотр</h2>
+<pre><code class="hljs"><span class="hljs-comment"># список файлов и дирикторий</span>
+<span class="hljs-built_in">ls</span>
+<span class="hljs-comment"># вывести путь до рабочей дериктории</span>
+<span class="hljs-built_in">pwd</span> 
+</code></pre>
+<h2 id="перемещение-между-директоиями">Перемещение между директоиями</h2>
+<pre><code class="hljs"><span class="hljs-comment"># перемещает в указанную директорию</span>
+<span class="hljs-built_in">cd</span> 
+<span class="hljs-comment"># переместит в dir1 по указанному пути(от текущей дириктории)</span>
+<span class="hljs-built_in">cd</span> dir1 
+<span class="hljs-comment"># переместит в dir1 по указанному пути(от корневой дириктории)</span>
+<span class="hljs-built_in">cd</span> ~/dir1 
+</code></pre>
+<h2 id="создание">Создание</h2>
+<pre><code class="hljs"><span class="hljs-comment"># создать папку</span>
+<span class="hljs-built_in">mkdir</span> &lt;path&gt; 
+</code></pre>
+<h2 id="перемещение">Перемещение</h2>
+<pre><code class="hljs"><span class="hljs-comment"># переместить или переименовать файл</span>
+<span class="hljs-built_in">mv</span> 
+<span class="hljs-comment"># переименовать файл</span>
+<span class="hljs-built_in">mv</span> file1 file2 
+<span class="hljs-comment"># переименовать директорию</span>
+<span class="hljs-built_in">mv</span> dir1 dir2 
+<span class="hljs-comment"># переместить файл в директорию</span>
+<span class="hljs-built_in">mv</span> file &lt;path&gt; 
+<span class="hljs-comment"># переместить файлы в директорию</span>
+<span class="hljs-built_in">mv</span> file1 file2 &lt;<span class="hljs-built_in">h</span>&gt; 
+<span class="hljs-comment"># переместитьь все .pdf файлы в ~/Documents</span>
+<span class="hljs-built_in">mv</span> *.pdf ~/Documents 
+</code></pre>
+<h2 id="копировнаие">Копировнаие</h2>
+<pre><code class="hljs"><span class="hljs-meta"># копирует</span>
+<span class="hljs-meta"># применяется так же как mv</span>
+<span class="hljs-keyword">cp</span> 
+</code></pre>
+<h2 id="удаление">Удаление</h2>
+<pre><code class="hljs"><span class="hljs-comment"># delete files or directories. Key using with rm</span>
+rm 
+<span class="hljs-comment"># delete folder</span>
+<span class="hljs-literal">-</span>d 
+<span class="hljs-comment"># process all nested directories</span>
+<span class="hljs-literal">-</span>r 
+<span class="hljs-comment"># confirmation of each deletion operation</span>
+<span class="hljs-literal">-</span>i 
+<span class="hljs-comment"># WITHOUT confirmation of each deletion operation</span>
+<span class="hljs-literal">-</span>f 
+</code></pre>
+<p>Например:</p>
+<pre><code class="hljs"><span class="hljs-meta"># удалить без подтверждения и кода ошибочного завершения файл (<span class="hljs-keyword">или</span> каталог) mydir</span>
+rm -rf mydir 
+</code></pre>
+<h1 id="работа-с-файлами">Работа с файлами</h1>
+<pre><code class="hljs"><span class="hljs-comment"># создать пустой файл</span>
+<span class="hljs-built_in">touch</span> file1 file2 file3
+
+<span class="hljs-comment"># отобразить содежимое файла в терминале</span>
+<span class="hljs-built_in">cat</span> &lt;file_path&gt; 
+<span class="hljs-comment"># копируем файл 1.txt в файл 2.txt</span>
+<span class="hljs-built_in">cat</span> 1.txt&gt;&gt;2.txt 
+</code></pre>
+<h1 id="ссылки">Ссылки</h1>
+<p>Жесткие - точный путь к дириктории или файлу</p>
+<pre><code class="hljs"><span class="hljs-keyword">ln</span> -<span class="hljs-keyword">P</span> <span class="hljs-symbol">&lt;path_file&gt;</span> <span class="hljs-symbol">&lt;path_link&gt;</span>
+</code></pre>
+<p>Символические - ссылается на файл. Файл можно перемещать и переименовывать, ссылка все равно будет рабочей</p>
+<pre><code class="hljs"><span class="hljs-keyword">ln</span> -s <span class="hljs-symbol">&lt;path_file&gt;</span> <span class="hljs-symbol">&lt;path_link&gt;</span>
+</code></pre>
+</div>
