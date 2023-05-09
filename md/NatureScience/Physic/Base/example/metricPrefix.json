@@ -1,0 +1,232 @@
+{
+    "0": {
+        "en": {
+            "name": "unio",
+            "symbol": "u"
+        }
+    },
+    "1": {
+        "en": {
+            "name": "deca",
+            "symbol": "da"
+        },
+        "ru": {
+            "name": "дека",
+            "symbol": "да"
+        }
+    },
+    "2": {
+        "en": {
+            "name": "hecto",
+            "symbol": "h"
+        },
+        "ru": {
+            "name": "гекто",
+            "symbol": "г"
+        }
+    },
+    "3": {
+        "en": {
+            "name": "kilo",
+            "symbol": "k"
+        },
+        "ru": {
+            "name": "кило",
+            "symbol": "к"
+        }
+    },
+    "6": {
+        "en": {
+            "name": "mega",
+            "symbol": "M"
+        },
+        "ru": {
+            "name": "мега",
+            "symbol": "М"
+        }
+    },
+    "9": {
+        "en": {
+            "name": "giga",
+            "symbol": "G"
+        },
+        "ru": {
+            "name": "гига",
+            "symbol": "Г"
+        }
+    },
+    "12": {
+        "en": {
+            "name": "tera",
+            "symbol": "T"
+        },
+        "ru": {
+            "name": "тера",
+            "symbol": "Т"
+        }
+    },
+    "15": {
+        "en": {
+            "name": "peta",
+            "symbol": "P"
+        },
+        "ru": {
+            "name": "пета",
+            "symbol": "П"
+        }
+    },
+    "18": {
+        "en": {
+            "name": "exa",
+            "symbol": "E"
+        },
+        "ru": {
+            "name": "экса",
+            "symbol": "Э"
+        }
+    },
+    "21": {
+        "en": {
+            "name": "zetta",
+            "symbol": "Z"
+        },
+        "ru": {
+            "name": "зетта",
+            "symbol": "з"
+        }
+    },
+    "24": {
+        "en": {
+            "name": "yotta",
+            "symbol": "Y"
+        },
+        "ru": {
+            "name": "иотта",
+            "symbol": "И"
+        }
+    },
+    "27": {
+        "en": {
+            "name": "ronna",
+            "symbol": "R"
+        }
+    },
+    "30": {
+        "en": {
+            "name": "quetta",
+            "symbol": "Q"
+        }
+    },
+    "-1": {
+        "en": {
+            "name": "deci",
+            "symbol": "d"
+        },
+        "ru": {
+            "name": "деци",
+            "symbol": "д"
+        }
+    },
+    "-2": {
+        "en": {
+            "name": "centi",
+            "symbol": "c"
+        },
+        "ru": {
+            "name": "санти",
+            "symbol": "с"
+        }
+    },
+    "-3": {
+        "en": {
+            "name": "milli",
+            "symbol": "m"
+        },
+        "ru": {
+            "name": "мили",
+            "symbol": "м"
+        }
+    },
+    "-6": {
+        "en": {
+            "name": "micro",
+            "symbol": "μ"
+        },
+        "ru": {
+            "name": "микро",
+            "symbol": "мк"
+        }
+    },
+    "-9": {
+        "en": {
+            "name": "nano",
+            "symbol": "n"
+        },
+        "ru": {
+            "name": "нано",
+            "symbol": "н"
+        }
+    },
+    "-12": {
+        "en": {
+            "name": "pico",
+            "symbol": "p"
+        },
+        "ru": {
+            "name": "пико",
+            "symbol": "п"
+        }
+    },
+    "-15": {
+        "en": {
+            "name": "femto",
+            "symbol": "f"
+        },
+        "ru": {
+            "name": "фемто",
+            "symbol": "ф"
+        }
+    },
+    "-18": {
+        "en": {
+            "name": "atto",
+            "symbol": "a"
+        },
+        "ru": {
+            "name": "атто",
+            "symbol": "а"
+        }
+    },
+    "-21": {
+        "en": {
+            "name": "zepto",
+            "symbol": "z"
+        },
+        "ru": {
+            "name": "зепто",
+            "symbol": "з"
+        }
+    },
+    "-24": {
+        "en": {
+            "name": "yocto",
+            "symbol": "y"
+        },
+        "ru": {
+            "name": "иокто",
+            "symbol": "и"
+        }
+    },
+    "-27": {
+        "en": {
+            "name": "ronto",
+            "symbol": "r"
+        }
+    },
+    "-30": {
+        "en": {
+            "name": "quecto",
+            "symbol": "q"
+        }
+    }
+}

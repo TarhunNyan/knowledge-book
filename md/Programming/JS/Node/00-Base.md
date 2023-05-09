@@ -34,6 +34,22 @@ node -v
 node
 ````
 
+## Запуск кода из файла
+
+Запускает js файл
+
+````bash
+node <file_path>
+````
+
+## Запуск debugger
+
+Запускает js файл на debugging
+
+````bash
+node inspect <file_path>
+````
+
 # NPM(Node Package Manager)
 
 Идет с node по умолчанию. Организует модули проекта. Устанавливает нужные и следит за версиями модулей

@@ -2,7 +2,6 @@
 [topLink]: #импорт-и-экспорт
 
 Импорт и экспорт работает только в Node.js
-$$\alpha = \frac{\pi}{2} \cdot \sum$$
 Все остальное это собранные webpack'ом и исполняемый последовательно js
 
 - [CommonJS][CommonJS]
@@ -36,7 +35,7 @@ const text = require('./export');
 console.log( text );
 ````
 
-# ECMAScript.ALsd as-a. a# $ %DSas, d_asASD;'"'{}a
+# ECMAScript
 [ecmas]: #ecmascriptalsd-as-a-a--dsas-d_asasda
 
 

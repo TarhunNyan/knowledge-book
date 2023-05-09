@@ -1,0 +1,105 @@
+{
+    "en": {
+        "L": {
+            "groups": [
+                "SI"
+            ],
+            "name": "meter"
+        },
+        "M": {
+            "groups": [
+                "SI"
+            ],
+            "name": "mass"
+        },
+        "T": {
+            "groups": [
+                "SI"
+            ],
+            "name": "mass"
+        },
+        "I": {
+            "groups": [
+                "SI"
+            ],
+            "name": "mass"
+        },
+        "\\theta": {
+            "groups": [
+                "SI"
+            ],
+            "name": "mass"
+        },
+        "N": {
+            "groups": [
+                "SI"
+            ],
+            "name": "mass"
+        },
+        "J": {
+            "groups": [
+                "SI"
+            ],
+            "name": "mass"
+        }
+    },
+    "ru": {
+        "L": {
+            "groups": [
+                "СИ"
+            ],
+            "name": "длина",
+            "unit": "метер"
+        },
+        "M": {
+            "groups": [
+                "СИ"
+            ],
+            "name": "масса",
+            "unit": "килограмм"
+        },
+        "T": {
+            "groups": [
+                "СИ"
+            ],
+            "name": "время",
+            "unit": "секунда"
+        },
+        "I": {
+            "groups": [
+                "СИ"
+            ],
+            "name": "сила тока",
+            "unit": "ампер"
+        },
+        "\\theta": {
+            "name": "температура",
+            "groups": {
+                "СИ": [
+                    {
+                        "name": "кельвин",
+                        "symbol": "К"
+                    }, 
+                    {
+                        "name": "градус",
+                        "symbol": "\\degree C"
+                    }
+                ]
+            }
+        },
+        "N": {
+            "groups": [
+                "СИ"
+            ],
+            "name": "количество вещества",
+            "unit": "моль"
+        },
+        "J": {
+            "groups": [
+                "СИ"
+            ],
+            "name": "сила света",
+            "unit": "кандел"
+        }
+    }
+}

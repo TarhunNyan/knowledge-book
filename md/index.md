@@ -1,5 +1,11 @@
 # Программирование
 
+<javascript type="text/javascript/pipeline/math-operators/numeric-postfix">
+    let a = 100kN;
+    a |> %% + 10 |> %%**2;
+    let c = a + 100;
+</javascript>
+
 ## Linux
 
 |Linux|Vim/NVim|
@@ -19,13 +25,15 @@
 
 Язык программирования в web
 
-|Javascript                                                         |Node|
-|:------------------------------------------------------------------|:---|
-|[Object](./Programming/JS/JS/04-Object.md)                         ||
-|[Array](./Programming/JS/JS/05-Array.md)                           ||
-|[Асинхронность: async/await](./Programming/JS/JS/03-Async%20JS.md) |[Node - команды и устройство](./Programming/JS/Node/00-Base.md)|
-|[Regexp](./Programming/Regexp/Regexp_JS.md)                        |[Все про import и export](./Programming/JS/Node/01-Import%20%D0%B8%20Export.md)|
-|[Canvas](./Programming/JS/Canvas/01-Canvas.md)                     ||
+|Javascript                                                         |JS API                                         |Node|
+|:------------------------------------------------------------------|:----------------------------------------------|:---|
+|[Structures](./Programming/JS/JS/02-Structures.md)                 |[Canvas](./Programming/JS/Canvas/01-Canvas.md) |
+|[Function](./Programming/JS/JS/07-Function.md)                     |[DOM](./Programming/JS/DOM/01-DOM.md)          |
+|[Object](./Programming/JS/JS/04-Object.md)                         |[Event](./Programming/JS/Event/01-Event.md)    |
+|[Array](./Programming/JS/JS/05-Array.md)                           |                                               |
+|[String](./Programming/JS/JS/06-String.md)                         |                                               |
+|[Асинхронность: async/await](./Programming/JS/JS/03-Async%20JS.md) |                                               |[Node - команды и устройство](./Programming/JS/Node/00-Base.md)|
+|[Regexp](./Programming/Regexp/Regexp_JS.md)                        |                                               |[Все про import и export](./Programming/JS/Node/01-Import%20%D0%B8%20Export.md)|
 
 ## CSS и HTML
 

@@ -1,4 +1,4 @@
-<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#vim-и-nvim"><li>Vim и NVim</li></a><a href="#undoredo"><li>Undo/Redo</li></a><a href="#delete"><li>Delete</li></a><a href="#copypaste"><li>Copy/Paste</li></a><a href="#macro"><li>Macro</li></a><ul><a href="#работа-с-макросом-как-с-текстом"><li>Работа с макросом как с текстом</li></a></ul><a href="#navigation"><li>Navigation</li></a><ul><a href="#перемещение-по-словам"><li>Перемещение по словам</li></a><a href="#перемещение-по-строке"><li>Перемещение по строке</li></a><a href="#перемещение-по-тексту"><li>Перемещение по тексту</li></a><a href="#markзакладки"><li>Mark(закладки)</li></a><a href="#перемещение-по-файлу"><li>Перемещение по файлу</li></a><a href="#видимая-область"><li>Видимая область</li></a><a href="#поиск"><li>Поиск</li></a><a href="#замена"><li>Замена</li></a></ul><a href="#табы"><li>Табы</li></a><a href="#командная-строка"><li>Командная строка</li></a></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="vim-и-nvim">Vim и NVim</h1>
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#vim-и-nvim"><li>Vim и NVim</li></a><a href="#undoredo"><li>Undo/Redo</li></a><a href="#delete"><li>Delete</li></a><a href="#copypaste"><li>Copy/Paste</li></a><a href="#macro"><li>Macro</li></a><ul><a href="#работа-с-макросом-как-с-текстом"><li>Работа с макросом как с текстом</li></a></ul><a href="#navigation"><li>Navigation</li></a><ul><a href="#перемещение-по-словам"><li>Перемещение по словам</li></a><a href="#перемещение-по-строке"><li>Перемещение по строке</li></a><a href="#перемещение-по-тексту"><li>Перемещение по тексту</li></a><a href="#markзакладки"><li>Mark(закладки)</li></a><a href="#перемещение-по-файлу"><li>Перемещение по файлу</li></a><a href="#видимая-область"><li>Видимая область</li></a><a href="#поиск"><li>Поиск</li></a><a href="#замена"><li>Замена</li></a></ul><a href="#табы"><li>Табы</li></a><a href="#командная-строка"><li>Командная строка</li></a><a href="#plugins"><li>Plugins</li></a><ul><a href="#vim-plug"><li>vim-plug</li></a><a href="#nerdtree"><li>NERDTree</li></a><a href="#vim-commentary"><li>vim-commentary</li></a><a href="#vim-easymotion"><li>vim-easymotion</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="vim-и-nvim">Vim и NVim</h1>
 <p>Ниже будет использоваться некоторые подмены, чтобы это можно было хоть как-то описать</p>
 <table>
 <thead>
@@ -255,6 +255,9 @@ ctrl+r<span class="hljs-string">&quot;
 gt
 <span class="hljs-comment"># перейти к предыдущему табу</span>
 gT
+
+<span class="hljs-comment"># создать новый таб с открытым текущим файлом</span>
+:tabe %
 </code></pre>
 <h1 id="командная-строка">Командная строка</h1>
 <p>Работа с трминалом</p>
@@ -265,6 +268,9 @@ ctrl+r&lt;register&gt;
 <span class="hljs-comment"># вставляет скопироанный текст</span>
 ctrl+r<span class="hljs-string">&quot;
 </span></code></pre>
+<p>Вставить результат работы терминала в файл</p>
+<pre><code class="hljs language-bash">:<span class="hljs-built_in">read</span> !&lt;...&gt;
+</code></pre>
 <p>Команды для vim'а</p>
 <pre><code class="hljs language-bash"><span class="hljs-comment"># закрыть таб</span>
 :q
@@ -291,5 +297,34 @@ ZZ
 :<span class="hljs-built_in">source</span> &lt;path&gt;
 <span class="hljs-comment"># открытый файл как конфиг для vim&#x27;а</span>
 :<span class="hljs-built_in">source</span> % - use current file like confg <span class="hljs-keyword">for</span> vim
+</code></pre>
+<h1 id="plugins">Plugins</h1>
+<h2 id="vim-plug">vim-plug</h2>
+<p>Менеджер плагинов. В config файле надопрописать блок кода, типа такого:</p>
+<pre><code class="hljs">call plug<span class="hljs-function"><span class="hljs-keyword">#</span><span class="hljs-title">begin</span><span class="hljs-params">(&#x27;~/.<span class="hljs-variable">vim</span>/<span class="hljs-variable">plugged</span>&#x27;)</span></span>
+Plug &#x27;tpope/vim-commentary&#x27;
+call plug<span class="hljs-function"><span class="hljs-keyword">#</span><span class="hljs-title">end</span><span class="hljs-params">()</span></span>
+</code></pre>
+<p>После достаточно вызвать</p>
+<pre><code class="hljs language-bash">:PlugInstall
+</code></pre>
+<h2 id="nerdtree">NERDTree</h2>
+<p>Крутой плагин, позволяет открыть дерево файлов и работать с ним внутри vim</p>
+<p>Открыть/Закрыть дерево:</p>
+<pre><code class="hljs language-bash">ctrl + n 
+</code></pre>
+<p>Комнады плагина (в открытом дереве)</p>
+<pre><code class="hljs language-bash">? 
+</code></pre>
+<p>Создать/Переместить/Удалить файлы и папки</p>
+<pre><code class="hljs language-bash">m 
+</code></pre>
+<h2 id="vim-commentary">vim-commentary</h2>
+<p>Единственное что нужно знать</p>
+<pre><code class="hljs language-bash">gcc
+</code></pre>
+<h2 id="vim-easymotion">vim-easymotion</h2>
+<p>Быстрое перемещение по видимой части файла. После надо нажать символ на коотрый хотим перемеситься, и возможно еще подсвеченный символ</p>
+<pre><code class="hljs language-bash">//s 
 </code></pre>
 </div>
