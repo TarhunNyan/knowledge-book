@@ -252,7 +252,7 @@ line.padEnd( 25, "." );
 // => 'Is a text................'
 ````
 
-## padEnd
+## padStart
 
 ````js
 let line = "Is a text"

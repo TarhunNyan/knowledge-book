@@ -31,9 +31,11 @@
 |[Function](./Programming/JS/JS/07-Function.md)                     |[DOM](./Programming/JS/DOM/01-DOM.md)          |
 |[Object](./Programming/JS/JS/04-Object.md)                         |[Event](./Programming/JS/Event/01-Event.md)    |
 |[Array](./Programming/JS/JS/05-Array.md)                           |                                               |
+|[Collections](./Programming/JS/JS/09-Collections.md)               |                                               |
 |[String](./Programming/JS/JS/06-String.md)                         |                                               |
 |[Асинхронность: async/await](./Programming/JS/JS/03-Async%20JS.md) |                                               |[Node - команды и устройство](./Programming/JS/Node/00-Base.md)|
 |[Regexp](./Programming/Regexp/Regexp_JS.md)                        |                                               |[Все про import и export](./Programming/JS/Node/01-Import%20%D0%B8%20Export.md)|
+|[Syntax Sugar](./Programming/JS/JS/08-SyntaxSugar.md)              |                                               |
 
 ## CSS и HTML
 

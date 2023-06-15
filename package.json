@@ -16,6 +16,7 @@
     "pipeline-operator-transform": "^0.7.0",
     "markdown-it": "^13.0.1",
     "markdown-it-highlightjs": "^4.0.1",
-    "paper": "^0.12.17"
+    "paper": "^0.12.17",
+    "transform-code": "^1.0.0"
   }
 }

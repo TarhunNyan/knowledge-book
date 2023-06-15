@@ -1,0 +1,133 @@
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#collections"><li>Collections</li></a><a href="#map"><li>Map</li></a><ul><a href="#когда-использовать?"><li>Когда использовать?</li></a><a href="#инициализируем"><li>Инициализируем</li></a><a href="#добавить-элементы"><li>Добавить элементы</li></a><a href="#получаем-значения"><li>Получаем значения</li></a><a href="#проверяем-наличие-ключа"><li>Проверяем наличие ключа</li></a><a href="#удаляем"><li>Удаляем</li></a><a href="#размер-коллекции"><li>Размер коллекции</li></a><a href="#получить-ключизначения"><li>Получить ключи/значения</li></a><a href="#иттерируемся-по-коллекции"><li>Иттерируемся по коллекции</li></a><a href="#копируем-коллекцию"><li>Копируем коллекцию</li></a><a href="#объединяем-коллекции"><li>Объединяем коллекции</li></a></ul><a href="#set"><li>Set</li></a><a href="#weakmap"><li>WeakMap</li></a><a href="#weakset"><li>WeakSet</li></a></ul></div></div><div class="main"><link rel="stylesheet" href="../../../static/style.css "><h1 id="collections">Collections</h1>
+<p>Коллекциибыли добавлены с ES6</p>
+<h1 id="map">Map</h1>
+<p>Map отличается от Object тем что:</p>
+<ul>
+<li>Не тащит с собой свойства prototype и дефолтные ключи</li>
+<li>Может содержат клбчи любого типа, а не только строки и символы</li>
+<li>Сохраняет ключи в порядке добавления</li>
+<li>Число элементов подсчитается в свойстве size</li>
+<li>Иттерируемый</li>
+</ul>
+<h2 id="когда-использовать?">Когда использовать?</h2>
+<p>Если часто добавляются и удаляются ключи, то Map твой идеальный выбор</p>
+<h2 id="инициализируем">Инициализируем</h2>
+<p>Создаем коллекцию в которую потом добавим значения</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">let</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+</code></pre>
+<p>Инициализируем с заранее здаными значениями</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">let</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>([
+    [<span class="hljs-string">&quot;key1&quot;</span>, <span class="hljs-string">&quot;value1&quot;</span>],
+    [<span class="hljs-string">&quot;key2&quot;</span>, <span class="hljs-string">&quot;value2&quot;</span>],
+]);
+</code></pre>
+<h2 id="добавить-элементы">Добавить элементы</h2>
+<pre><code class="hljs language-js"><span class="hljs-comment">// создаем коллекцию</span>
+<span class="hljs-keyword">let</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+
+<span class="hljs-comment">// добавляем элементы</span>
+map.<span class="hljs-title function_">set</span>( <span class="hljs-string">&#x27;first&#x27;</span>            , <span class="hljs-number">20</span>            );
+map.<span class="hljs-title function_">set</span>( <span class="hljs-string">&#x27;second&#x27;</span>           , { <span class="hljs-attr">prop1</span>: <span class="hljs-number">10</span> } );
+map.<span class="hljs-title function_">set</span>( [<span class="hljs-string">&#x27;third&#x27;</span>, <span class="hljs-string">&#x27;fourth&#x27;</span>], <span class="hljs-number">0</span>             );
+</code></pre>
+<h2 id="получаем-значения">Получаем значения</h2>
+<pre><code class="hljs language-js">map.<span class="hljs-title function_">get</span>( <span class="hljs-string">&#x27;second&#x27;</span> );
+<span class="hljs-comment">// =&gt; { prop1: 10 }</span>
+</code></pre>
+<h2 id="проверяем-наличие-ключа">Проверяем наличие ключа</h2>
+<pre><code class="hljs language-js">map.<span class="hljs-title function_">has</span>( <span class="hljs-string">&#x27;first&#x27;</span> );
+<span class="hljs-comment">// =&gt; true</span>
+</code></pre>
+<h2 id="удаляем">Удаляем</h2>
+<p>Удаляем элемент</p>
+<pre><code class="hljs language-js">map.<span class="hljs-title function_">delete</span>( <span class="hljs-string">&#x27;first&#x27;</span> );
+<span class="hljs-comment">// =&gt; true </span>
+map.<span class="hljs-title function_">delete</span>( <span class="hljs-string">&#x27;undefined&#x27;</span> );
+<span class="hljs-comment">// =&gt; false</span>
+</code></pre>
+<p>Удаляем все элементы</p>
+<pre><code class="hljs language-js">map.<span class="hljs-title function_">clear</span>();
+</code></pre>
+<h2 id="размер-коллекции">Размер коллекции</h2>
+<pre><code class="hljs language-js">map.<span class="hljs-property">size</span>;
+<span class="hljs-comment">// =&gt; 2</span>
+</code></pre>
+<h2 id="получить-ключизначения">Получить ключи/значения</h2>
+<p>Получить ключи</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+
+map.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;0&#x27;</span>, <span class="hljs-string">&#x27;foo&#x27;</span>);
+map.<span class="hljs-title function_">set</span>(<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;bar&#x27;</span>);
+
+<span class="hljs-keyword">const</span> iterator = map.<span class="hljs-title function_">keys</span>();
+
+iterator.<span class="hljs-title function_">next</span>().<span class="hljs-property">value</span>;
+<span class="hljs-comment">// =&gt; &quot;0&quot;</span>
+iterator.<span class="hljs-title function_">next</span>().<span class="hljs-property">value</span>;
+<span class="hljs-comment">// =&gt; &quot;1&quot;</span>
+</code></pre>
+<p>Получить значения</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+
+map.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;0&#x27;</span>, <span class="hljs-string">&#x27;foo&#x27;</span>);
+map.<span class="hljs-title function_">set</span>(<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;bar&#x27;</span>);
+
+<span class="hljs-keyword">const</span> iterator = map.<span class="hljs-title function_">values</span>();
+
+iterator.<span class="hljs-title function_">next</span>().<span class="hljs-property">value</span>;
+<span class="hljs-comment">// =&gt; &quot;foo&quot;</span>
+iterator.<span class="hljs-title function_">next</span>().<span class="hljs-property">value</span>;
+<span class="hljs-comment">// =&gt; &quot;bar&quot;</span>
+</code></pre>
+<p>Получить пары ключ/значение</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();
+
+map.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;0&#x27;</span>, <span class="hljs-string">&#x27;foo&#x27;</span>);
+map.<span class="hljs-title function_">set</span>(<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;bar&#x27;</span>);
+
+<span class="hljs-keyword">const</span> iterator = map.<span class="hljs-title function_">entries</span>();
+
+iterator.<span class="hljs-title function_">next</span>().<span class="hljs-property">value</span>;
+<span class="hljs-comment">// =&gt; [&quot;0&quot;, &quot;foo&quot;]</span>
+iterator.<span class="hljs-title function_">next</span>().<span class="hljs-property">value</span>;
+<span class="hljs-comment">// =&gt; [1,   &quot;bar&quot;]</span>
+</code></pre>
+<h2 id="иттерируемся-по-коллекции">Иттерируемся по коллекции</h2>
+<p>Используем for..of</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [key, value] <span class="hljs-keyword">of</span> myMap) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">${key}</span> = <span class="hljs-subst">${value}</span>`</span>);
+}
+</code></pre>
+<p>Используем forEach</p>
+<pre><code class="hljs language-js">myMap.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">value, key</span>) =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">${key}</span> = <span class="hljs-subst">${value}</span>`</span>);
+});
+</code></pre>
+<h2 id="копируем-коллекцию">Копируем коллекцию</h2>
+<pre><code class="hljs language-js"><span class="hljs-keyword">let</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>([
+    [ <span class="hljs-number">1</span>, <span class="hljs-number">100</span> ],
+    [ <span class="hljs-number">2</span>, <span class="hljs-number">0</span> ],
+]);
+
+<span class="hljs-keyword">let</span> clone = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>( map );
+</code></pre>
+<h2 id="объединяем-коллекции">Объединяем коллекции</h2>
+<pre><code class="hljs language-js"><span class="hljs-keyword">let</span> map1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>([
+    [ <span class="hljs-number">1</span>, <span class="hljs-number">100</span> ],
+    [ <span class="hljs-number">2</span>, <span class="hljs-number">0</span> ],
+]);
+
+<span class="hljs-keyword">let</span> map2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>([
+    [ <span class="hljs-number">2</span>, <span class="hljs-number">100</span> ],
+    [ <span class="hljs-number">3</span>, <span class="hljs-number">0</span> ],
+]);
+
+<span class="hljs-keyword">let</span> merge = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>( [...map1, ...map2, [<span class="hljs-number">4</span>, <span class="hljs-string">&quot;ok&quot;</span>]] );
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( merge );
+<span class="hljs-comment">// =&gt; Map(4) { 1 =&gt; 100, 2 =&gt; 100, 3 =&gt; 0, 4 =&gt; &quot;ok&quot; }</span>
+</code></pre>
+<h1 id="set">Set</h1>
+<h1 id="weakmap">WeakMap</h1>
+<h1 id="weakset">WeakSet</h1>
+</div>
