@@ -458,6 +458,11 @@ class Lena extends Person {
     // getter и stter
     get firstName() { ... }
     set firstName( value ) { ... }
+
+    // static block - срабатывает один раз, как обычный код 
+    static {
+        coonsole.log("ok");
+    }
 }
 
 let person = new Person('Vova');

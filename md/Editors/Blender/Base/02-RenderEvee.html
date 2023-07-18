@@ -1,0 +1,97 @@
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#evee"><li>Evee</li></a><a href="#отражения"><li>Отражения</li></a><ul><a href="#reflection-plane"><li>Reflection Plane</li></a><a href="#reflection-cubemap"><li>Reflection Cubemap</li></a><a href="#screen-space-reflection"><li>Screen Space Reflection</li></a></ul><a href="#свет-и-тени"><li>Свет и тени</li></a><ul><a href="#свечениеbloom"><li>Свечение(Bloom)</li></a><a href="#удаляем-глобальный-свет"><li>Удаляем глобальный свет</li></a><a href="#контактные-тениambient-occlusion"><li>Контактные тени(Ambient Occlusion)</li></a><a href="#делаем-фон-прозрачным"><li>Делаем фон прозрачным</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../../static/style.css "><h1 id="evee">Evee</h1>
+<h1 id="отражения">Отражения</h1>
+<p>Для Evee это маленькая драмма, и есть два варианта сделать отражения. Можно запечь отражения используя Reflection Cubemap или использовать Screen Space Reflection</p>
+<h2 id="reflection-plane">Reflection Plane</h2>
+<p>Производительный вариант отражений. Но только для плоскостей:</p>
+<pre><code class="hljs language-bash">Areas -&gt; 3D Viewport | /*Top Panel*/ |   View   |   ...         |   Reflection Cubemap |
+                                     |   Select |   Light       | &gt; Reflection Plane   |
+                                     | &gt; Add    | &gt; Light Probe |   Irradiance Volume  |
+                                     |   ...    |   ...         |   ------------------ |
+</code></pre>
+<p>Устанавливаем появившуюся плоскость параллельно плоскости, в которой должно быть отражениею. Профит!
+Иногда отражения не появляются, нужно чуть-чуть погонять плоскость вверх вниз, пока отражение не пявится</p>
+<p>Настройки находятся в пункте:</p>
+<pre><code class="hljs language-bash">Areas -&gt; Properties |   ...        | &gt; Probe            |
+                    | &gt; Data       |   Custom Paralax   |
+                    |   Texture    |   Viewport Display |
+                    |   ---------- |   ---------------- |
+</code></pre>
+<p>Настройки:</p>
+<ul>
+<li>Distnce - размер для плоскости, все плоскости которые в него попаи начинают отражать запеченное отражение</li>
+<li>Falloff - определяет &quot;размытость&quot; края отржаения</li>
+<li>Clipping offset - определяет начало рендера. Объекты в пределах рендера запекутся в рендер отражения, а за пределами - нет</li>
+<li>Visibillity Collection - только коллекция которую сюда добавишь, будет запечена в отражение. Нажмешь на стрелочку рядом и все объекты кроме находящихсяв коллекции будут запечены</li>
+</ul>
+<h2 id="reflection-cubemap">Reflection Cubemap</h2>
+<p>Производительный вариант отражений. Но иногда отржаения при высоких углах &quot;плывут&quot;</p>
+<p>Создаем Reflection Cubemap:</p>
+<pre><code class="hljs language-bash">Areas -&gt; 3D Viewport | /*Top Panel*/ |   View   |   ...         | &gt; Reflection Cubemap |
+                                     |   Select |   Light       |   Reflection Plane   |
+                                     | &gt; Add    | &gt; Light Probe |   Irradiance Volume  |
+                                     |   ...    |   ...         |   ------------------ |
+</code></pre>
+<p>Размещаем созданный Reflection Cubemap. Настройки находятся в пункте:</p>
+<pre><code class="hljs language-bash">Areas -&gt; Properties |   ...        | &gt; Probe            |
+                    | &gt; Data       |   Custom Paralax   |
+                    |   Texture    |   Viewport Display |
+                    |   ---------- |   ---------------- |
+</code></pre>
+<p>Настройки:</p>
+<ul>
+<li>Type - Box или Sphere. Внутри куба или сферы который ты видишь, запеченное отражение будет, вне него не будет</li>
+<li>Radius - размер для Type</li>
+<li>Falloff - определяет &quot;размытость&quot; края отржаения</li>
+<li>Intesity - делает отражение либо светлым либо темным. При нуле просто чернота</li>
+<li>Clipping Start / Clipping End - определяет начало и конец рендера. Короче, если во Viewport Display ткнуть галочку напротив Clipping, то увидишь полоски. Объекты в пределах этих полосок запекутся в рендер отражения, а за пределами - нет</li>
+<li>Visibillity Collection - только коллекция которую сюда добавишь, будет запечена в отражение. Нажмешь на стрелочку рядом и все объекты кроме находящихсяв коллекции будут запечены</li>
+</ul>
+<h2 id="screen-space-reflection">Screen Space Reflection</h2>
+<p>Отражения ВЕЗДЕ! Но, во первых они шумные, а во вторых там используется хитрый способ, из картинки которую отрендерели и карты глубины, поэтому объекты которые не видн и не отражаются ) В общем мыло мыльное )</p>
+<pre><code class="hljs language-bash">Areas -&gt; Properties |   Tool   |   ...                     |
+                    | &gt; Render |   Subsurfave Scattering   |
+                    |   Output | &gt; Screen Space Reflection |
+                    |   ...    |   ...                     |
+</code></pre>
+<p>Поставил галку - радуйся жизни</p>
+<p>Из настроек можно отметить:</p>
+<ul>
+<li>Refraction - влияние приломления на картинку</li>
+<li>Half Res Trace - уменьшает число лучей рендера вдвое =&gt; больше мыла</li>
+</ul>
+<h1 id="свет-и-тени">Свет и тени</h1>
+<h2 id="свечениеbloom">Свечение(Bloom)</h2>
+<p>Под свечением подразумевается что-то вроде светодиодных ламп</p>
+<p>Чтобы у объекта появилось свечение, нужен настроить материал. Например есть специальный материал Emission, либо чеез свойство Emission</p>
+<p>Включаем рендер свечения:</p>
+<pre><code class="hljs language-bash">Areas -&gt; Properties |   Tool   |   ...               |
+                    | &gt; Render |   Ambient Occlusion |
+                    |   Output | &gt; Bloom             |
+                    |   ...    |   ...               |
+</code></pre>
+<p>Настройки там понятные</p>
+<h2 id="удаляем-глобальный-свет">Удаляем глобальный свет</h2>
+<p>В Blender по умолчанию есть глобальный свет для всех объектов. Поэтому даже без источников светов, во время рендера есть свет и все видно</p>
+<p>Чтобы убрать/откоректировать глобальный свет заходим:</p>
+<pre><code class="hljs language-bash">Areas -&gt; Shader Editor | /*Top Panel*/ |   Object     |
+                                       | &gt; World      |
+                                       |   Line Style |
+                                       |   ---------- |
+</code></pre>
+<p>В открывшемся окне в node с названием Background меняет Color и Strength на какой надо</p>
+<h2 id="контактные-тениambient-occlusion">Контактные тени(Ambient Occlusion)</h2>
+<p>Создает контакные тени между объектами и на самопересечении объектов. Все по классике рисования:</p>
+<pre><code class="hljs language-bash">Areas -&gt; Properties |   Tool   |   Sampling          |
+                    | &gt; Render | &gt; Ambient Occlusion |
+                    |   Output |   Bloom             |
+                    |   ...    |   ...               |
+</code></pre>
+<p>Ставим галочку у самого Ambient Occlusion и в настройках поправляем Distance(размер тени) и Factor(Яркость тени)</p>
+<h2 id="делаем-фон-прозрачным">Делаем фон прозрачным</h2>
+<p>Тыкаем на галочку Transperent:</p>
+<pre><code class="hljs language-bash">Areas -&gt; Properties |   Tool   |   ...               |   Filter Size
+                    | &gt; Render |   Indirect Lighting | &gt; Transperent
+                    |   Output | &gt; Film              |   Overscan
+                    |   ...    |   ...               |
+</code></pre>
+</div>

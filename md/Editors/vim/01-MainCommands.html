@@ -1,4 +1,4 @@
-<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#vim-и-nvim"><li>Vim и NVim</li></a><a href="#undoredo"><li>Undo/Redo</li></a><a href="#delete"><li>Delete</li></a><a href="#copypaste"><li>Copy/Paste</li></a><a href="#macro"><li>Macro</li></a><ul><a href="#работа-с-макросом-как-с-текстом"><li>Работа с макросом как с текстом</li></a></ul><a href="#navigation"><li>Navigation</li></a><ul><a href="#перемещение-по-словам"><li>Перемещение по словам</li></a><a href="#перемещение-по-строке"><li>Перемещение по строке</li></a><a href="#перемещение-по-тексту"><li>Перемещение по тексту</li></a><a href="#markзакладки"><li>Mark(закладки)</li></a><a href="#перемещение-по-файлу"><li>Перемещение по файлу</li></a><a href="#видимая-область"><li>Видимая область</li></a><a href="#поиск"><li>Поиск</li></a><a href="#замена"><li>Замена</li></a></ul><a href="#табы"><li>Табы</li></a><a href="#командная-строка"><li>Командная строка</li></a><a href="#plugins"><li>Plugins</li></a><ul><a href="#vim-plug"><li>vim-plug</li></a><a href="#nerdtree"><li>NERDTree</li></a><a href="#vim-commentary"><li>vim-commentary</li></a><a href="#vim-easymotion"><li>vim-easymotion</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="vim-и-nvim">Vim и NVim</h1>
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#vim-и-nvim"><li>Vim и NVim</li></a><a href="#undoredo"><li>Undo/Redo</li></a><a href="#delete"><li>Delete</li></a><a href="#copypaste"><li>Copy/Paste</li></a><a href="#macro"><li>Macro</li></a><ul><a href="#работа-с-макросом-как-с-текстом"><li>Работа с макросом как с текстом</li></a></ul><a href="#navigation"><li>Navigation</li></a><ul><a href="#перемещение-по-словам"><li>Перемещение по словам</li></a><a href="#перемещение-по-строке"><li>Перемещение по строке</li></a><a href="#перемещение-по-тексту"><li>Перемещение по тексту</li></a><a href="#markзакладки"><li>Mark(закладки)</li></a><a href="#перемещение-по-файлу"><li>Перемещение по файлу</li></a><a href="#видимая-область"><li>Видимая область</li></a><a href="#поиск"><li>Поиск</li></a><a href="#замена"><li>Замена</li></a></ul><a href="#табы"><li>Табы</li></a><a href="#командная-строка"><li>Командная строка</li></a><a href="#plugins"><li>Plugins</li></a><ul><a href="#vim-plug"><li>vim-plug</li></a><a href="#nerdtree"><li>NERDTree</li></a><a href="#vim-commentary"><li>vim-commentary</li></a><a href="#vim-easymotion"><li>vim-easymotion</li></a></ul><a href="#termux"><li>Termux</li></a><ul><a href="#работа-с-терминалами"><li>Работа с терминалами</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="vim-и-nvim">Vim и NVim</h1>
 <p>Ниже будет использоваться некоторые подмены, чтобы это можно было хоть как-то описать</p>
 <table>
 <thead>
@@ -9,27 +9,27 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">&lt;text&gt;</td>
+<td style="text-align:left"><text></td>
 <td style="text-align:left">какой-то текст</td>
 </tr>
 <tr>
-<td style="text-align:left">&lt;symbol&gt;</td>
+<td style="text-align:left"><symbol></td>
 <td style="text-align:left">какой-то текстовый символ</td>
 </tr>
 <tr>
-<td style="text-align:left">&lt;navigation&gt;</td>
+<td style="text-align:left"><navigation></td>
 <td style="text-align:left">символ навигации</td>
 </tr>
 <tr>
-<td style="text-align:left">&lt;selection&gt;</td>
+<td style="text-align:left"><selection></td>
 <td style="text-align:left">символ навигации</td>
 </tr>
 <tr>
-<td style="text-align:left">&lt;registor&gt;</td>
+<td style="text-align:left"><registor></td>
 <td style="text-align:left">регистор</td>
 </tr>
 <tr>
-<td style="text-align:left">&lt;n&gt;</td>
+<td style="text-align:left"><n></td>
 <td style="text-align:left">число</td>
 </tr>
 <tr>
@@ -144,6 +144,11 @@ _
 <span class="hljs-comment"># перейти в конец предложения</span>
 )
 
+<span class="hljs-comment"># перейти к символу n в файле</span>
+:noraml! 0go&lt;n&gt; <span class="hljs-string">&quot;
+# перейти к символу n1+n2 в файле
+:noraml! &lt;n1&gt;go&lt;n2&gt; &quot;</span>
+
 </code></pre>
 <h2 id="markзакладки">Mark(закладки)</h2>
 <pre><code class="hljs language-bash"><span class="hljs-comment"># поставить mark </span>
@@ -200,9 +205,9 @@ N
 c&lt;navigtion&gt;&lt;text&gt;
 .
 </code></pre>
-<p><strong>&lt;find text&gt;</strong> - искомый текст(regexp)</p>
-<p><strong>&lt;replace text&gt;</strong> - текст на который меняем(regex)</p>
-<p><strong>&lt;flags&gt;</strong> - флаги</p>
+<p><strong><find text></strong> - искомый текст(regexp)</p>
+<p><strong><replace text></strong> - текст на который меняем(regex)</p>
+<p><strong><flags></strong> - флаги</p>
 <table>
 <thead>
 <tr>
@@ -326,5 +331,14 @@ call plug<span class="hljs-function"><span class="hljs-keyword">#</span><span cl
 <h2 id="vim-easymotion">vim-easymotion</h2>
 <p>Быстрое перемещение по видимой части файла. После надо нажать символ на коотрый хотим перемеситься, и возможно еще подсвеченный символ</p>
 <pre><code class="hljs language-bash">//s 
+</code></pre>
+<h1 id="termux">Termux</h1>
+<p>Поскольку я использую Vim под Termux'ом, то я решил создать раздельчик тут:</p>
+<h2 id="работа-с-терминалами">Работа с терминалами</h2>
+<p>Перейти к следующему/предыдущему терминалу:</p>
+<pre><code class="hljs language-bash">ctrl + alt + Up/Down
+</code></pre>
+<p>Создать новый терминал:</p>
+<pre><code class="hljs language-bash">ctrl + alt + C
 </code></pre>
 </div>

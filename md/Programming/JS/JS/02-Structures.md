@@ -145,6 +145,8 @@ switch (value) {
 while ( условие ) { ... }
 ````
 
+## do ... while ...
+
 ````js 
 do { ... } while ( условие )
 ````

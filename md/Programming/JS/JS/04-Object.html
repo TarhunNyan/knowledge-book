@@ -431,6 +431,11 @@ obj.<span class="hljs-property">__proto__</span> = { <span class="hljs-attr">ok<
     <span class="hljs-comment">// getter и stter</span>
     <span class="hljs-keyword">get</span> <span class="hljs-title function_">firstName</span>() { ... }
     <span class="hljs-keyword">set</span> <span class="hljs-title function_">firstName</span>(<span class="hljs-params"> value </span>) { ... }
+
+    <span class="hljs-comment">// static block - срабатывает один раз, как обычный код </span>
+    <span class="hljs-keyword">static</span> {
+        coonsole.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;ok&quot;</span>);
+    }
 }
 
 <span class="hljs-keyword">let</span> person = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>(<span class="hljs-string">&#x27;Vova&#x27;</span>);

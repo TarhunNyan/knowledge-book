@@ -96,10 +96,10 @@ font-family: Georgia, serif, ...;
     /* Чекаем, вдруг шрифт уже установлен на устройстве пользователя. Тогда используем его */
     src: local('Helvetica Neue Bold');
     /* Последовательно смотрим, может ли браузер использовать этот формат шрифта? Если да, то он его скачивает и использует */
-    src: url('fonts/helveticaFont.ttf) format('truetype');
-    src: url('fonts/helveticaFont.woff2) format('woff2');
-    src: url('fonts/helveticaFont.woff) format('woff');
-    src: url('fonts/helveticaFont.svg) format('svg');
+    src: url('fonts/helveticaFont.ttf') format('truetype');
+    src: url('fonts/helveticaFont.woff2') format('woff2');
+    src: url('fonts/helveticaFont.woff') format('woff');
+    src: url('fonts/helveticaFont.svg') format('svg');
     
     /* Значения font-weight и font-style при которых кастомный шрифт применяется*/
     font-weight: normal;

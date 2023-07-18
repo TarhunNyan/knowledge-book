@@ -6,10 +6,10 @@
 
 ````css
 /* импортируем CSS для всех устройтсв */
-import "mystyle.css";
+@import "mystyle.css";
 
 /* импортируем CSS для указанных устройств */
-import url("fineprint.css") print, tv;
+@import url("fineprint.css") print, tv;
 ````
 
 ## @media

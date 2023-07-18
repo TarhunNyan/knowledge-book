@@ -1,4 +1,481 @@
-<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#субд"><li>СУБД</li></a><ul><a href="#аномалия-бд"><li>Аномалия БД</li></a><a href="#аттрибут"><li>Аттрибут</li></a><a href="#нормальная-форма"><li>Нормальная форма</li></a><a href="#отношение"><li>Отношение</li></a><a href="#кортеж"><li>Кортеж</li></a><a href="#домен-аттрибута"><li>Домен аттрибута</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="субд">СУБД</h1>
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#нф-нормальная-форма"><li>НФ (нормальная форма)</li></a><ul><a href="#1нф"><li>1НФ</li></a><a href="#2нф"><li>2НФ</li></a><a href="#3нф"><li>3НФ</li></a><a href="#нфбк"><li>НФБК</li></a><a href="#4нф"><li>4НФ</li></a></ul><a href="#субд"><li>СУБД</li></a><ul><a href="#аномалия-бд"><li>Аномалия БД</li></a><a href="#аттрибут"><li>Аттрибут</li></a><a href="#нормальная-форма"><li>Нормальная форма</li></a><a href="#отношение"><li>Отношение</li></a><a href="#кортеж"><li>Кортеж</li></a><a href="#домен-аттрибута"><li>Домен аттрибута</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="нф-нормальная-форма">НФ (нормальная форма)</h1>
+<h2 id="1нф">1НФ</h2>
+<p>Таблица в 1НФ если:</p>
+<ul>
+<li>все атрибуты являются простыми(в одной ячейке одно значение)</li>
+<li>отсутствуют дублирующие строки</li>
+</ul>
+<p>Например. Таблица не в 1НФ:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Фирма</th>
+<th style="text-align:left">Модели</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">BWM</td>
+<td style="text-align:left">M5, X5M, M1</td>
+</tr>
+<tr>
+<td style="text-align:left">Nissan</td>
+<td style="text-align:left">GT-R</td>
+</tr>
+</tbody>
+</table>
+<p>Например. Таблица в 1НФ:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Фирма</th>
+<th style="text-align:left">Модели</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">BWM</td>
+<td style="text-align:left">M5</td>
+</tr>
+<tr>
+<td style="text-align:left">BWM</td>
+<td style="text-align:left">X5M</td>
+</tr>
+<tr>
+<td style="text-align:left">BWM</td>
+<td style="text-align:left">M1</td>
+</tr>
+<tr>
+<td style="text-align:left">Nissan</td>
+<td style="text-align:left">GT-R</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2нф">2НФ</h2>
+<p>Таблица в 2НФ если:</p>
+<ul>
+<li>таблица в 1НФ</li>
+<li>каждый не ключевой атрибут неприводимо зависит от ПК(первичного ключа)</li>
+</ul>
+<p>Например. Таблица не в 2НФ, поскольку &lt;Скида&gt; зависит от ключевого аттрибута &lt;Фирма&gt;:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Фирма</th>
+<th style="text-align:left">Модели</th>
+<th style="text-align:left">Цена</th>
+<th style="text-align:left">Скидки</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">BMW</td>
+<td style="text-align:left">M5</td>
+<td style="text-align:left">5.500.000</td>
+<td style="text-align:left">5%</td>
+</tr>
+<tr>
+<td style="text-align:left">BMW</td>
+<td style="text-align:left">X5M</td>
+<td style="text-align:left">6.000.000</td>
+<td style="text-align:left">5%</td>
+</tr>
+<tr>
+<td style="text-align:left">BMW</td>
+<td style="text-align:left">M1</td>
+<td style="text-align:left">2.500.000</td>
+<td style="text-align:left">5%</td>
+</tr>
+<tr>
+<td style="text-align:left">Nissan</td>
+<td style="text-align:left">GT-R</td>
+<td style="text-align:left">5.000.000</td>
+<td style="text-align:left">10%</td>
+</tr>
+</tbody>
+</table>
+<p>Например, эти две таблицы в 2НФ:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Фирма</th>
+<th style="text-align:left">Скидка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">BMW</td>
+<td style="text-align:left">5%</td>
+</tr>
+<tr>
+<td style="text-align:left">Nissan</td>
+<td style="text-align:left">10%</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Фирма</th>
+<th style="text-align:left">Модели</th>
+<th style="text-align:left">Цена</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">BMW</td>
+<td style="text-align:left">M5</td>
+<td style="text-align:left">5.500.000</td>
+</tr>
+<tr>
+<td style="text-align:left">BMW</td>
+<td style="text-align:left">X5M</td>
+<td style="text-align:left">6.000.000</td>
+</tr>
+<tr>
+<td style="text-align:left">BMW</td>
+<td style="text-align:left">M1</td>
+<td style="text-align:left">2.500.000</td>
+</tr>
+<tr>
+<td style="text-align:left">Nissan</td>
+<td style="text-align:left">GT-R</td>
+<td style="text-align:left">5.000.000</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3нф">3НФ</h2>
+<p>Таблица в 3НФ если:</p>
+<ul>
+<li>таблица в 2НФ</li>
+<li>каждый  атрибут зависит только от ПК(первичного ключа)</li>
+</ul>
+<p>Например. Таблица не в 3НФ, поскольку &lt;Описание класса&gt; зависит от неключевого аттрибута &lt;Класс&gt;:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Фирма</th>
+<th style="text-align:left">Модели</th>
+<th style="text-align:left">Цена</th>
+<th style="text-align:left">Класс</th>
+<th style="text-align:left">Описание класса</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">BMW</td>
+<td style="text-align:left">M5</td>
+<td style="text-align:left">5.500.000</td>
+<td style="text-align:left">Спорт</td>
+<td style="text-align:left">Спортивные машины</td>
+</tr>
+<tr>
+<td style="text-align:left">BMW</td>
+<td style="text-align:left">X5M</td>
+<td style="text-align:left">6.000.000</td>
+<td style="text-align:left">Бизнес</td>
+<td style="text-align:left">Машины для бизнеса</td>
+</tr>
+<tr>
+<td style="text-align:left">BMW</td>
+<td style="text-align:left">M1</td>
+<td style="text-align:left">2.500.000</td>
+<td style="text-align:left">Бизнес</td>
+<td style="text-align:left">Машины для бизнеса</td>
+</tr>
+<tr>
+<td style="text-align:left">Nissan</td>
+<td style="text-align:left">GT-R</td>
+<td style="text-align:left">5.000.000</td>
+<td style="text-align:left">Спорт</td>
+<td style="text-align:left">Спортивные машины</td>
+</tr>
+</tbody>
+</table>
+<p>Например, эти две таблицы в 2НФ:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Класс</th>
+<th style="text-align:left">Описание класса</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Спорт</td>
+<td style="text-align:left">Спортивные машины</td>
+</tr>
+<tr>
+<td style="text-align:left">Бизнес</td>
+<td style="text-align:left">Машины для бизнеса</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Фирма</th>
+<th style="text-align:left">Модели</th>
+<th style="text-align:left">Цена</th>
+<th style="text-align:left">Класс</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">BMW</td>
+<td style="text-align:left">M5</td>
+<td style="text-align:left">5.500.000</td>
+<td style="text-align:left">Спорт</td>
+</tr>
+<tr>
+<td style="text-align:left">BMW</td>
+<td style="text-align:left">X5M</td>
+<td style="text-align:left">6.000.000</td>
+<td style="text-align:left">Бизнес</td>
+</tr>
+<tr>
+<td style="text-align:left">BMW</td>
+<td style="text-align:left">M1</td>
+<td style="text-align:left">2.500.000</td>
+<td style="text-align:left">Бизнес</td>
+</tr>
+<tr>
+<td style="text-align:left">Nissan</td>
+<td style="text-align:left">GT-R</td>
+<td style="text-align:left">5.000.000</td>
+<td style="text-align:left">Спорт</td>
+</tr>
+</tbody>
+</table>
+<h2 id="нфбк">НФБК</h2>
+<p>Нормальной Форме Бойса-Кодда - частный случай 3НФ. Таблица, в НФБК, если:</p>
+<ul>
+<li>в 3НФ</li>
+<li>первичный ключ - составной</li>
+<li>первичный ключ не зависит от неключевых атрибутов</li>
+</ul>
+<p>Например. У нас есть проекты и направления в этих проектах. У каждого направления в проекте свой куратор. Поэтому &lt;Проект&gt; и &lt;Направление&gt; вместе составляют первичный ключ</p>
+<p>Таблица не в НФБК, поскольку первичный ключ зависит от неключевого аттрибута &lt;Куратор&gt;, т.к. зная куратора мы можем определить направлениие:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Проект</th>
+<th style="text-align:left">Направленеи</th>
+<th style="text-align:left">Куратор</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Разработка</td>
+<td style="text-align:left">A</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Бухгалтерия</td>
+<td style="text-align:left">B</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Разработка</td>
+<td style="text-align:left">A</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Бухгалтерия</td>
+<td style="text-align:left">C</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">Реализация</td>
+<td style="text-align:left">D</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">Разработка</td>
+<td style="text-align:left">E</td>
+</tr>
+</tbody>
+</table>
+<p>Таблица в НФБК:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID Куратора</th>
+<th style="text-align:left">Направленеи</th>
+<th style="text-align:left">Куратор</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Разработка</td>
+<td style="text-align:left">A</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Бухгалтерия</td>
+<td style="text-align:left">B</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">Бухгалтерия</td>
+<td style="text-align:left">C</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">Реализация</td>
+<td style="text-align:left">D</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">Разработка</td>
+<td style="text-align:left">E</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Проект</th>
+<th style="text-align:left">ID Куратора</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">4</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">5</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4нф">4НФ</h2>
+<p>Таблица в 4НФ если:</p>
+<ul>
+<li>таблица в НФБК</li>
+<li>должно быть как минимум 3 столбца</li>
+<li>должна отсутствовать многозначная зависимость</li>
+</ul>
+<p>Допустим, существует такая ситуация. В институте читают определенные курсы лекций. Разные курсы лекций читают в разном наборе кабинетов. Преподователям читающим курс все равно в каком из кабинетов это делать</p>
+<p>Таблица не в 4НФ, из-за этого с ее редактированием будут проблемы, например если преподаватель A уволится:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Курс</th>
+<th style="text-align:left">Преподаватель</th>
+<th style="text-align:left">Кабинет</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SQL</td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">101</td>
+</tr>
+<tr>
+<td style="text-align:left">SQL</td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">203</td>
+</tr>
+<tr>
+<td style="text-align:left">SQL</td>
+<td style="text-align:left">B</td>
+<td style="text-align:left">305</td>
+</tr>
+<tr>
+<td style="text-align:left">SQL</td>
+<td style="text-align:left">B</td>
+<td style="text-align:left">407</td>
+</tr>
+<tr>
+<td style="text-align:left">Python</td>
+<td style="text-align:left">C</td>
+<td style="text-align:left">502</td>
+</tr>
+<tr>
+<td style="text-align:left">Python</td>
+<td style="text-align:left">C</td>
+<td style="text-align:left">305</td>
+</tr>
+</tbody>
+</table>
+<p>Таблица в 4НФ:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Курс</th>
+<th style="text-align:left">Кабинет</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SQL</td>
+<td style="text-align:left">101</td>
+</tr>
+<tr>
+<td style="text-align:left">SQL</td>
+<td style="text-align:left">203</td>
+</tr>
+<tr>
+<td style="text-align:left">SQL</td>
+<td style="text-align:left">305</td>
+</tr>
+<tr>
+<td style="text-align:left">SQL</td>
+<td style="text-align:left">407</td>
+</tr>
+<tr>
+<td style="text-align:left">Python</td>
+<td style="text-align:left">502</td>
+</tr>
+<tr>
+<td style="text-align:left">Python</td>
+<td style="text-align:left">305</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Курс</th>
+<th style="text-align:left">Преподаватель</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">SQL</td>
+<td style="text-align:left">A</td>
+</tr>
+<tr>
+<td style="text-align:left">SQL</td>
+<td style="text-align:left">B</td>
+</tr>
+<tr>
+<td style="text-align:left">Python</td>
+<td style="text-align:left">C</td>
+</tr>
+</tbody>
+</table>
+<h1 id="субд">СУБД</h1>
 <p>В теории СУБД(системы управления базами данных) используются следующий понятия</p>
 <h2 id="аномалия-бд">Аномалия БД</h2>
 <p>Называется такая ситуация в таблице БД, которая приводит к противоречию в БД либо существенно усложняет обработку БД. Причиной является излишнее дублирование данных в таблице, которое вызывается наличием функциональных зависимостей от не ключевых атрибутов</p>
