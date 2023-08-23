@@ -210,6 +210,17 @@ console.log(array1.copyWithin(1, 3));
 // => Array ["d", "d", "e", "d", "e"]
 ````
 
+## flatMap
+
+Применяет функцию  каждому элементу массива. После чего,разравнивает его на один уровень
+
+````js 
+const arr1 = [1, 2, 1];
+
+const result = arr1.flatMap((num) => (num === 2 ? [2, 2] : 1));
+// => [1, 2, 2, 1]
+````
+
 # Соединить
 
 ## concat 
@@ -345,6 +356,71 @@ console.log( arr.includes(3, 4) );
 // => false
 ````
 
+# Работа с иттераторами
+
+## entries
+
+Возвращает иттератор созданный из массива 
+
+````js
+const array1 = ['a', 'b', 'c'];
+
+const iterator1 = array1.entries();
+
+console.log(iterator1.next().value);
+// => Array [0, "a"]
+// => Array [1, "b"]
+// => Array [2, "c"]
+````
+
+## keys 
+
+Создает иттератор из клучей массива 
+
+````js 
+const array1 = ['a', 'b', 'c'];
+const iterator = array1.keys();
+
+for (const key of iterator) {
+  console.log(key);
+}
+
+// => 0
+// => 1
+// => 2
+````
+
+## from 
+
+Создает массив из Array-like объектов. В том числе из иттераторов
+
+````js 
+console.log(Array.from( ittertor );
+// => [ ... ]
+
+console.log(Array.from('foo'));
+// => ["f", "o", "o"]
+
+console.log(Array.from([1, 2, 3], (x) => x + x));
+// => [2, 4, 6]
+````
+
+## fromAsync 
+
+Создает массив изасинхронных объектов
+
+````js
+const asyncIterable = (async function* () {
+  for (let i = 0; i < 5; i++) {
+    await new Promise((resolve) => setTimeout(resolve, 10 * i));
+    yield i;
+  }
+})();
+
+Array.fromAsync(asyncIterable).then((array) => console.log(array));
+// => [0, 1, 2, 3, 4]
+````
+
 # Как в python
 
 ## every
@@ -451,3 +527,19 @@ console.log( array1.reverse() );
 // => ["three", "two", "one"]
 ````
 
+## fill 
+
+Заполняет массив константами
+
+````js
+aconst array1 = [1, 2, 3, 4];
+
+console.log(array1.fill(0, 2, 4));
+// => [1, 2, 0, 0]
+
+console.log(array1.fill(5, 1));
+// => [1, 5, 5, 5]
+
+console.log(array1.fill(6));
+// => [6, 6, 6, 6]
+````

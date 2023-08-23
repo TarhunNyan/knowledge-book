@@ -1,4 +1,4 @@
-<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#array"><li>Array</li></a><ul><a href="#isarray"><li>isArray</li></a><a href="#of"><li>of</li></a><a href="#length"><li>length</li></a><a href="#keys-и-values"><li>keys и values</li></a></ul><a href="#пройти-массив-в-цикле"><li>Пройти массив в цикле</li></a><ul><a href="#foreach"><li>forEach</li></a></ul><a href="#получить-элемент-массива"><li>Получить элемент массива</li></a><ul><a href="#at"><li>at</li></a></ul><a href="#получить-срез-массива"><li>Получить срез массива</li></a><ul><a href="#slice"><li>slice</li></a></ul><a href="#добавить-элемент"><li>Добавить элемент</li></a><ul><a href="#push"><li>push</li></a><a href="#ushift"><li>ushift</li></a></ul><a href="#удалить-элемент"><li>Удалить элемент</li></a><ul><a href="#pop"><li>pop</li></a><a href="#shift"><li>shift</li></a><a href="#splice"><li>splice</li></a></ul><a href="#заменитьвставить-элементы"><li>Заменить/Вставить элементы</li></a><ul><a href="#splice"><li>splice</li></a><a href="#copywithin"><li>copyWithin</li></a></ul><a href="#соединить"><li>Соединить</li></a><ul><a href="#concat"><li>concat</li></a><a href="#join"><li>join</li></a><a href="#flat"><li>flat</li></a></ul><a href="#поиск-элемента"><li>Поиск элемента</li></a><ul><a href="#indexof"><li>indexOf</li></a><a href="#lastindexof"><li>lastIndexOf</li></a><a href="#find"><li>find</li></a><a href="#findlast"><li>findLast</li></a><a href="#findindex"><li>findIndex</li></a><a href="#findlastindex"><li>findLastIndex</li></a><a href="#includes"><li>includes</li></a></ul><a href="#как-в-python"><li>Как в python</li></a><ul><a href="#every"><li>every</li></a><a href="#some"><li>some</li></a><a href="#filter"><li>filter</li></a><a href="#sort"><li>sort</li></a><a href="#map"><li>map</li></a><a href="#reduce"><li>reduce</li></a><a href="#reducerigth"><li>reduceRigth</li></a><a href="#reverese"><li>reverese</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../../static/style.css "><h1 id="array">Array</h1>
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#array"><li>Array</li></a><ul><a href="#isarray"><li>isArray</li></a><a href="#of"><li>of</li></a><a href="#length"><li>length</li></a><a href="#keys-и-values"><li>keys и values</li></a></ul><a href="#пройти-массив-в-цикле"><li>Пройти массив в цикле</li></a><ul><a href="#foreach"><li>forEach</li></a></ul><a href="#получить-элемент-массива"><li>Получить элемент массива</li></a><ul><a href="#at"><li>at</li></a></ul><a href="#получить-срез-массива"><li>Получить срез массива</li></a><ul><a href="#slice"><li>slice</li></a></ul><a href="#добавить-элемент"><li>Добавить элемент</li></a><ul><a href="#push"><li>push</li></a><a href="#ushift"><li>ushift</li></a></ul><a href="#удалить-элемент"><li>Удалить элемент</li></a><ul><a href="#pop"><li>pop</li></a><a href="#shift"><li>shift</li></a><a href="#splice"><li>splice</li></a></ul><a href="#заменитьвставить-элементы"><li>Заменить/Вставить элементы</li></a><ul><a href="#splice"><li>splice</li></a><a href="#copywithin"><li>copyWithin</li></a><a href="#flatmap"><li>flatMap</li></a></ul><a href="#соединить"><li>Соединить</li></a><ul><a href="#concat"><li>concat</li></a><a href="#join"><li>join</li></a><a href="#flat"><li>flat</li></a></ul><a href="#поиск-элемента"><li>Поиск элемента</li></a><ul><a href="#indexof"><li>indexOf</li></a><a href="#lastindexof"><li>lastIndexOf</li></a><a href="#find"><li>find</li></a><a href="#findlast"><li>findLast</li></a><a href="#findindex"><li>findIndex</li></a><a href="#findlastindex"><li>findLastIndex</li></a><a href="#includes"><li>includes</li></a></ul><a href="#работа-с-иттераторами"><li>Работа с иттераторами</li></a><ul><a href="#entries"><li>entries</li></a><a href="#keys"><li>keys</li></a><a href="#from"><li>from</li></a><a href="#fromasync"><li>fromAsync</li></a></ul><a href="#как-в-python"><li>Как в python</li></a><ul><a href="#every"><li>every</li></a><a href="#some"><li>some</li></a><a href="#filter"><li>filter</li></a><a href="#sort"><li>sort</li></a><a href="#map"><li>map</li></a><a href="#reduce"><li>reduce</li></a><a href="#reducerigth"><li>reduceRigth</li></a><a href="#reverese"><li>reverese</li></a><a href="#fill"><li>fill</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../../static/style.css "><h1 id="array">Array</h1>
 <h2 id="isarray">isArray</h2>
 <p>Проеряем, массив ли это</p>
 <pre><code class="hljs language-js"><span class="hljs-keyword">let</span> arr = [];
@@ -106,7 +106,7 @@ arr.<span class="hljs-title function_">shift</span>();
 <span class="hljs-comment">// =&gt; [2, 3, 4, 5]</span>
 </code></pre>
 <h2 id="splice">splice</h2>
-<p>Удалить все элементы начиная с &lt;n&gt;. Мутирует массив. Возвращает удаленные элементы</p>
+<p>Удалить все элементы начиная с <n>. Мутирует массив. Возвращает удаленные элементы</p>
 <pre><code class="hljs language-js"><span class="hljs-keyword">const</span> months = [<span class="hljs-string">&#x27;Jan&#x27;</span>, <span class="hljs-string">&#x27;March&#x27;</span>, <span class="hljs-string">&#x27;April&#x27;</span>, <span class="hljs-string">&#x27;June&#x27;</span>];
 
 <span class="hljs-comment">// Удалить все элементы начиная с &#x27;April&#x27;</span>
@@ -114,7 +114,7 @@ months.<span class="hljs-title function_">splice</span>(<span class="hljs-number
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(months);
 <span class="hljs-comment">// =&gt; [&#x27;Jan&#x27;, &#x27;March&#x27;]</span>
 </code></pre>
-<p>Удалить &lt;k&gt; элементов начиная с &lt;n&gt;. Мутирует массив. Возвращает удаленные элементы</p>
+<p>Удалить <k> элементов начиная с <n>. Мутирует массив. Возвращает удаленные элементы</p>
 <pre><code class="hljs language-js"><span class="hljs-keyword">const</span> months = [<span class="hljs-string">&#x27;Jan&#x27;</span>, <span class="hljs-string">&#x27;March&#x27;</span>, <span class="hljs-string">&#x27;April&#x27;</span>, <span class="hljs-string">&#x27;June&#x27;</span>];
 
 <span class="hljs-comment">// Удалить 2 элемента начиная с &#x27;March&#x27;</span>
@@ -144,6 +144,13 @@ months.<span class="hljs-title function_">splice</span>(<span class="hljs-number
 <span class="hljs-comment">// Копируем на 0 индекс все что с 3 и доконца</span>
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(array1.<span class="hljs-title function_">copyWithin</span>(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>));
 <span class="hljs-comment">// =&gt; Array [&quot;d&quot;, &quot;d&quot;, &quot;e&quot;, &quot;d&quot;, &quot;e&quot;]</span>
+</code></pre>
+<h2 id="flatmap">flatMap</h2>
+<p>Применяет функцию  каждому элементу массива. После чего,разравнивает его на один уровень</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>];
+
+<span class="hljs-keyword">const</span> result = arr1.<span class="hljs-title function_">flatMap</span>(<span class="hljs-function">(<span class="hljs-params">num</span>) =&gt;</span> (num === <span class="hljs-number">2</span> ? [<span class="hljs-number">2</span>, <span class="hljs-number">2</span>] : <span class="hljs-number">1</span>));
+<span class="hljs-comment">// =&gt; [1, 2, 2, 1]</span>
 </code></pre>
 <h1 id="соединить">Соединить</h1>
 <h2 id="concat">concat</h2>
@@ -240,6 +247,54 @@ months.<span class="hljs-title function_">splice</span>(<span class="hljs-number
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( arr.<span class="hljs-title function_">includes</span>(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>) );
 <span class="hljs-comment">// =&gt; false</span>
 </code></pre>
+<h1 id="работа-с-иттераторами">Работа с иттераторами</h1>
+<h2 id="entries">entries</h2>
+<p>Возвращает иттератор созданный из массива</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> array1 = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>];
+
+<span class="hljs-keyword">const</span> iterator1 = array1.<span class="hljs-title function_">entries</span>();
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(iterator1.<span class="hljs-title function_">next</span>().<span class="hljs-property">value</span>);
+<span class="hljs-comment">// =&gt; Array [0, &quot;a&quot;]</span>
+<span class="hljs-comment">// =&gt; Array [1, &quot;b&quot;]</span>
+<span class="hljs-comment">// =&gt; Array [2, &quot;c&quot;]</span>
+</code></pre>
+<h2 id="keys">keys</h2>
+<p>Создает иттератор из клучей массива</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> array1 = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>];
+<span class="hljs-keyword">const</span> iterator = array1.<span class="hljs-title function_">keys</span>();
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> key <span class="hljs-keyword">of</span> iterator) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(key);
+}
+
+<span class="hljs-comment">// =&gt; 0</span>
+<span class="hljs-comment">// =&gt; 1</span>
+<span class="hljs-comment">// =&gt; 2</span>
+</code></pre>
+<h2 id="from">from</h2>
+<p>Создает массив из Array-like объектов. В том числе из иттераторов</p>
+<pre><code class="hljs language-js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>( ittertor );
+<span class="hljs-comment">// =&gt; [ ... ]</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(<span class="hljs-string">&#x27;foo&#x27;</span>));
+<span class="hljs-comment">// =&gt; [&quot;f&quot;, &quot;o&quot;, &quot;o&quot;]</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> x + x));
+<span class="hljs-comment">// =&gt; [2, 4, 6]</span>
+</code></pre>
+<h2 id="fromasync">fromAsync</h2>
+<p>Создает массив изасинхронных объектов</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> asyncIterable = (<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span>* () {
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) {
+    <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> <span class="hljs-built_in">setTimeout</span>(resolve, <span class="hljs-number">10</span> * i));
+    <span class="hljs-keyword">yield</span> i;
+  }
+})();
+
+<span class="hljs-title class_">Array</span>.<span class="hljs-title function_">fromAsync</span>(asyncIterable).<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">array</span>) =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(array));
+<span class="hljs-comment">// =&gt; [0, 1, 2, 3, 4]</span>
+</code></pre>
 <h1 id="как-в-python">Как в python</h1>
 <h2 id="every">every</h2>
 <p>Вернет true если все элементы массива пройдя функцию вернут true. Не мутирует массив</p>
@@ -310,5 +365,18 @@ array1.<span class="hljs-title function_">sort</span>(<span class="hljs-function
 <pre><code class="hljs language-js"><span class="hljs-keyword">const</span> array1 = [<span class="hljs-string">&#x27;one&#x27;</span>, <span class="hljs-string">&#x27;two&#x27;</span>, <span class="hljs-string">&#x27;three&#x27;</span>];
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>( array1.<span class="hljs-title function_">reverse</span>() );
 <span class="hljs-comment">// =&gt; [&quot;three&quot;, &quot;two&quot;, &quot;one&quot;]</span>
+</code></pre>
+<h2 id="fill">fill</h2>
+<p>Заполняет массив константами</p>
+<pre><code class="hljs language-js">aconst array1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(array1.<span class="hljs-title function_">fill</span>(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>));
+<span class="hljs-comment">// =&gt; [1, 2, 0, 0]</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(array1.<span class="hljs-title function_">fill</span>(<span class="hljs-number">5</span>, <span class="hljs-number">1</span>));
+<span class="hljs-comment">// =&gt; [1, 5, 5, 5]</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(array1.<span class="hljs-title function_">fill</span>(<span class="hljs-number">6</span>));
+<span class="hljs-comment">// =&gt; [6, 6, 6, 6]</span>
 </code></pre>
 </div>

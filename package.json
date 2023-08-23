@@ -11,12 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@iktakahiro/markdown-it-katex": "^4.0.1",
-    "acorn": "^8.8.2",
-    "acorn-walkast": "^1.0.0",
-    "pipeline-operator-transform": "^0.7.0",
     "markdown-it": "^13.0.1",
-    "markdown-it-highlightjs": "^4.0.1",
-    "paper": "^0.12.17",
-    "transform-code": "^1.0.0"
+    "markdown-it-highlightjs": "^4.0.1"
   }
 }

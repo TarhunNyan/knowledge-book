@@ -8,10 +8,10 @@
 
 ## Linux
 
-|Linux|Vim/NVim|
-|:---|:---|
+|Linux                                  |Vim/NVim                                                  |
+|:--------------------------------------|:---------------------------------------------------------|
 |[Команды Linux](./Linux/01-Commands.md)|[Основные команды vim'а](./Editors/vim/01-MainCommands.md)|
-||[HotKeys](./Editors/vim/01.01-TableOfKeys.html)|
+|                                       |[HotKeys](./Editors/vim/01.01-TableOfKeys.html)           |
 
 ## GIT
 
@@ -70,3 +70,8 @@
 
 <style>table{width: 100%}</style>
 
+## Math 
+
+|Probability Theory                                                                     |
+|:--------------------------------------------------------------------------------------|
+|[Теория вероятности](./NatureScience/Math/ProbabilityTheory/04-HigherMathematics.md)   |

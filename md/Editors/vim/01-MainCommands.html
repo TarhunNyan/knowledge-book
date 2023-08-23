@@ -1,4 +1,4 @@
-<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#vim-и-nvim"><li>Vim и NVim</li></a><a href="#undoredo"><li>Undo/Redo</li></a><a href="#delete"><li>Delete</li></a><a href="#copypaste"><li>Copy/Paste</li></a><a href="#macro"><li>Macro</li></a><ul><a href="#работа-с-макросом-как-с-текстом"><li>Работа с макросом как с текстом</li></a></ul><a href="#navigation"><li>Navigation</li></a><ul><a href="#перемещение-по-словам"><li>Перемещение по словам</li></a><a href="#перемещение-по-строке"><li>Перемещение по строке</li></a><a href="#перемещение-по-тексту"><li>Перемещение по тексту</li></a><a href="#markзакладки"><li>Mark(закладки)</li></a><a href="#перемещение-по-файлу"><li>Перемещение по файлу</li></a><a href="#видимая-область"><li>Видимая область</li></a><a href="#поиск"><li>Поиск</li></a><a href="#замена"><li>Замена</li></a></ul><a href="#табы"><li>Табы</li></a><a href="#командная-строка"><li>Командная строка</li></a><a href="#plugins"><li>Plugins</li></a><ul><a href="#vim-plug"><li>vim-plug</li></a><a href="#nerdtree"><li>NERDTree</li></a><a href="#vim-commentary"><li>vim-commentary</li></a><a href="#vim-easymotion"><li>vim-easymotion</li></a></ul><a href="#termux"><li>Termux</li></a><ul><a href="#работа-с-терминалами"><li>Работа с терминалами</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="vim-и-nvim">Vim и NVim</h1>
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#vim-и-nvim"><li>Vim и NVim</li></a><a href="#undoredo"><li>Undo/Redo</li></a><ul><a href="#undoотмена"><li>Undo(отмена)</li></a><a href="#redoвозврат"><li>Redo(возврат)</li></a></ul><a href="#delete"><li>Delete</li></a><ul><a href="#удалить-строку"><li>Удалить строку</li></a><a href="#удалить-выделенное"><li>Удалить выделенное</li></a><a href="#удалить-то-что-хочется"><li>Удалить то что хочется</li></a></ul><a href="#copypaste"><li>Copy/Paste</li></a><ul><a href="#copyкопировать"><li>Copy(копировать)</li></a><a href="#pasteвставить"><li>Paste(вставить)</li></a><a href="#pasteвставить-буз-замены-в-буффере"><li>Paste(вставить буз замены в буффере)</li></a><a href="#копировать-строку"><li>Копировать строку</li></a></ul><a href="#macro"><li>Macro</li></a><ul><a href="#записать-макрос"><li>Записать макрос</li></a><a href="#дописать-макрос"><li>Дописать макрос</li></a><a href="#запустить-макрос"><li>Запустить макрос</li></a><a href="#запустить-макрос-n-раз"><li>Запустить макрос n раз</li></a></ul><a href="#работа-с-макросом-как-с-текстом"><li>Работа с макросом как с текстом</li></a><ul><a href="#выводим-то-что-записано-в-регистре"><li>Выводим то что записано в регистре</li></a><a href="#копируем-в-регистор-выделенное"><li>Копируем в регистор выделенное</li></a><a href="#паралельный-запуск-макроса"><li>Паралельный запуск макроса</li></a></ul><a href="#navigation"><li>Navigation</li></a><ul><a href="#перемещение-по-словамзнакам"><li>Перемещение по словам/знакам</li></a><a href="#перемещение-по-словам"><li>Перемещение по словам</li></a><a href="#перемещение-к-символу"><li>Перемещение к символу</li></a><a href="#переход-в-началоконец-строки"><li>Переход в начало/конец строки</li></a><a href="#перейти-к-началуконцу--параграфаблока"><li>Перейти к началу/концу  параграфа/блока</li></a><a href="#перейти-в-началоконец--предложенияфайла"><li>Перейти в начало/конец  предложения/файла</li></a><a href="#видимая-область"><li>Видимая область</li></a><a href="#перейти-к-строкестолбцу-n"><li>Перейти к строке/столбцу n</li></a></ul><a href="#markзакладки"><li>Mark(закладки)</li></a><a href="#поиск"><li>Поиск</li></a><ul><a href="#поиск-по-файлу"><li>Поиск по файлу</li></a><a href="#vimgrep"><li>vimgrep</li></a></ul><a href="#замена"><li>Замена</li></a><ul><a href="#замена-текста"><li>Замена текста</li></a><a href="#дополнительно"><li>Дополнительно</li></a></ul><a href="#табы"><li>Табы</li></a><ul><a href="#список-табов"><li>Список табов</li></a><a href="#перейти-к-табу-на-позиции-n"><li>Перейти к табу на позиции n</li></a><a href="#перейти-к-следующему-табу"><li>Перейти к следующему табу</li></a><a href="#перейти-к-предыдущему-табу"><li>Перейти к предыдущему табу</li></a><a href="#создать-новый-таб-с-открытым-текущим-файлом"><li>Создать новый таб с открытым текущим файлом</li></a></ul><a href="#командная-строка"><li>Командная строка</li></a><a href="#config"><li>config</li></a><ul><a href="#vim-plug"><li>vim-plug</li></a><a href="#nerdtree"><li>NERDTree</li></a><a href="#vim-commentary"><li>vim-commentary</li></a><a href="#vim-easymotion"><li>vim-easymotion</li></a></ul><a href="#termux"><li>Termux</li></a><ul><a href="#работа-с-терминалами"><li>Работа с терминалами</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="vim-и-nvim">Vim и NVim</h1>
 <p>Ниже будет использоваться некоторые подмены, чтобы это можно было хоть как-то описать</p>
 <table>
 <thead>
@@ -39,170 +39,239 @@
 </tbody>
 </table>
 <h1 id="undoredo">Undo/Redo</h1>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># undo(отмена)</span>
-u
-<span class="hljs-comment"># redo(возврат)</span>
-ctrl+r 
+<h2 id="undoотмена">Undo(отмена)</h2>
+<pre><code class="hljs language-bash">u
+</code></pre>
+<h2 id="redoвозврат">Redo(возврат)</h2>
+<pre><code class="hljs language-bash">ctrl+r 
 </code></pre>
 <h1 id="delete">Delete</h1>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># удалить строку</span>
-<span class="hljs-built_in">dd</span>
-<span class="hljs-comment"># удалить выделенное</span>
-&lt;selection&gt;d
-
-<span class="hljs-comment"># удалить то что хочется</span>
-d&lt;navigation&gt;
+<h2 id="удалить-строку">Удалить строку</h2>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">dd</span>
+</code></pre>
+<h2 id="удалить-выделенное">Удалить выделенное</h2>
+<pre><code class="hljs language-bash">&lt;selection&gt;d
+</code></pre>
+<h2 id="удалить-то-что-хочется">Удалить то что хочется</h2>
+<pre><code class="hljs language-bash">d&lt;navigation&gt;
 d$
 df_
 ...
 </code></pre>
 <h1 id="copypaste">Copy/Paste</h1>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># copy(копировать)</span>
-y 
-<span class="hljs-comment"># paste(вставить)</span>
-p 
-
-<span class="hljs-comment"># копировать строку</span>
-yy
+<h2 id="copyкопировать">Copy(копировать)</h2>
+<pre><code class="hljs language-bash">y 
+</code></pre>
+<h2 id="pasteвставить">Paste(вставить)</h2>
+<pre><code class="hljs language-bash">p 
+</code></pre>
+<h2 id="pasteвставить-буз-замены-в-буффере">Paste(вставить буз замены в буффере)</h2>
+<pre><code class="hljs language-bash">/p 
+</code></pre>
+<h2 id="копировать-строку">Копировать строку</h2>
+<pre><code class="hljs language-bash">yy
 </code></pre>
 <h1 id="macro">Macro</h1>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># записать макрос</span>
-q&lt;registor&gt;
-<span class="hljs-comment"># дописать макрос. &lt;registor&gt; - заглавная буква</span>
-q&lt;registor&gt;
-
-<span class="hljs-comment"># запустить макрос</span>
-@&lt;registor&gt;
-<span class="hljs-comment"># запустить макрос n раз</span>
-&lt;n&gt;@&lt;registor&gt;
+<h2 id="записать-макрос">Записать макрос</h2>
+<pre><code class="hljs language-bash">q&lt;registor&gt;
 </code></pre>
-<h2 id="работа-с-макросом-как-с-текстом">Работа с макросом как с текстом</h2>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># выводим то что записано в регистре</span>
-<span class="hljs-string">&quot;&lt;register&gt;p
-# копируем в регистор выделенное
-&quot;</span>&lt;register&gt;y
-<span class="hljs-string">&quot;&lt;register&gt;d
+<h2 id="дописать-макрос">Дописать макрос</h2>
+<p><registor> - заглавная буква</p>
+<pre><code class="hljs language-bash">q&lt;registor&gt;
+</code></pre>
+<h2 id="запустить-макрос">Запустить макрос</h2>
+<pre><code class="hljs language-bash">@&lt;registor&gt;
+</code></pre>
+<h2 id="запустить-макрос-n-раз">Запустить макрос n раз</h2>
+<pre><code class="hljs language-bash">&lt;n&gt;@&lt;registor&gt;
+</code></pre>
+<h1 id="работа-с-макросом-как-с-текстом">Работа с макросом как с текстом</h1>
+<h2 id="выводим-то-что-записано-в-регистре">Выводим то что записано в регистре</h2>
+<pre><code class="hljs language-bash"><span class="hljs-string">&quot;&lt;register&gt;p
 </span></code></pre>
-<p>Иногда полезно запускать выполнение макроса не последовательно, а параллельно (этот трюк я подсмотрел в Vim Edit Text at the Speed of Thought). Например, если нам надо обработать 100 строк, вместо того, чтобы записывать макрос с переходом на следующую строку j и затем указывать количество раз выполнения макроса, например, как в статье 100@a, можно выделить последовательность строк с помощью V, нажать : и затем в командном режиме вызвать макрос через normal. Команда будет выглядеть так :'&lt;,'&gt;normal @a. Плюс этого подхода в том, что макрос выполнится на всех строках, даже если какая-то строка могла нарушить ход выполнения последовательности макросов, при обычном подходе.</p>
+<h2 id="копируем-в-регистор-выделенное">Копируем в регистор выделенное</h2>
+<pre><code class="hljs language-bash"><span class="hljs-string">&quot;&lt;register&gt;y
+&quot;</span>&lt;register&gt;d
+</code></pre>
+<h2 id="паралельный-запуск-макроса">Паралельный запуск макроса</h2>
+<p>Иногда полезно запускать выполнение макроса не последовательно, а параллельно (этот трюк я подсмотрел в Vim Edit Text at the Speed of Thought)</p>
+<p>Можно выделить последовательность строк с помощью V. И прописать:</p>
+<pre><code class="hljs language-bash">:<span class="hljs-string">&#x27;&lt;,&#x27;</span>&gt;normal @a
+</code></pre>
 <h1 id="navigation">Navigation</h1>
+<h2 id="перемещение-по-словамзнакам">Перемещение по словам/знакам</h2>
+<p>Предыдущее слово</p>
+<pre><code class="hljs language-bash">b
+</code></pre>
+<p>Следующее слово</p>
+<pre><code class="hljs language-bash">w
+</code></pre>
+<p>Конец следущего слова</p>
+<pre><code class="hljs language-bash">e
+</code></pre>
 <h2 id="перемещение-по-словам">Перемещение по словам</h2>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># предыдущее слово</span>
-b
-<span class="hljs-comment"># следующее слово</span>
-w
-<span class="hljs-comment"># конец следущего слова</span>
-e
-
-<span class="hljs-comment"># предыдущее слово. Деление только по пробелам</span>
-B
-<span class="hljs-comment"># следующее слово. Деление только по пробелам</span>
-W
-<span class="hljs-comment"># конец следущего слова. Деление только по пробелам</span>
-E
-
+<p>Предыдущее слово. Деление только по пробелам</p>
+<pre><code class="hljs language-bash">B
 </code></pre>
-<h2 id="перемещение-по-строке">Перемещение по строке</h2>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># поиск симола в строке</span>
-f_
-<span class="hljs-comment"># поиск(в другую сторону) символа в строке</span>
-F_
-
-<span class="hljs-comment"># идет по строке пока не найдет симол</span>
-e_
-<span class="hljs-comment"># идет(в другую сторону) по строке пока не найдет симол</span>
-E_
-
-<span class="hljs-comment"># переходим в начало строки</span>
-0
-<span class="hljs-comment"># прыгаем в конец строки</span>
-$
-<span class="hljs-comment"># первый не пустой символ в строке</span>
-^
-<span class="hljs-comment"># первый не пустой символ предыдущей строки</span>
--
-<span class="hljs-comment"># первый не пустой символ следующей строки</span>
-+
-<span class="hljs-comment"># первый не пустой символ следующей строки. Отсчет ведется от текущей строки</span>
-_
+<p>Следующее слово. Деление только по пробелам</p>
+<pre><code class="hljs language-bash">W
 </code></pre>
-<h2 id="перемещение-по-тексту">Перемещение по тексту</h2>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># перейти к началу параграфа</span>
-{
-<span class="hljs-comment"># перейти к концуо параграфа</span>
-}
-
-<span class="hljs-comment"># прикол добавлен плагином</span>
-<span class="hljs-comment"># бытрое перемещение к символу</span>
-//s
-
-<span class="hljs-comment"># начало/конец блока. К блоку относятся кавычки [({})]</span>
-<span class="hljs-comment"># с плагинами так же за конец и начало блока считается html тег</span>
-%
-
-<span class="hljs-comment"># перейти в начало предложения</span>
-(
-<span class="hljs-comment"># перейти в конец предложения</span>
-)
-
-<span class="hljs-comment"># перейти к символу n в файле</span>
-:noraml! 0go&lt;n&gt; <span class="hljs-string">&quot;
-# перейти к символу n1+n2 в файле
-:noraml! &lt;n1&gt;go&lt;n2&gt; &quot;</span>
-
+<p>Конец следущего слова. Деление только по пробелам</p>
+<pre><code class="hljs language-bash">E
 </code></pre>
-<h2 id="markзакладки">Mark(закладки)</h2>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># поставить mark </span>
-m&lt;register&gt;
-<span class="hljs-comment"># перейти к поставленной mark</span>
-`&lt;register&gt;
-<span class="hljs-comment"># перейти к началу строки поставленной mark</span>
-<span class="hljs-string">&#x27;&lt;register&gt;
-# перейти к месту где редактировали в последний раз
-`.
+<h2 id="перемещение-к-символу">Перемещение к символу</h2>
+<p>Поиск символа в строке</p>
+<pre><code class="hljs language-bash">f_
+
+t_
+</code></pre>
+<p>Поиск(в другую сторону) символа в строке</p>
+<pre><code class="hljs language-bash">F_
+
+T_
+</code></pre>
+<p>Бытрое перемещение к символу в пределах экрана (прикол добавлен плагином)</p>
+<pre><code class="hljs language-bash">//s
+</code></pre>
+<p>Перейти к символу n в файле</p>
+<pre><code class="hljs language-bash">:noraml! 0go&lt;n&gt; <span class="hljs-string">&quot;
 </span></code></pre>
-<h2 id="перемещение-по-файлу">Перемещение по файлу</h2>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># переход в начало файла</span>
-gg
-<span class="hljs-comment"># переход в конец файла</span>
-G
-<span class="hljs-comment"># перейти к строке n</span>
-&lt;n&gt;G
-<span class="hljs-comment"># перейти к столбцу n</span>
-&lt;n&gt;|
+<p>Перейти к символу n1+n2 в файле</p>
+<pre><code class="hljs language-bash">:noraml! &lt;n1&gt;go&lt;n2&gt; <span class="hljs-string">&quot;
+</span></code></pre>
+<h2 id="переход-в-началоконец-строки">Переход в начало/конец строки</h2>
+<p>Переходим в начало строки</p>
+<pre><code class="hljs language-bash">0
+</code></pre>
+<p>Переходим в конец строки</p>
+<pre><code class="hljs language-bash">$
+</code></pre>
+<p>Первый не пустой символ. В этой строке</p>
+<pre><code class="hljs language-bash">^
+</code></pre>
+<p>Первый не пустой символ. Предыдущей строке</p>
+<pre><code class="hljs language-bash">-
+</code></pre>
+<p>Первый не пустой символ. Следующей строке</p>
+<pre><code class="hljs language-bash">+
+</code></pre>
+<h2 id="перейти-к-началуконцу--параграфаблока">Перейти к началу/концу  параграфа/блока</h2>
+<p>Перейти к началу параграфа</p>
+<pre><code class="hljs language-bash">{
+</code></pre>
+<p>Перейти к концуо параграфа</p>
+<pre><code class="hljs language-bash">}
+</code></pre>
+<p>К блоку относятся кавычки [({})]
+С плагинами так же за конец и начало блока считается html тег</p>
+<pre><code class="hljs language-bash">%
+</code></pre>
+<h2 id="перейти-в-началоконец--предложенияфайла">Перейти в начало/конец  предложения/файла</h2>
+<p>Перейти в начало предложения</p>
+<pre><code class="hljs language-bash">(
+</code></pre>
+<p>Перейти в конец предложения</p>
+<pre><code class="hljs language-bash">)
+</code></pre>
+<p>Переход в начало файла</p>
+<pre><code class="hljs language-bash">gg
+</code></pre>
+<p>Переход в конец файла</p>
+<pre><code class="hljs language-bash">G
 </code></pre>
 <h2 id="видимая-область">Видимая область</h2>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># переместить курсор вверх видимой области</span>
-H
-<span class="hljs-comment"># переместить курсор вверх видимой области</span>
-L
-<span class="hljs-comment"># центрировать область видимости по курсору</span>
-M
+<p>Переместить курсор вверх видимой области</p>
+<pre><code class="hljs language-bash">H
 </code></pre>
-<h2 id="поиск">Поиск</h2>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># поиск подстроки вниз по тексту</span>
-<span class="hljs-comment"># вводим и искомый текст и жмем enter</span>
-/&lt;text&gt;
-<span class="hljs-comment"># поиск подстроки вверх по тексту</span>
-<span class="hljs-comment"># вводим и искомый текст и жмем enter</span>
-?&lt;text&gt;
-
-<span class="hljs-comment"># переходим к предыдущему вхождению</span>
-n
-<span class="hljs-comment"># переходим к следующему вхождению</span>
-N
-
-<span class="hljs-comment"># быстрый поиск. Найти вхождение слова под курсором</span>
-*
-<span class="hljs-comment"># быстрый поиск в обратном направлении. Найти вхождение слова под курсором</span>
-<span class="hljs-comment">#</span>
-<span class="hljs-comment"># убрать подсветку найденного </span>
-:noh
+<p>Переместить курсор вверх видимой области</p>
+<pre><code class="hljs language-bash">L
 </code></pre>
-<h2 id="замена">Замена</h2>
-<p>&quot;Ручная&quot; замена</p>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># в первой строке делаем замену руками</span>
-<span class="hljs-comment"># во второй строке повторяем операцию</span>
-c&lt;navigtion&gt;&lt;text&gt;
+<p>Центрировать область видимости по курсору</p>
+<pre><code class="hljs language-bash">M
+</code></pre>
+<h2 id="перейти-к-строкестолбцу-n">Перейти к строке/столбцу n</h2>
+<p>Перейти к строке n</p>
+<pre><code class="hljs language-bash">&lt;n&gt;G
+</code></pre>
+<p>Перейти к столбцу n</p>
+<pre><code class="hljs language-bash">&lt;n&gt;|
+</code></pre>
+<h1 id="markзакладки">Mark(закладки)</h1>
+<p>Поставить mark</p>
+<pre><code class="hljs language-bash">m&lt;register&gt;
+</code></pre>
+<p>Перейти к поставленной mark</p>
+<pre><code class="hljs language-bash">`&lt;register&gt;
+</code></pre>
+<p>Перейти к месту где редактировали в последний раз</p>
+<pre><code class="hljs language-bash">`.
+</code></pre>
+<h1 id="поиск">Поиск</h1>
+<h2 id="поиск-по-файлу">Поиск по файлу</h2>
+<p>Поиск подстроки вниз по тексту. Вводим искомый текст и жмем enter</p>
+<pre><code class="hljs language-bash">/&lt;text&gt;
+</code></pre>
+<p>Поиск подстроки вверх по тексту. Вводим и искомый текст и жмем enter</p>
+<pre><code class="hljs language-bash">?&lt;text&gt;
+</code></pre>
+<p>Переходим к предыдущему вхождению</p>
+<pre><code class="hljs language-bash">n
+</code></pre>
+<p>Переходим к следующему вхождению</p>
+<pre><code class="hljs language-bash">N
+</code></pre>
+<p>Быстрый поиск. Найти вхождение слова под курсором</p>
+<pre><code class="hljs language-bash">*
+</code></pre>
+<p>Быстрый поиск в обратном направлении. Найти вхождение слова под курсором</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment">#</span>
+</code></pre>
+<p>Убрать подсветку найденного</p>
+<pre><code class="hljs language-bash">:noh
+</code></pre>
+<h2 id="vimgrep">vimgrep</h2>
+<p>Есть несколько комманд для поиска:</p>
+<ul>
+<li>vim[grep] - встроен в vim. Если файл уже в буффере, то не открывает его, ииз-за чего работает быстрее</li>
+<li>vimgrepa[dd] - встроен в vim. Добавляет к текущим результатам поиска, новые наденные результаты</li>
+<li>grep - использует внешнюю утилиту, из Linux</li>
+</ul>
+<p>Для встроенного в vim утилиты grep'а можно установить игнорируемые файлы</p>
+<pre><code class="hljs language-bash"><span class="hljs-built_in">set</span> wildignore*.html,*.txt        - устанавливаем игнор фалов с расширением html и txt
+<span class="hljs-built_in">set</span> wildignore+=*/node_modules/*  - устанавливаем игнор папки node_modules
+<span class="hljs-built_in">set</span> wildignore=                   - очищаем игнорируемые файлы
+</code></pre>
+<p>Работа с результатами поиска</p>
+<pre><code class="hljs language-bash">:copen      - красивое окошечко(quickfix) с рез поиска
+:cclose     - закрыть окно(quickfix) с рез поиска
+:cnext      - следующее совпадение
+:cprevious  - предыдущее совпадение
+</code></pre>
+<p>Поиск фразы text в открытом файле</p>
+<pre><code class="hljs language-bash">:vim /text/ %
+</code></pre>
+<p>Флаги:</p>
+<ul>
+<li>без флага g поиск отображает по одному совпадению в строке. С флагом g все найденные совпадения в строке отображаются</li>
+<li>без флага j переходит к первому совпдаению. С флагом j нет перехода</li>
+</ul>
+<pre><code class="hljs language-bash">:vim /text/g %
+:vim /text/j %
+:vim /text/jg %
+</code></pre>
+<p>Поиск фразы text во всех js файлах(первого уровня иерархии) папки md. Путь относительно :pwd</p>
+<pre><code class="hljs language-bash">:vim /text/ md/*.js
+</code></pre>
+<p>Поиск фразы text во всех js файлах папки md. Поиск идет рекурсивно по всем папкам</p>
+<pre><code class="hljs language-bash">:vim /text/ md/**/*.js
+</code></pre>
+<p>Поиск фразы text во всех js и html файлах(первого уровня иерархии) папки md/Editors/vim. Тут две команды делают одно и тоже</p>
+<pre><code class="hljs language-bash">:vim /text/ md/Editors/vim/*.js md/Editors/vim/*.html
+:vim /text/ md/Editors/vim/*{js,html}
+</code></pre>
+<h1 id="замена">Замена</h1>
+<p>В первой строке делаем замену руками. Во второй строке повторяем операцию</p>
+<pre><code class="hljs language-bash">c&lt;navigtion&gt;&lt;text&gt;
 .
 </code></pre>
 <p><strong><find text></strong> - искомый текст(regexp)</p>
@@ -234,76 +303,89 @@ c&lt;navigtion&gt;&lt;text&gt;
 </tr>
 </tbody>
 </table>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># Замена текста в строке</span>
-:s/&lt;find text&gt;/&lt;replace text&gt;/&lt;flags&gt;
-<span class="hljs-comment"># Замена текста во всем файле</span>
-:%s/&lt;find text&gt;/&lt;replace text&gt;/&lt;flags&gt;
-
-<span class="hljs-comment"># Заменить текст в выделенном блоке</span>
-:<span class="hljs-string">&#x27;&lt;,&#x27;</span>&gt;s/&lt;find text&gt;/&lt;replace text&gt;/g
-<span class="hljs-comment"># Заменить текст с 6 по 10 строку</span>
-:6,10s/&lt;find text&gt;/&lt;replace text&gt;/g
+<h2 id="замена-текста">Замена текста</h2>
+<p>Замена текста в строке</p>
+<pre><code class="hljs language-bash">:s/&lt;find text&gt;/&lt;replace text&gt;/&lt;flags&gt;
 </code></pre>
-<p>При работе с поиском и заменой может пригодиться:</p>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># вставляет текст из регистра</span>
-ctrl+r&lt;register&gt;
-<span class="hljs-comment"># вставляет скопироанный текст</span>
-ctrl+r<span class="hljs-string">&quot;
+<p>Замена текста во всем файле</p>
+<pre><code class="hljs language-bash">:%s/&lt;find text&gt;/&lt;replace text&gt;/&lt;flags&gt;
+</code></pre>
+<p>Заменить текст в выделенном блоке</p>
+<pre><code class="hljs language-bash">:<span class="hljs-string">&#x27;&lt;,&#x27;</span>&gt;s/&lt;find text&gt;/&lt;replace text&gt;/g
+</code></pre>
+<p>Заменить текст с 6 по 10 строку</p>
+<pre><code class="hljs language-bash">:6,10s/&lt;find text&gt;/&lt;replace text&gt;/g
+</code></pre>
+<h2 id="дополнительно">Дополнительно</h2>
+<p>Вставляет текст из регистра</p>
+<pre><code class="hljs language-bash">ctrl+r&lt;register&gt;
+</code></pre>
+<p>Вставляет скопироанный текст</p>
+<pre><code class="hljs language-bash">ctrl+r<span class="hljs-string">&quot;
 </span></code></pre>
 <h1 id="табы">Табы</h1>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># список табов</span>
-:tabs
-<span class="hljs-comment"># перейти к табу на позиции n</span>
-&lt;n&gt;gt - go tab with num
-
-<span class="hljs-comment"># перейти к следующему табу</span>
-gt
-<span class="hljs-comment"># перейти к предыдущему табу</span>
-gT
-
-<span class="hljs-comment"># создать новый таб с открытым текущим файлом</span>
-:tabe %
+<h2 id="список-табов">Список табов</h2>
+<pre><code class="hljs language-bash">:tabs
+</code></pre>
+<h2 id="перейти-к-табу-на-позиции-n">Перейти к табу на позиции n</h2>
+<pre><code class="hljs language-bash">&lt;n&gt;gt
+</code></pre>
+<h2 id="перейти-к-следующему-табу">Перейти к следующему табу</h2>
+<pre><code class="hljs language-bash">gt
+</code></pre>
+<h2 id="перейти-к-предыдущему-табу">Перейти к предыдущему табу</h2>
+<pre><code class="hljs language-bash">gT
+</code></pre>
+<h2 id="создать-новый-таб-с-открытым-текущим-файлом">Создать новый таб с открытым текущим файлом</h2>
+<pre><code class="hljs language-bash">:tabe %
 </code></pre>
 <h1 id="командная-строка">Командная строка</h1>
-<p>Работа с трминалом</p>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># команда которая выполняется не в командной строке vim&#x27;а терминале</span>
-:!&lt;....&gt;
-<span class="hljs-comment"># вставляет текст из регистра</span>
-ctrl+r&lt;register&gt;
-<span class="hljs-comment"># вставляет скопироанный текст</span>
-ctrl+r<span class="hljs-string">&quot;
+<p>Работа с терминалом</p>
+<p>Команда которая выполняется не в командной строке vim'а терминале</p>
+<pre><code class="hljs language-bash">:!&lt;....&gt;
+</code></pre>
+<p>Вставляет текст из регистра</p>
+<pre><code class="hljs language-bash">ctrl+r&lt;register&gt;
+</code></pre>
+<p>Вставляет скопироанный текст</p>
+<pre><code class="hljs language-bash">ctrl+r<span class="hljs-string">&quot;
 </span></code></pre>
-<p>Вставить результат работы терминала в файл</p>
+<p>Вставить результат работы терминала в редактируемый файл</p>
 <pre><code class="hljs language-bash">:<span class="hljs-built_in">read</span> !&lt;...&gt;
 </code></pre>
 <p>Команды для vim'а</p>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># закрыть таб</span>
-:q
-<span class="hljs-comment"># закрыть НАСИЛЬНО без сохранения</span>
-:q!
-<span class="hljs-comment"># записать файл</span>
-:w
-<span class="hljs-comment"># записать файл и выход</span>
-:wq
+<p>Закрыть таб</p>
+<pre><code class="hljs language-bash">:q
+</code></pre>
+<p>Закрыть НАСИЛЬНО без сохранения</p>
+<pre><code class="hljs language-bash">:q!
+</code></pre>
+<p>Записать файл</p>
+<pre><code class="hljs language-bash">:w
+</code></pre>
+<p>Записать файл и выход</p>
+<pre><code class="hljs language-bash">:wq
 ZZ
-
-<span class="hljs-comment"># путь к текущей папке</span>
-:<span class="hljs-built_in">pwd</span>
-<span class="hljs-comment"># меняем root путь</span>
-:<span class="hljs-built_in">cd</span>
-<span class="hljs-comment"># просматриваем файлы в папке</span>
-:<span class="hljs-built_in">ls</span>
-
-<span class="hljs-comment"># убрать подсветку искомой подстроки</span>
-:noh
 </code></pre>
-<p>Указать файл config</p>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># файл по указонному пути как конфиг для vim&#x27;а</span>
-:<span class="hljs-built_in">source</span> &lt;path&gt;
-<span class="hljs-comment"># открытый файл как конфиг для vim&#x27;а</span>
-:<span class="hljs-built_in">source</span> % - use current file like confg <span class="hljs-keyword">for</span> vim
+<p>Путь к текущей папке</p>
+<pre><code class="hljs language-bash">:<span class="hljs-built_in">pwd</span>
 </code></pre>
-<h1 id="plugins">Plugins</h1>
+<p>Меняем root путь</p>
+<pre><code class="hljs language-bash">:<span class="hljs-built_in">cd</span>
+</code></pre>
+<p>Просматриваем файлы в папке</p>
+<pre><code class="hljs language-bash">:<span class="hljs-built_in">ls</span>
+</code></pre>
+<p>Убрать подсветку искомой подстроки</p>
+<pre><code class="hljs language-bash">:noh
+</code></pre>
+<h1 id="config">config</h1>
+<p>Файл по указонному пути как конфиг для vim'а</p>
+<pre><code class="hljs language-bash">:<span class="hljs-built_in">source</span> &lt;path&gt;
+</code></pre>
+<p>Открытый файл как конфиг для vim'а</p>
+<pre><code class="hljs language-bash">:<span class="hljs-built_in">source</span> % - use current file like confg <span class="hljs-keyword">for</span> vim
+</code></pre>
 <h2 id="vim-plug">vim-plug</h2>
 <p>Менеджер плагинов. В config файле надопрописать блок кода, типа такого:</p>
 <pre><code class="hljs">call plug<span class="hljs-function"><span class="hljs-keyword">#</span><span class="hljs-title">begin</span><span class="hljs-params">(&#x27;~/.<span class="hljs-variable">vim</span>/<span class="hljs-variable">plugged</span>&#x27;)</span></span>

@@ -1,4 +1,4 @@
-<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#sql"><li>SQL</li></a><a href="#select"><li>SELECT</li></a><ul><a href="#exists"><li>EXISTS</li></a><a href="#group-by"><li>GROUP BY</li></a><a href="#having"><li>HAVING</li></a><a href="#union-intersect-и-except"><li>UNION, INTERSECT и EXCEPT</li></a><a href="#join"><li>JOIN</li></a><a href="#some-any-all"><li>SOME, ANY, ALL</li></a><a href="#case"><li>CASE</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="sql">SQL</h1>
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#sql"><li>SQL</li></a><a href="#select"><li>SELECT</li></a><ul><a href="#exists"><li>EXISTS</li></a><a href="#group-by"><li>GROUP BY</li></a><a href="#having"><li>HAVING</li></a><a href="#union-intersect-и-except"><li>UNION, INTERSECT и EXCEPT</li></a><a href="#join"><li>JOIN</li></a><a href="#some-any-all"><li>SOME, ANY, ALL</li></a><a href="#case"><li>CASE</li></a></ul><a href="#рецепты"><li>Рецепты</li></a><ul><a href="#вытащить-столбцыв-произвольном-порядке"><li>Вытащить столбцы(в произвольном порядке)</li></a><a href="#вытащить-столбцыупорядоченно"><li>Вытащить столбцы(упорядоченно)</li></a><a href="#вытащить-столбцыс-уникальными-строками"><li>Вытащить столбцы(с уникальными строками)</li></a><a href="#получить-строки-с-пустыми-значениями"><li>Получить строки с пустыми значениями</li></a><a href="#подзапрос-внутри-from"><li>Подзапрос внутри FROM</li></a><a href="#переименовать-столбцы"><li>Переименовать столбцы</li></a><a href="#горизонтальная-выборка"><li>Горизонтальная выборка</li></a><a href="#агрегатные-функции"><li>Агрегатные функции</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="sql">SQL</h1>
 <p>В этой статье приведен базовый синтаксис SQL. В разных софтах разная его реализация</p>
 <h1 id="select">SELECT</h1>
 <p>Классический CASE</p>
@@ -21,7 +21,7 @@
 </code></pre>
 <h2 id="union-intersect-и-except">UNION, INTERSECT и EXCEPT</h2>
 <p>lt;запрос 1&gt;
-&lt;b&gt;UNION&lt;/b&gt; [ALL]
+<b>UNION</b> [ALL]
 &lt;запрос 2&gt;</p>
 <p>Оператор UNION объединяет выходные строки каждого из запросов в один результирующий набор. Если определен параметр ALL, то сохраняются все дубликаты выходных строк</p>
 <p>При этом должны выполняться следующие условия:</p>
@@ -31,12 +31,12 @@
 <li>В результирующем наборе используются имена столбцов, заданные в первом запросе.</li>
 <li>Предложение ORDER BY применяется к результату соединения, поэтому оно может быть указано только в конце составного запроса</li>
 </ol>
-<p>&lt;b&gt;INTERSECT&lt;/b&gt;(пересечение) и &lt;b&gt;EXCEPT&lt;/b&gt;(разность) - работают аналогично предложению UNION. Есть далеко не во всех СУБД</p>
+<p><b>INTERSECT</b>(пересечение) и <b>EXCEPT</b>(разность) - работают аналогично предложению UNION. Есть далеко не во всех СУБД</p>
 <h2 id="join">JOIN</h2>
 <p>Соеднинение таблиц с предикатом:</p>
 <p>SELECT maker, Product.model AS model_1, PC.model AS model_2, price
 FROM Product
-&lt;b&gt;INNER JOIN&lt;/b&gt; PC ON PC.model = Product.model</p>
+<b>INNER JOIN</b> PC ON PC.model = Product.model</p>
 <p>Где:</p>
 <ol>
 <li>INNER - значение есть в обеих таблицах</li>
@@ -45,10 +45,10 @@ FROM Product
 <li>FULL - из 1 и 2 табл берут ВСЕ значения</li>
 </ol>
 <h2 id="some-any-all">SOME, ANY, ALL</h2>
-<p>lt;выражение&gt; &lt;оператор сравнения&gt; &lt;b&gt;SOME|ANY|ALL&lt;/b&gt; (&lt;подзапрос&gt;)</p>
+<p>lt;выражение&gt; &lt;оператор сравнения&gt; <b>SOME|ANY|ALL</b> (&lt;подзапрос&gt;)</p>
 <p>(&lt;подзапрос&gt;) - один столбец величин</p>
-<p>&lt;b&gt;SOME&lt;/b&gt; и &lt;b&gt;ANY&lt;/b&gt; это одно и тоже. Для каждой ячейки (&lt;подзапрос&gt;) производится сравнение с выражением. Если хоть одно сравнение TRUE, то вернётся TRUE</p>
-<p>&lt;b&gt;ALL&lt;/b&gt; для каждой ячейки (&lt;подзапрос&gt;) производится сравнение с выражением. Если все сравнения возвращают TRUE, то вернётся ALL тоже верно TRUE</p>
+<p><b>SOME</b> и <b>ANY</b> это одно и тоже. Для каждой ячейки (&lt;подзапрос&gt;) производится сравнение с выражением. Если хоть одно сравнение TRUE, то вернётся TRUE</p>
+<p><b>ALL</b> для каждой ячейки (&lt;подзапрос&gt;) производится сравнение с выражением. Если все сравнения возвращают TRUE, то вернётся ALL тоже верно TRUE</p>
 <h2 id="case">CASE</h2>
 <pre><code class="hljs language-sql"><span class="hljs-keyword">CASE</span> <span class="hljs-operator">&lt;</span>проверяемое выражение<span class="hljs-operator">&gt;</span>
    <span class="hljs-keyword">WHEN</span> <span class="hljs-operator">&lt;</span>сравниваемое выражение <span class="hljs-number">1</span><span class="hljs-operator">&gt;</span>
@@ -68,5 +68,79 @@ FROM Product
    <span class="hljs-keyword">THEN</span> <span class="hljs-operator">&lt;</span>возвращаемое значение N<span class="hljs-operator">&gt;</span>
 [<span class="hljs-keyword">ELSE</span> <span class="hljs-operator">&lt;</span>возвращаемое значение<span class="hljs-operator">&gt;</span>]
 <span class="hljs-keyword">END</span>
+</code></pre>
+<h1 id="рецепты">Рецепты</h1>
+<h2 id="вытащить-столбцыв-произвольном-порядке">Вытащить столбцы(в произвольном порядке)</h2>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> Pc;
+</code></pre>
+<h2 id="вытащить-столбцыупорядоченно">Вытащить столбцы(упорядоченно)</h2>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> speed, ram <span class="hljs-keyword">FROM</span> Pc;
+</code></pre>
+<h2 id="вытащить-столбцыс-уникальными-строками">Вытащить столбцы(с уникальными строками)</h2>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> speed, ram <span class="hljs-keyword">FROM</span> Pc;
+</code></pre>
+<h2 id="получить-строки-с-пустыми-значениями">Получить строки с пустыми значениями</h2>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> Pc <span class="hljs-keyword">WHERE</span> price <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span>;
+</code></pre>
+<h2 id="подзапрос-внутри-from">Подзапрос внутри FROM</h2>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> PC.model, maker
+<span class="hljs-keyword">FROM</span> PC, (<span class="hljs-keyword">SELECT</span> maker, model <span class="hljs-keyword">FROM</span> Product) <span class="hljs-keyword">AS</span> prod
+<span class="hljs-keyword">WHERE</span> PC.model <span class="hljs-operator">=</span> prod.model <span class="hljs-keyword">AND</span> price <span class="hljs-operator">&gt;</span> <span class="hljs-number">600</span>;
+</code></pre>
+<h2 id="переименовать-столбцы">Переименовать столбцы</h2>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> ram <span class="hljs-keyword">AS</span> Mb, hd Gb <span class="hljs-keyword">FROM</span> ... <span class="hljs-keyword">WHERE</span> ...;
+</code></pre>
+<h2 id="горизонтальная-выборка">Горизонтальная выборка</h2>
+<pre><code class="hljs language-sql"> <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> speed, ram 
+<span class="hljs-keyword">FROM</span> Pc
+<span class="hljs-keyword">WHERE</span> price<span class="hljs-operator">&lt;</span><span class="hljs-number">500</span>
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-number">2</span> <span class="hljs-keyword">DESC</span>;
+</code></pre>
+<p>Так же можно производить математические операции со значениями столбцов:</p>
+<pre><code class="hljs language-sql">...
+ram <span class="hljs-operator">-</span> <span class="hljs-number">128</span> <span class="hljs-operator">&gt;</span> <span class="hljs-number">0</span>
+...
+</code></pre>
+<pre><code class="hljs language-sql">...
+price <span class="hljs-operator">&lt;=</span> speed<span class="hljs-operator">*</span><span class="hljs-number">2</span> 
+...
+</code></pre>
+<h2 id="агрегатные-функции">Агрегатные функции</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Название функции</th>
+<th style="text-align:left">Что делает</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">COUNT(*)</td>
+<td style="text-align:left">Возвращает количество строк источника записей</td>
+</tr>
+<tr>
+<td style="text-align:left">COUNT(&lt;имя поля&gt;)</td>
+<td style="text-align:left">Возвращает количество значений в указанном столбце</td>
+</tr>
+<tr>
+<td style="text-align:left">SUM(&lt;имя поля&gt;)</td>
+<td style="text-align:left">Возвращает сумму значений в указанном столбце</td>
+</tr>
+<tr>
+<td style="text-align:left">AVG(&lt;имя поля&gt;)</td>
+<td style="text-align:left">Возвращает среднее значение в указанном столбце</td>
+</tr>
+<tr>
+<td style="text-align:left">MIN(&lt;имя поля&gt;)</td>
+<td style="text-align:left">Возвращает минимальное значение в указанном столбце</td>
+</tr>
+<tr>
+<td style="text-align:left">MAX(&lt;имя поля&gt;)</td>
+<td style="text-align:left">Возвращает максимальное значение в указанном столбц</td>
+</tr>
+</tbody>
+</table>
+<p>Пример:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">MIN</span>(price) <span class="hljs-keyword">AS</span> Min_price, <span class="hljs-built_in">MAX</span>(price) <span class="hljs-keyword">AS</span> Max_price <span class="hljs-keyword">FROM</span> PC;
 </code></pre>
 </div>
