@@ -3,9 +3,11 @@
 <h1 id="как-создать">Как создать</h1>
 <p>Прекомпелированное регулярное выражение</p>
 <pre><code class="hljs language-js"><span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/&lt;regexp&gt;/</span>;
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/&lt;regexp&gt;/g</span>;
 </code></pre>
 <p>Компилирует регулярное выражение в RunTime</p>
 <pre><code class="hljs language-js"><span class="hljs-keyword">var</span> regexp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RegExp</span>(<span class="hljs-string">&quot;ab+c&quot;</span>);
+<span class="hljs-keyword">var</span> regexp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RegExp</span>(<span class="hljs-string">&quot;ab+c&quot;</span>, <span class="hljs-string">&quot;g&quot;</span>);
 </code></pre>
 <h1 id="шаблоны">Шаблоны</h1>
 <h2 id="поиск-обычных-последовательностей">Поиск обычных последовательностей</h2>
@@ -65,8 +67,8 @@
 <span class="hljs-comment">// ( ?:... ) - НЕ запоминает соответствие. Не кладет в результрующий массив [1]</span>
 <span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/c(?:.*)ent/</span>; <span class="hljs-comment">// Соответствует: content</span>
 
-<span class="hljs-comment">// \n - получает значение из результирующего массива. Значение считается с конца</span>
-<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/petia(,) vasia\n jenia/</span>; <span class="hljs-comment">// Соответствует: petia, vasia, jenia</span>
+<span class="hljs-comment">// \n - получает значение из результирующего массива под номером n. Значение считается с конца</span>
+<span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/petia(.) vasia\1 jenia/</span>; <span class="hljs-comment">// Соответствует: petia, vasia, jenia</span>
 </code></pre>
 <h2 id="шаблоны-с-условием">Шаблоны с условием</h2>
 <pre><code class="hljs language-js"><span class="hljs-keyword">const</span> regexp = <span class="hljs-regexp">/abc|def/</span>; <span class="hljs-comment">// Находит либо abc, либо def</span>

@@ -8,11 +8,13 @@
 
 ````js
 const regexp = /<regexp>/;
+const regexp = /<regexp>/g;
 ````
 
 Компилирует регулярное выражение в RunTime
 ````js
 var regexp = new RegExp("ab+c");
+var regexp = new RegExp("ab+c", "g");
 ````
 
 # Шаблоны
@@ -85,8 +87,8 @@ const regexp = /c(?<partWord>ont)ent/; // Соответствует: content
 // ( ?:... ) - НЕ запоминает соответствие. Не кладет в результрующий массив [1]
 const regexp = /c(?:.*)ent/; // Соответствует: content
 
-// \n - получает значение из результирующего массива. Значение считается с конца
-const regexp = /petia(,) vasia\n jenia/; // Соответствует: petia, vasia, jenia
+// \n - получает значение из результирующего массива под номером n. Значение считается с конца
+const regexp = /petia(.) vasia\1 jenia/; // Соответствует: petia, vasia, jenia
 ````
 
 ## Шаблоны с условием

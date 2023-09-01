@@ -26,21 +26,21 @@
 
 Язык программирования в web
 
-|javascript                                                         |js api                                         |node|
-|:------------------------------------------------------------------|:----------------------------------------------|:---|
-|[structures](./Programming/JS/JS/02-Structures.md)                 |[canvas](./Programming/JS/Canvas/01-Canvas.md) |
-|[function](./Programming/JS/JS/07-Function.md)                     |[dom](./Programming/JS/DOM/01-Dom.md)          |
-|[object](./Programming/JS/JS/04-Object.md)                         |[event](./Programming/JS/Event/01-Event.md)    |
-|[array](./Programming/JS/JS/05-Array.md)                           |                                               |
-|[collections](./Programming/JS/JS/09-Collections.md)               |                                               |
-|[string](./Programming/JS/JS/06-String.md)                         |                                               |
-|[асинхронность: async/await](./Programming/JS/JS/03-Async_JS.md)   |                                               |[node - команды и устройство](./Programming/JS/Node/00-Base.md)|
-|[regexp](./Programming/Regexp/Regexp_JS.md)                        |                                               |[все про import и export](./Programming/JS/Node/01-ImportAndExport.md)|
-|[syntax sugar](./Programming/JS/JS/08-SyntaxSugar.md)              |                                               |
+|javascript                                                         |js api                                              |node|
+|:------------------------------------------------------------------|:---------------------------------------------------|:---|
+|[structures](./Programming/JS/JS/02-Structures.md)                 |[Canvas](./Programming/JS/Canvas/01-Canvas.md)      |
+|[function](./Programming/JS/JS/07-Function.md)                     |[DOM](./Programming/JS/DOM/01-DOM.md)               |
+|[object](./Programming/JS/JS/04-Object.md)                         |[Event](./Programming/JS/Event/01-Event.md)         |
+|[string](./Programming/JS/JS/06-String.md)                         |[ShadowRoot](./Programming/JS/ShadowRoot/00-Base.md)|
+|[array](./Programming/JS/JS/05-Array.md)                           |                                                    |
+|[collections](./Programming/JS/JS/09-Collections.md)               |                                                    |
+|[асинхронность: async/await](./Programming/JS/JS/03-Async_JS.md)   |                                                    |[node - команды и устройство](./Programming/JS/Node/00-Base.md)|
+|[regexp](./Programming/Regexp/Regexp_JS.md)                        |                                                    |[все про import и export](./Programming/JS/Node/01-ImportAndExport.md)|
+|[syntax sugar](./Programming/JS/JS/08-SyntaxSugar.md)              |                                                    |
 
-|javascript(extended)                                               |                                         ||
-|:------------------------------------------------------------------|:----------------------------------------------|:---|
-|[jsdoc](./Programming/JS/JS_jsdoc/00-Base.md)                 ||
+|javascript(extended)                                               |  |
+|:------------------------------------------------------------------|:-|
+|[jsdoc](./Programming/JS/JS_jsdoc/00-Base.md)                      |  |
 
 
 ## CSS и HTML
@@ -75,3 +75,9 @@
 |Probability Theory                                                                     |
 |:--------------------------------------------------------------------------------------|
 |[Теория вероятности](./NatureScience/Math/ProbabilityTheory/04-HigherMathematics.md)   |
+
+## Service 
+
+|Service                                                                     |
+|:--------------------------------------------------------------------------------------|
+|[Clipbord](./clipboard.html)   |

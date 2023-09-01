@@ -1,0 +1,257 @@
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#lisp"><li>Lisp</li></a><a href="#функциональные-языки"><li>Функциональные языки</li></a><a href="#структура-lisp"><li>Структура Lisp</li></a><a href="#атомы"><li>Атомы</li></a><ul><a href="#функция"><li>Функция</li></a></ul><a href="#функции"><li>Функции</li></a><ul><a href="#математические"><li>Математические</li></a><a href="#работа-со-списками"><li>Работа со списками</li></a><a href="#логические-функции"><li>Логические функции</li></a><a href="#ветвление"><li>Ветвление</li></a><a href="#задание-значений"><li>Задание значений</li></a><a href="#встроенныеfsubr---не-вычисляющие-значения-аргументов"><li>Встроенные(FSUBR - не вычисляющие значения аргументов)</li></a><a href="#пользовательскиеfexprmacro---не-вычисляющие-значения-аргументов"><li>Пользовательские(FEXPR/MACRO - не вычисляющие значения аргументов)</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="lisp">Lisp</h1>
+<h1 id="функциональные-языки">Функциональные языки</h1>
+<p>Имперовативное програмирование можно воспинимать как попытки сократить повторное использование</p>
+<ul>
+<li>переменные это кээшированный участок кода</li>
+<li>циклы/функции/процедуры/наследование/полиморфизм</li>
+</ul>
+<p>В функциональном программировании во главу угла ставятся чистые функции. То есть функции в математичском понимании. На практике это означает, что функция может опираться только на внутреннее состояние и никак не может ссылатьсяна внешнее.</p>
+<p>Есть еще такая трактовка, если в коде, вместо функции подставить  возвращаемый ею результат, то ничего не должно поменяться. Это позволяет кешировать результат работы функции и вызывать их в порядке не опредленном алгоритм, а следовательно и параллелить</p>
+<p>Функциональные языки организованны из математической теории лямбда-исчислений. А лямбда-исчисления стротся <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span> редукции, но я даже не понимаю что это такое</p>
+<h1 id="структура-lisp">Структура Lisp</h1>
+<p>Есть атомы, списки и функции</p>
+<ul>
+<li>список это то что в скобках: (+ 1 2 (10 20 30) &quot;text&quot;)</li>
+<li>атом значения в скобках разделенные пробелом: (a klda 123 &quot;sadjkkadla&quot;)</li>
+</ul>
+<h1 id="атомы">Атомы</h1>
+<p>Атомы могут иметь разные роли:</p>
+<h2 id="функция">Функция</h2>
+<p>Если атом стоит на первом месте в списке, то подставляется определенная для него функция</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">+</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>)
+&gt;&gt; <span class="hljs-number">6</span> 
+</code></pre>
+<p>Если атом число, то подставляется число</p>
+<pre><code class="hljs language-lisp"><span class="hljs-number">10</span> 
+&gt;&gt; <span class="hljs-number">10</span> 
+<span class="hljs-number">2.5</span> 
+&gt;&gt; <span class="hljs-number">2.5</span> 
+<span class="hljs-number">4/9</span> 
+&gt;&gt; <span class="hljs-number">1/3</span>
+</code></pre>
+<p>Если кавычки, то атом строка: &quot;line wihout mean&quot;</p>
+<pre><code class="hljs language-lisp">&#x27;Text is here&#x27;
+&gt;&gt; &#x27;Text is here&#x27;
+</code></pre>
+<p>Nill подставляет Nill, () подставляет Nill</p>
+<pre><code class="hljs language-lisp">Nill 
+&gt;&gt; Nill 
+() 
+&gt;&gt; Nill
+</code></pre>
+<p>T, подставляется он же. Это логическое TRUE</p>
+<pre><code class="hljs language-lisp">T 
+&gt;&gt; T 
+<span class="hljs-literal">t</span> 
+&gt;&gt; T
+</code></pre>
+<p>Если для атома определенно значение, то оно подставляется</p>
+<pre><code class="hljs language-lisp">SETQ(<span class="hljs-name">a</span> <span class="hljs-number">2134</span>)
+a 
+&gt;&gt; <span class="hljs-number">2134</span>
+</code></pre>
+<p>В остальных случаях возвращает ошибку</p>
+<pre><code class="hljs language-lisp">abc 
+&gt;&gt; ERRSTATE
+</code></pre>
+<p>Квотирование. Результат ковтирование возвращает сам атом или выражения без вычисления. То есть мы просим, ничего не делать</p>
+<p>Например список (1 2 3) не вычисляем, хотя нужен нам в качестве аргумента. Тогда используется квотирование</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">CAR</span> (<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>))
+&gt;&gt; ERRSTATE
+(<span class="hljs-name">CAR</span> (<span class="hljs-name">QUOTE</span> (<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>)))
+&gt;&gt; <span class="hljs-number">1</span>
+(<span class="hljs-name">CAR</span> `(<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>))
+&gt;&gt; <span class="hljs-number">1</span>
+
+abc 
+&gt;&gt; ERRSTATE
+&#x27;abc 
+&gt;&gt; abc
+</code></pre>
+<h1 id="функции">Функции</h1>
+<h2 id="математические">Математические</h2>
+<p>Сложение</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">PLUS</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>)
+&gt;&gt; <span class="hljs-number">6</span>
+(<span class="hljs-name">+</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>)
+&gt;&gt; <span class="hljs-number">6</span>
+</code></pre>
+<p>Вычитание</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">MINUS</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>)
+&gt;&gt; <span class="hljs-number">-4</span>
+(<span class="hljs-name">-</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>)
+&gt;&gt; <span class="hljs-number">-4</span>
+</code></pre>
+<p>Умножение</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">TIMES</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>)
+&gt;&gt; <span class="hljs-number">6</span>
+(<span class="hljs-name">*</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>)
+&gt;&gt; <span class="hljs-number">6</span>
+</code></pre>
+<p>Целочисленное деление</p>
+<pre><code class="hljs language-lisp">(\ <span class="hljs-number">9</span> <span class="hljs-number">2</span>)
+&gt;&gt; <span class="hljs-number">4</span>
+</code></pre>
+<p>Остаток от деления</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">REMAINDER</span> <span class="hljs-number">6</span> <span class="hljs-number">4</span>)
+&gt;&gt; <span class="hljs-number">2</span>
+(% <span class="hljs-number">6</span> <span class="hljs-number">4</span>)
+&gt;&gt; <span class="hljs-number">2</span>
+</code></pre>
+<p>Деление</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">QUOTIENT</span> <span class="hljs-number">6</span> <span class="hljs-number">2.0</span>)
+&gt;&gt; <span class="hljs-number">3.0</span> 
+(<span class="hljs-name">/</span> <span class="hljs-number">6</span> <span class="hljs-number">2.0</span>)
+&gt;&gt; <span class="hljs-number">3.0</span> 
+(<span class="hljs-name">/</span> <span class="hljs-number">6</span> <span class="hljs-number">2</span> )
+&gt;&gt; <span class="hljs-number">3</span> 
+(<span class="hljs-name">/</span> <span class="hljs-number">2</span> <span class="hljs-number">6</span>)
+&gt;&gt; <span class="hljs-number">1/2</span> 
+</code></pre>
+<p>Степень</p>
+<pre><code class="hljs language-lisp">(^ <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>)
+&gt;&gt; <span class="hljs-number">6</span>
+</code></pre>
+<h2 id="работа-со-списками">Работа со списками</h2>
+<p>Первый элемент списка</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">CAR</span> `(<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>))
+&gt;&gt; <span class="hljs-number">1</span>
+</code></pre>
+<p>Хвост списка</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">CDR</span> `(<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>))
+&gt;&gt; (<span class="hljs-number">2</span> <span class="hljs-number">3</span>)
+</code></pre>
+<p>Добавить элемент в список</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">CONS</span> <span class="hljs-number">1</span> `(<span class="hljs-number">2</span> <span class="hljs-number">3</span>))
+&gt;&gt; (<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>)
+</code></pre>
+<p>Создать список</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">LIST</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>)
+&gt;&gt; (<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>)
+(<span class="hljs-name">LIST</span> `(a b) `(c d))
+&gt;&gt; ((<span class="hljs-name">a</span> b) (<span class="hljs-name">c</span> d))
+</code></pre>
+<p>Длина списка</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">LENGTH</span> `(a b c d e))
+&gt;&gt; <span class="hljs-number">5</span>
+</code></pre>
+<h2 id="логические-функции">Логические функции</h2>
+<p>Является ли атомом</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">ATOM</span> <span class="hljs-number">1</span>)
+&gt;&gt; T
+(<span class="hljs-name">ATOM</span> `(c d))
+&gt;&gt; NIL
+</code></pre>
+<p>Равенство атомов</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">EQ</span> <span class="hljs-number">2</span> <span class="hljs-number">2</span>)
+&gt;&gt; T
+(<span class="hljs-name">EQ</span> <span class="hljs-number">1</span> <span class="hljs-number">4</span>)
+&gt;&gt; NIL
+</code></pre>
+<p>Проверка списка на пустоту</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">NULL</span> `())
+&gt;&gt; T
+(<span class="hljs-name">NULL</span> NIL)
+&gt;&gt; T
+(<span class="hljs-name">NULL</span> `(<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>))
+&gt;&gt; NIL
+</code></pre>
+<p>Проверки типов</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">FIXEDP</span> <span class="hljs-number">10</span>)
+&gt;&gt; T
+(<span class="hljs-name">RATIONALP</span> <span class="hljs-number">6/5</span>)
+&gt;&gt; T
+(<span class="hljs-name">FLOAT</span> <span class="hljs-number">1.212</span>)
+&gt;&gt; T
+(<span class="hljs-name">COMPLEXP</span> <span class="hljs-number">#C(3 2)</span>)
+&gt;&gt; T
+(<span class="hljs-name">STRING</span> <span class="hljs-string">&quot;12 14 21 fds &quot;</span>)
+&gt;&gt; T
+</code></pre>
+<p>Логика</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">AND</span> T T T)
+&gt;&gt; T
+(<span class="hljs-name">AND</span> T T NIL)
+&gt;&gt; NIL
+
+(<span class="hljs-name">OR</span> T NIL NIL)
+&gt;&gt; T
+(<span class="hljs-name">OR</span> NIL NIL NIL)
+&gt;&gt; NIL
+
+(<span class="hljs-name">NOT</span> T)
+&gt;&gt; NIL 
+(<span class="hljs-name">NOT</span> NIL)
+&gt;&gt; T 
+</code></pre>
+<p>Сравнение чисел</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">&gt;</span> <span class="hljs-number">20</span> <span class="hljs-number">10</span>)
+&gt;&gt; T
+(<span class="hljs-name">&gt;</span> <span class="hljs-number">30</span> <span class="hljs-number">20</span> <span class="hljs-number">10</span>)
+&gt;&gt; T
+(<span class="hljs-name">&gt;</span> <span class="hljs-number">30</span> <span class="hljs-number">20</span> <span class="hljs-number">50</span>)
+&gt;&gt; NIL
+
+(<span class="hljs-name">&lt;</span> <span class="hljs-number">10</span> <span class="hljs-number">20</span>)
+&gt;&gt; T
+(<span class="hljs-name">&lt;</span> <span class="hljs-number">10</span> <span class="hljs-number">20</span> <span class="hljs-number">30</span>)
+&gt;&gt; T
+(<span class="hljs-name">&lt;</span> <span class="hljs-number">50</span> <span class="hljs-number">20</span> <span class="hljs-number">30</span>)
+&gt;&gt; NIL
+
+(<span class="hljs-name">=</span> <span class="hljs-number">20</span> <span class="hljs-number">20</span> <span class="hljs-number">20</span>)
+&gt;&gt; T
+(<span class="hljs-name">=</span> <span class="hljs-number">10</span> <span class="hljs-number">20</span> <span class="hljs-number">20</span>)
+&gt;&gt; NIL
+(<span class="hljs-name">&lt;</span> <span class="hljs-number">50</span> <span class="hljs-number">20</span> <span class="hljs-number">30</span>)
+&gt;&gt; NIL
+
+(<span class="hljs-name">&lt;&gt;</span> <span class="hljs-number">20</span> <span class="hljs-number">20</span> <span class="hljs-number">20</span>)
+&gt;&gt; NIL
+(<span class="hljs-name">&lt;&gt;</span> <span class="hljs-number">10</span> <span class="hljs-number">20</span> <span class="hljs-number">20</span>)
+&gt;&gt; T
+
+(<span class="hljs-name">&lt;=</span> <span class="hljs-number">10</span> <span class="hljs-number">10</span> <span class="hljs-number">20</span>)
+&gt;&gt; T
+
+(<span class="hljs-name">&gt;=</span> <span class="hljs-number">10</span> <span class="hljs-number">10</span> <span class="hljs-number">5</span>)
+&gt;&gt; T
+</code></pre>
+<h2 id="ветвление">Ветвление</h2>
+<p>Условаия if...else</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">COND</span>((условие<span class="hljs-number">-1</span>) (результат<span class="hljs-number">-1</span>))
+     ((условие<span class="hljs-number">-2</span>) (результат<span class="hljs-number">-2</span>))
+     ...
+     (<span class="hljs-name">T</span> (результат))
+)
+</code></pre>
+<h2 id="задание-значений">Задание значений</h2>
+<p>Задание переменной</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">SETQ</span> a \`(<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>))
+&gt;&gt; (<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>)
+a 
+&gt;&gt; (<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>) 
+</code></pre>
+<p>Задание функции. В примере:</p>
+<ul>
+<li>time2 - имя функции</li>
+<li>(x y) - переменные функции</li>
+<li>(* x y) - тело функции. Вообще все выражения после переменных являются телом и исполняются все. Но возвращается только последнее</li>
+</ul>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">DEFUN</span> time2 (<span class="hljs-name">x</span> y) (<span class="hljs-name">*</span> x y))
+&gt;&gt; time2
+time2 (<span class="hljs-number">12</span> <span class="hljs-number">3</span>)
+&gt;&gt; <span class="hljs-number">36</span>
+</code></pre>
+<h2 id="встроенныеfsubr---не-вычисляющие-значения-аргументов">Встроенные(FSUBR - не вычисляющие значения аргументов)</h2>
+<p>Присвоение значений. Присваиваем значение a</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">SETQ</span> a \`(<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>))
+&gt;&gt; (<span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>)
+</code></pre>
+<p>Новая функция. Определяется как имя, параметры, тело - одно или более S-выражение где последнее вовзращаемое значение</p>
+<pre><code class="hljs language-lisp">(<span class="hljs-name">DEFUN</span> *2 (x y) (* x y))
+(<span class="hljs-name">*2</span> <span class="hljs-number">12</span> <span class="hljs-number">3</span>)
+&gt;&gt; <span class="hljs-number">36</span>
+</code></pre>
+<h2 id="пользовательскиеfexprmacro---не-вычисляющие-значения-аргументов">Пользовательские(FEXPR/MACRO - не вычисляющие значения аргументов)</h2>
+</div>

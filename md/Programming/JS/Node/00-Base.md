@@ -34,6 +34,36 @@ node -v
 node
 ````
 
+## Разработка скрипта с параметрами
+
+Для работа с параметрами переданными из командной строки, нужно их получить:
+
+````js 
+process.argv
+````
+
+Если вызвать например так:
+
+````bash 
+node ./test.js 1 vasiliivanovich -h
+````
+
+То process.argv вернет:
+
+````js 
+['C://Syste.../node.exe', 'C://Syste.../test.js', '1', 'vasiliivanovich', '-h']
+````
+
+Чтобы узнать, запустили скрипт из консоли или он импортирован:
+
+````js 
+if(require.main === 'module') {
+    console.log('Console');
+} else {
+    coonsole.log('Required');
+}
+````
+
 ## Запуск кода из файла
 
 Запускает js файл

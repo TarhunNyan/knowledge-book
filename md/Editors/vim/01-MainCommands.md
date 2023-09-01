@@ -49,6 +49,26 @@ df_
 ...
 ````
 
+# Selecte 
+
+# Select(Выделение)
+
+````bash
+v 
+````
+
+# Select Lines(Выделение построчно)
+
+````bash
+V 
+````
+
+# Select Square(Выделение прямоугольником)
+
+````bash
+<CTRL>v 
+````
+
 # Copy/Paste
 
 ## Copy(копировать)

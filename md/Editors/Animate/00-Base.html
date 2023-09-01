@@ -1,0 +1,58 @@
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#animate"><li>Animate</li></a><a href="#рисование"><li>Рисование</li></a><ul><a href="#shape-и-stroke"><li>Shape и stroke</li></a><a href="#object"><li>Object</li></a><a href="#symbols"><li>Symbols</li></a><a href="#layers"><li>Layers</li></a><a href="#scene"><li>Scene</li></a></ul><a href="#инструменты"><li>Инструменты</li></a><ul><a href="#selection-tool"><li>Selection Tool</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="animate">Animate</h1>
+<p>Анимэйт прекрасен!</p>
+<h1 id="рисование">Рисование</h1>
+<p>Векторное рисование состоит из следующих структур, от большей к меньшей:</p>
+<ul>
+<li>Scene</li>
+<li>Layers</li>
+<li>Symbols</li>
+<li>Objects или Group</li>
+<li>Shape и stroke</li>
+</ul>
+<h2 id="shape-и-stroke">Shape и stroke</h2>
+<p>Когда рисуешь, создаешь один большой <strong>векторный объект</strong>. На <strong>линии</strong> этого <strong>векторного объекта</strong> можно
+добавить <strong>ободку</strong>(stroke), а <strong>замкнутые контуры</strong>(shape) окрасить. Причем при пересечении,
+<strong>обводку</strong> можно делать разной для разных секторов <strong>векторного объекта</strong> и для разных <strong>областей</strong> разный <strong>окрас</strong></p>
+<p>Из проблем в таком рисование, если ты нарисовал что-то поверх, а потом удалил, то будет вырезанное место. А если это <strong>shape</strong> того же цвета, то ничего вообще не изменится. Но это не баг а фича</p>
+<p>Нарисованное ВСЕГДА находится на нижнем уровне в слое. Проще говоря, все <strong>Objects</strong> отрисоваются поверх</p>
+<p>Классический способ рисовать:</p>
+<ul>
+<li>создаем квадрат</li>
+<li>берем <strong>Selection Tool</strong>, попровляем</li>
+<li>берем <strong>Line</strong>, отрисовываем где хотим разделить объект</li>
+<li>комбинируем два предыдущих пункта</li>
+<li>удаляем лишние секции</li>
+<li>выбираем цвета</li>
+</ul>
+<h2 id="object">Object</h2>
+<p>Порисовав, ты можешь выделить нарисованное и объединить в <strong>Object</strong>. Созданные объекты можно расставлять выше ниже относительно друг друга.
+Рисую, ты не влияешь на <strong>Objects</strong>. Можешь использовать <strong>ShapeTween</strong> анимацию с ними</p>
+<h2 id="symbols">Symbols</h2>
+<p><strong>Objects</strong> или <strong>Spate/Stroke</strong>, можно объединить в символы. Все символы лежат в <strong>Library</strong>. Изменения всимволе приводят к изменению во всех его экземплярах
+Только с симолом можно использовать <strong>MotionTween</strong> и <strong>ClassicTween</strong></p>
+<p>Врутри символов свооии <strong>Layers</strong> котрые хранят анимацию. У каждого экземпляра можно настраивать, <strong>start/end frame</strong>, выбирать проигрывтаь анимацию постоянно, один раз, реверс и один кадр</p>
+<h2 id="layers">Layers</h2>
+<p>Слои отвечает за высоту объектов в кадре и за анимацию. На <strong>Timeline</strong> устанавливаем <strong>Key Frame</strong>. По класске кадры просто сменяют друг друга
+Если ткнуть правой кнопкой мыши по ключевому кадру, то вверху можно настроить тип анимации:</p>
+<ul>
+<li>ClassicTween - движение из точки а в точку b</li>
+<li>MotionTween - движение из точки a в точку b по настраиваемой траектории</li>
+<li>ShapeTween - плавный переход объектов из состояния a в b. При чем для коректной работы, необходимо установить <strong>Shape Hint</strong>. Для этого идем в Modify -&gt; Shape -&gt; Add Shap Hint</li>
+</ul>
+<h2 id="scene">Scene</h2>
+<p>В окне <strong>Scene</strong> можно настраивать разные сцены в одном проекте. На каждой сцене свой набор слоев</p>
+<h1 id="инструменты">Инструменты</h1>
+<h2 id="selection-tool">Selection Tool</h2>
+<p>Лучший инструмент в моей жизни для редактирования векторной графики</p>
+<ul>
+<li>Если левой кнопкой мышки потянуть сектор, то он потянется</li>
+<li>Если левой кнопкой мышки потянуть сектор с зажатым ctrl, то появится точка</li>
+<li>Если левой кнопкой мышки потянуть заливку она переместиться</li>
+</ul>
+<p>Для идеала не хватает:</p>
+<ul>
+<li>Добавления точки просто по нажатию</li>
+<li>Не хватает только возможности скругления углов</li>
+<li>Подсветки вектора</li>
+</ul>
+</div>

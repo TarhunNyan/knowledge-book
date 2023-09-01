@@ -119,7 +119,7 @@ ctx.<span class="hljs-title function_">bezierCurveTo</span>(cp1x, cp1y, cp2x, cp
 </code></pre>
 <h1 id="стили-и-цвета">Стили и цвета</h1>
 <h2 id="fillstyle-и-strokestyle">fillStyle и strokeStyle</h2>
-<p>&lt;color&gt; - строка как CSS &lt;color&gt;</p>
+<p><color> - строка как CSS <color></p>
 <p>Устаналиваем стиль заполнения</p>
 <pre><code class="hljs language-js">ctx.<span class="hljs-property">fillStyle</span> = &lt;color&gt;
 </code></pre>
@@ -300,6 +300,12 @@ b &amp; d &amp; f \\
 <pre><code class="hljs language-js">ctx.<span class="hljs-title function_">resetTransform</span>();
 </code></pre>
 <h1 id="анимация">Анимация</h1>
-<p>Смотри примеры:</p>
+<p>Для анимация создается функция отрисовки. И вызывается с каки-то интервалом. Для этого можно использовать:</p>
+<ul>
+<li>setInterval(function, delay)</li>
+<li>setTimeout(function, delay)</li>
+<li>requestAnimationFrame(callback) - имеет преимущество перед другими вариантами, так как вызывается браузером только когда он готов к отрисовке. Функция специально создана для анимаций</li>
+</ul>
+<p>Примеры:</p>
 <p><a href="./example/01-SolarSystem.html">Солнечная система</a></p>
 </div>
