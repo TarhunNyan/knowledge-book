@@ -350,8 +350,6 @@ ctx.shaowColor = "rgba(0, 0, 0, 0.5);
 
 # Изображения
 
-## Получить изображние
-
 Изображение можно получить через:
 
 - HTMLImageElement
@@ -361,6 +359,21 @@ ctx.shaowColor = "rgba(0, 0, 0, 0.5);
 - ImageBitmap
 - OffscreenCanvas
 - VideoFrame
+
+## HTMLImageElement
+
+Через JS, с подгрузкой. По сути мы создаем HTMLElement типа img, но не пихаем в DOM: 
+
+````js 
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+const img = new Image();
+img.onload = function() {
+    ctx.drawImage(img, 0, 0);
+}
+img.src = "../img/imgName.png";
+````
 
 ## Отобразить изображение
 

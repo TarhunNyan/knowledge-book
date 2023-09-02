@@ -43,3 +43,26 @@ var ctx = canvas.getContext("webgl2");
 var ctx = canvas.getContext("bitmaprenderer");
 ````
 
+## Задаем разрешение Cavas
+
+Через CSS стили, задается размер в котором растянется Canvas:
+
+````js 
+const canvas = document.getElementById("canvas");
+canvas.style.width = 100 + "px";
+canvas.style.height = 200 + "px";
+````
+
+Но это задает разрешение самого Canvas. Разрешение canvas задается через свойства:
+
+````HTML
+<canvas id="canvas" height=500 width=500>
+````
+
+JS
+
+````js 
+const canvas = document.getElementById("canvas");
+canvas.width = 300;
+canvas.height = 100;
+````

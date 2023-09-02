@@ -1,4 +1,4 @@
-<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#canvas"><li>Canvas</li></a><ul><a href="#создание-canvas"><li>Создание Canvas</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../../static/style.css "><h1 id="canvas">Canvas</h1>
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#canvas"><li>Canvas</li></a><ul><a href="#создание-canvas"><li>Создание Canvas</li></a><a href="#задаем-разрешение-cavas"><li>Задаем разрешение Cavas</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../../static/style.css "><h1 id="canvas">Canvas</h1>
 <p>Благодаря Canvas мы можем рисовать с помощью Javascript</p>
 <table>
 <thead>
@@ -43,5 +43,19 @@
 
 <span class="hljs-comment">// Контекст для рисоания растровых изображений(?)</span>
 <span class="hljs-keyword">var</span> ctx = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&quot;bitmaprenderer&quot;</span>);
+</code></pre>
+<h2 id="задаем-разрешение-cavas">Задаем разрешение Cavas</h2>
+<p>Через CSS стили, задается размер в котором растянется Canvas:</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;canvas&quot;</span>);
+canvas.<span class="hljs-property">style</span>.<span class="hljs-property">width</span> = <span class="hljs-number">100</span> + <span class="hljs-string">&quot;px&quot;</span>;
+canvas.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-number">200</span> + <span class="hljs-string">&quot;px&quot;</span>;
+</code></pre>
+<p>Но это задает разрешение самого Canvas. Разрешение canvas задается через свойства:</p>
+<pre><code class="hljs language-HTML"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;canvas&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">500</span> <span class="hljs-attr">width</span>=<span class="hljs-string">500</span>&gt;</span>
+</code></pre>
+<p>JS</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;canvas&quot;</span>);
+canvas.<span class="hljs-property">width</span> = <span class="hljs-number">300</span>;
+canvas.<span class="hljs-property">height</span> = <span class="hljs-number">100</span>;
 </code></pre>
 </div>

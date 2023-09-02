@@ -1,4 +1,4 @@
-<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#canvas-2d"><li>Canvas 2d</li></a><a href="#rect"><li>rect</li></a><a href="#path"><li>path</li></a><ul><a href="#комманды-начала-и-завершения-path"><li>Комманды начала и завершения path</li></a><a href="#комманды-рисования"><li>Комманды рисования</li></a><a href="#кривые-безье"><li>Кривые Безье</li></a><a href="#используем-path-из-svg"><li>Используем Path из SVG</li></a><a href="#сохранить-объекты"><li>Сохранить объекты</li></a></ul><a href="#стили-и-цвета"><li>Стили и цвета</li></a><ul><a href="#fillstyle-и-strokestyle"><li>fillStyle и strokeStyle</li></a><a href="#настройка-стиля-линий"><li>Настройка стиля линий</li></a><a href="#градиент"><li>Градиент</li></a></ul><a href="#text"><li>Text</li></a><ul><a href="#узнать-размеры-выводимого-текста"><li>Узнать размеры выводимого текста</li></a><a href="#шрифт-текста"><li>Шрифт текста</li></a><a href="#цвет-текста"><li>Цвет текста</li></a><a href="#выравнивание-текста"><li>Выравнивание текста</li></a><a href="#напраление-текста"><li>Напраление текста</li></a><a href="#вывод-текста"><li>Вывод текста</li></a></ul><a href="#тень"><li>Тень</li></a><ul><a href="#настройка-тени"><li>Настройка тени</li></a></ul><a href="#изображения"><li>Изображения</li></a><ul><a href="#получить-изображние"><li>Получить изображние</li></a><a href="#отобразить-изображение"><li>Отобразить изображение</li></a></ul><a href="#clip-маска"><li>Clip (маска)</li></a><a href="#трансформация"><li>Трансформация</li></a><ul><a href="#сохраняем-и-восстанаиливаем-состояние"><li>Сохраняем и восстанаиливаем состояние</li></a><a href="#трансформации"><li>Трансформации</li></a></ul><a href="#анимация"><li>Анимация</li></a></ul></div></div><div class="main"><link rel="stylesheet" href="../../../static/style.css "><h1 id="canvas-2d">Canvas 2d</h1>
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#canvas-2d"><li>Canvas 2d</li></a><a href="#rect"><li>rect</li></a><a href="#path"><li>path</li></a><ul><a href="#комманды-начала-и-завершения-path"><li>Комманды начала и завершения path</li></a><a href="#комманды-рисования"><li>Комманды рисования</li></a><a href="#кривые-безье"><li>Кривые Безье</li></a><a href="#используем-path-из-svg"><li>Используем Path из SVG</li></a><a href="#сохранить-объекты"><li>Сохранить объекты</li></a></ul><a href="#стили-и-цвета"><li>Стили и цвета</li></a><ul><a href="#fillstyle-и-strokestyle"><li>fillStyle и strokeStyle</li></a><a href="#настройка-стиля-линий"><li>Настройка стиля линий</li></a><a href="#градиент"><li>Градиент</li></a></ul><a href="#text"><li>Text</li></a><ul><a href="#узнать-размеры-выводимого-текста"><li>Узнать размеры выводимого текста</li></a><a href="#шрифт-текста"><li>Шрифт текста</li></a><a href="#цвет-текста"><li>Цвет текста</li></a><a href="#выравнивание-текста"><li>Выравнивание текста</li></a><a href="#напраление-текста"><li>Напраление текста</li></a><a href="#вывод-текста"><li>Вывод текста</li></a></ul><a href="#тень"><li>Тень</li></a><ul><a href="#настройка-тени"><li>Настройка тени</li></a></ul><a href="#изображения"><li>Изображения</li></a><ul><a href="#htmlimageelement"><li>HTMLImageElement</li></a><a href="#отобразить-изображение"><li>Отобразить изображение</li></a></ul><a href="#clip-маска"><li>Clip (маска)</li></a><a href="#трансформация"><li>Трансформация</li></a><ul><a href="#сохраняем-и-восстанаиливаем-состояние"><li>Сохраняем и восстанаиливаем состояние</li></a><a href="#трансформации"><li>Трансформации</li></a></ul><a href="#анимация"><li>Анимация</li></a></ul></div></div><div class="main"><link rel="stylesheet" href="../../../static/style.css "><h1 id="canvas-2d">Canvas 2d</h1>
 <p>В 2d рисование происходит от левого верхнего угла. Холст прозрачен</p>
 <p>Рисование происходит двумя способами:</p>
 <ul>
@@ -232,7 +232,6 @@ ctx.<span class="hljs-property">shadowBlur</span> = <span class="hljs-number">2<
 ctx.<span class="hljs-property">shaowColor</span> = <span class="hljs-string">&quot;rgba(0, 0, 0, 0.5);
 </span></code></pre>
 <h1 id="изображения">Изображения</h1>
-<h2 id="получить-изображние">Получить изображние</h2>
 <p>Изображение можно получить через:</p>
 <ul>
 <li>HTMLImageElement</li>
@@ -243,6 +242,17 @@ ctx.<span class="hljs-property">shaowColor</span> = <span class="hljs-string">&q
 <li>OffscreenCanvas</li>
 <li>VideoFrame</li>
 </ul>
+<h2 id="htmlimageelement">HTMLImageElement</h2>
+<p>Через JS, с подгрузкой. По сути мы создаем HTMLElement типа img, но не пихаем в DOM:</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;canvas&quot;</span>);
+<span class="hljs-keyword">const</span> ctx = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&quot;2d&quot;</span>);
+
+<span class="hljs-keyword">const</span> img = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Image</span>();
+img.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) {
+    ctx.<span class="hljs-title function_">drawImage</span>(img, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+}
+img.<span class="hljs-property">src</span> = <span class="hljs-string">&quot;../img/imgName.png&quot;</span>;
+</code></pre>
 <h2 id="отобразить-изображение">Отобразить изображение</h2>
 <p>Отобразить изображение в точке (x, y)</p>
 <pre><code class="hljs language-js"><span class="hljs-title function_">drawImage</span>(image, x, y);
