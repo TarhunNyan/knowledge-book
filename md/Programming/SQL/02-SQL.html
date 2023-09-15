@@ -1,110 +1,111 @@
-<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#sql"><li>SQL</li></a><a href="#select"><li>SELECT</li></a><ul><a href="#exists"><li>EXISTS</li></a><a href="#group-by"><li>GROUP BY</li></a><a href="#having"><li>HAVING</li></a><a href="#union-intersect-и-except"><li>UNION, INTERSECT и EXCEPT</li></a><a href="#join"><li>JOIN</li></a><a href="#some-any-all"><li>SOME, ANY, ALL</li></a><a href="#case"><li>CASE</li></a></ul><a href="#рецепты"><li>Рецепты</li></a><ul><a href="#вытащить-столбцыв-произвольном-порядке"><li>Вытащить столбцы(в произвольном порядке)</li></a><a href="#вытащить-столбцыупорядоченно"><li>Вытащить столбцы(упорядоченно)</li></a><a href="#вытащить-столбцыс-уникальными-строками"><li>Вытащить столбцы(с уникальными строками)</li></a><a href="#получить-строки-с-пустыми-значениями"><li>Получить строки с пустыми значениями</li></a><a href="#подзапрос-внутри-from"><li>Подзапрос внутри FROM</li></a><a href="#переименовать-столбцы"><li>Переименовать столбцы</li></a><a href="#горизонтальная-выборка"><li>Горизонтальная выборка</li></a><a href="#агрегатные-функции"><li>Агрегатные функции</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="sql">SQL</h1>
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#sql"><li>SQL</li></a><a href="#select"><li>SELECT</li></a><ul><a href="#from"><li>FROM</li></a><a href="#where"><li>WHERE</li></a><a href="#group-by"><li>GROUP BY</li></a><a href="#having"><li>HAVING</li></a><a href="#select"><li>SELECT</li></a><a href="#order-by"><li>ORDER BY</li></a><a href="#агрегатные-функции"><li>Агрегатные функции</li></a></ul><a href="#объединение-таблиц"><li>Объединение таблиц</li></a><ul><a href="#join"><li>JOIN</li></a><a href="#union"><li>UNION</li></a></ul><a href="#работа-с-базами-данных"><li>Работа с базами данных</li></a><ul><a href="#create-database"><li>CREATE DATABASE</li></a><a href="#drop-database"><li>DROP DATABASE</li></a><a href="#show-database"><li>SHOW DATABASE</li></a></ul><a href="#работа-с-таблицами"><li>Работа с таблицами</li></a><ul><a href="#drop-table"><li>DROP TABLE</li></a><a href="#create-table"><li>CREATE TABLE</li></a><a href="#описание-столбцов-таблицы"><li>Описание столбцов таблицы</li></a><a href="#foreign-key"><li>Foreign key</li></a></ul><a href="#работа-с-данными-существующей-таблицы"><li>Работа с данными существующей таблицы</li></a><ul><a href="#insert-into"><li>INSERT INTO</li></a><a href="#update"><li>UPDATE</li></a><a href="#delete"><li>DELETE</li></a></ul><a href="#типы-данных"><li>Типы данных</li></a><ul><a href="#типы-данных"><li>Типы данных</li></a><a href="#преобразование-типов"><li>Преобразование типов</li></a></ul><a href="#логика-и-условия"><li>Логика и условия</li></a><ul><a href="#предикат"><li>Предикат</li></a><a href="#классические-операторы-сравнения"><li>Классические операторы сравнения</li></a><a href="#some-any-all"><li>SOME, ANY, ALL</li></a><a href="#if"><li>IF</li></a><a href="#case"><li>CASE</li></a><a href="#with"><li>WITH</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../static/style.css "><h1 id="sql">SQL</h1>
 <p>В этой статье приведен базовый синтаксис SQL. В разных софтах разная его реализация</p>
+<p>SQL - это реляционная БД, по английски relation, то бишь суть в том, что между таблицами есть &quot;отношения&quot;</p>
 <h1 id="select">SELECT</h1>
-<p>Классический CASE</p>
-<h2 id="exists">EXISTS</h2>
-<p>Предикат EXISTS принимает значение TRUE, если подзапрос возвращает любое количество строк, иначе его значение равно FALSE. Для NOT EXISTS все наоборот. Этот предикат никогда не принимает значение UNKNOWN</p>
-<pre><code class="hljs language-sql">[<span class="hljs-keyword">NOT</span>] <span class="hljs-keyword">EXISTS</span> (<span class="hljs-operator">&lt;</span>табличный подзапрос<span class="hljs-operator">&gt;</span>)
+<p>Самый базовый запрос. Вытаскивает данные из таблицы</p>
+<p>Обработка запроса/подзапроса идет в следующем порядке:</p>
+<ul>
+<li>FROM     - описываем таблицы с которыми работаем</li>
+<li>WHERE    - проверка для каждой строки</li>
+<li>GROUP BY - создаем группы</li>
+<li>HAVING   - делаем проверки для элементов группы</li>
+<li>SELECT   - тут мы выбираем столбцы и даем им имена</li>
+<li>ORDER BY - сортируем</li>
+</ul>
+<p>Общая структура запроса:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span>[<span class="hljs-keyword">DISTINCT</span><span class="hljs-operator">|</span><span class="hljs-keyword">ALL</span>]
+{ <span class="hljs-operator">*</span> <span class="hljs-operator">|</span> [<span class="hljs-operator">&lt;</span>выражение для стобца<span class="hljs-operator">&gt;</span> [[<span class="hljs-keyword">AS</span>}] <span class="hljs-operator">&lt;</span>псевдоним<span class="hljs-operator">&gt;</span>]] [, ...] }
+<span class="hljs-keyword">FROM</span> <span class="hljs-operator">&lt;</span>имя таблицы<span class="hljs-operator">&gt;</span> [[<span class="hljs-keyword">AS</span>] <span class="hljs-operator">&lt;</span>псевдоним<span class="hljs-operator">&gt;</span>] [, ...]
+[<span class="hljs-keyword">WHERE</span> <span class="hljs-operator">&lt;</span>предикат<span class="hljs-operator">&gt;</span>]
+[[<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> <span class="hljs-operator">&lt;</span>список столбцов<span class="hljs-operator">&gt;</span>]
+[<span class="hljs-keyword">HAVING</span> <span class="hljs-operator">&lt;</span>условие на агрегатные состояния<span class="hljs-operator">&gt;</span>]]
+[<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-operator">&lt;</span>список столбцов<span class="hljs-operator">&gt;</span>]
+</code></pre>
+<h2 id="from">FROM</h2>
+<p>Точечная нотация. Если берем данные из нескольких таблиц, то у них могут пересекаться названия столбцов. Для однозначности используют точечную нотацию:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> PC.price, Device.price, monitor <span class="hljs-keyword">FROM</span> PC, Device;
+</code></pre>
+<p>Подзапрос внутри FROM:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> PC.model, maker
+<span class="hljs-keyword">FROM</span> PC, (<span class="hljs-keyword">SELECT</span> maker, model <span class="hljs-keyword">FROM</span> Product) <span class="hljs-keyword">AS</span> prod
+<span class="hljs-keyword">WHERE</span> PC.model <span class="hljs-operator">=</span> prod.model <span class="hljs-keyword">AND</span> price <span class="hljs-operator">&gt;</span> <span class="hljs-number">600</span>;
+</code></pre>
+<p>Декартово произведение таблиц(на сайте oracle написано, что ACCROS JOIN имеют такое поведение, а не конструкция написанная выше, поэтому надо смотреть реализацию конкретной СУБД):</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> A, B;
+</code></pre>
+<h2 id="where">WHERE</h2>
+<p>Выбирает только те строки, которые соответствуют условию:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> speed, ram <span class="hljs-keyword">FROM</span> Pc
+<span class="hljs-keyword">WHERE</span> price<span class="hljs-operator">&lt;</span><span class="hljs-number">500</span> <span class="hljs-keyword">AND</span> cd <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;24x&#x27;</span>;
+</code></pre>
+<p>Так же можно производить математические операции со значениями столбцов:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> speed, ram <span class="hljs-keyword">FROM</span> Pc
+<span class="hljs-keyword">WHERE</span> price<span class="hljs-number">-100</span><span class="hljs-operator">&lt;</span><span class="hljs-number">500</span> <span class="hljs-keyword">AND</span> price <span class="hljs-operator">&lt;=</span> speed<span class="hljs-operator">*</span><span class="hljs-number">2</span> ;
 </code></pre>
 <h2 id="group-by">GROUP BY</h2>
-<p>Создает в таблие группы, по значениям из выбранного столбца</p>
+<p>Создает в таблице группы, по значениям из выбранного столбца</p>
 <pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> model, <span class="hljs-built_in">COUNT</span>(model) <span class="hljs-keyword">AS</span> Qty_model, <span class="hljs-built_in">AVG</span>(price) <span class="hljs-keyword">AS</span> Avg_price <span class="hljs-keyword">FROM</span> PC
 <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> model;
 </code></pre>
 <h2 id="having">HAVING</h2>
-<p>HAVING - как WHERE, но проверка делается для каждой группы полученной GROUP BY отдельно</p>
-<p>Так же не стоит забывать порядок обработки селект запроса, из-за чего псевдонимы с использованием агрегатных функций тупо не работают:</p>
+<p>HAVING - как WHERE, но проверка делается для каждой группы полученной GROUP BY отдельно:</p>
 <pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> model, <span class="hljs-built_in">COUNT</span>(model) <span class="hljs-keyword">AS</span> Qty_model, <span class="hljs-built_in">AVG</span>(price) <span class="hljs-keyword">AS</span> Avg_price
 <span class="hljs-keyword">FROM</span> PC
 <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> model
 <span class="hljs-keyword">HAVING</span> <span class="hljs-built_in">AVG</span>(price) <span class="hljs-operator">&lt;</span> <span class="hljs-number">800</span>;
 </code></pre>
-<h2 id="union-intersect-и-except">UNION, INTERSECT и EXCEPT</h2>
-<p>lt;запрос 1&gt;
-<b>UNION</b> [ALL]
-&lt;запрос 2&gt;</p>
-<p>Оператор UNION объединяет выходные строки каждого из запросов в один результирующий набор. Если определен параметр ALL, то сохраняются все дубликаты выходных строк</p>
-<p>При этом должны выполняться следующие условия:</p>
-<ol>
-<li>Количество выходных столбцов каждого из запросов должно быть одинаковым.</li>
-<li>Выходные столбцы каждого из запросов должны быть сравнимыми между собой (в порядке их следования) по типам данных.</li>
-<li>В результирующем наборе используются имена столбцов, заданные в первом запросе.</li>
-<li>Предложение ORDER BY применяется к результату соединения, поэтому оно может быть указано только в конце составного запроса</li>
-</ol>
-<p><b>INTERSECT</b>(пересечение) и <b>EXCEPT</b>(разность) - работают аналогично предложению UNION. Есть далеко не во всех СУБД</p>
-<h2 id="join">JOIN</h2>
-<p>Соеднинение таблиц с предикатом:</p>
-<p>SELECT maker, Product.model AS model_1, PC.model AS model_2, price
-FROM Product
-<b>INNER JOIN</b> PC ON PC.model = Product.model</p>
-<p>Где:</p>
-<ol>
-<li>INNER - значение есть в обеих таблицах</li>
-<li>LEFT - из 1 табл(в примере Product) берут ВСЕ значения, а из 2 таблицы могут и NULL добавить</li>
-<li>RIGHT - из 2 табл(в примере PC) берут ВСЕ значения, а из 1 таблицы могут и NULL добавить</li>
-<li>FULL - из 1 и 2 табл берут ВСЕ значения</li>
-</ol>
-<h2 id="some-any-all">SOME, ANY, ALL</h2>
-<p>lt;выражение&gt; &lt;оператор сравнения&gt; <b>SOME|ANY|ALL</b> (&lt;подзапрос&gt;)</p>
-<p>(&lt;подзапрос&gt;) - один столбец величин</p>
-<p><b>SOME</b> и <b>ANY</b> это одно и тоже. Для каждой ячейки (&lt;подзапрос&gt;) производится сравнение с выражением. Если хоть одно сравнение TRUE, то вернётся TRUE</p>
-<p><b>ALL</b> для каждой ячейки (&lt;подзапрос&gt;) производится сравнение с выражением. Если все сравнения возвращают TRUE, то вернётся ALL тоже верно TRUE</p>
-<h2 id="case">CASE</h2>
-<pre><code class="hljs language-sql"><span class="hljs-keyword">CASE</span> <span class="hljs-operator">&lt;</span>проверяемое выражение<span class="hljs-operator">&gt;</span>
-   <span class="hljs-keyword">WHEN</span> <span class="hljs-operator">&lt;</span>сравниваемое выражение <span class="hljs-number">1</span><span class="hljs-operator">&gt;</span>
-   <span class="hljs-keyword">THEN</span> <span class="hljs-operator">&lt;</span>возвращаемое значение <span class="hljs-number">1</span><span class="hljs-operator">&gt;</span>
-   …
-   <span class="hljs-keyword">WHEN</span> <span class="hljs-operator">&lt;</span>сравниваемое выражение N<span class="hljs-operator">&gt;</span>
-   <span class="hljs-keyword">THEN</span> <span class="hljs-operator">&lt;</span>возвращаемое значение N<span class="hljs-operator">&gt;</span>
-[<span class="hljs-keyword">ELSE</span> <span class="hljs-operator">&lt;</span>возвращаемое значение<span class="hljs-operator">&gt;</span>]
-<span class="hljs-keyword">END</span>
-</code></pre>
-<p>2-я форма этого выражения</p>
-<pre><code class="hljs language-sql"><span class="hljs-keyword">CASE</span>
-   <span class="hljs-keyword">WHEN</span> <span class="hljs-operator">&lt;</span>предикат <span class="hljs-number">1</span><span class="hljs-operator">&gt;</span>
-   <span class="hljs-keyword">THEN</span> <span class="hljs-operator">&lt;</span>возвращаемое значение <span class="hljs-number">1</span><span class="hljs-operator">&gt;</span>
-   …
-   <span class="hljs-keyword">WHEN</span> <span class="hljs-operator">&lt;</span>предикат N<span class="hljs-operator">&gt;</span>
-   <span class="hljs-keyword">THEN</span> <span class="hljs-operator">&lt;</span>возвращаемое значение N<span class="hljs-operator">&gt;</span>
-[<span class="hljs-keyword">ELSE</span> <span class="hljs-operator">&lt;</span>возвращаемое значение<span class="hljs-operator">&gt;</span>]
-<span class="hljs-keyword">END</span>
-</code></pre>
-<h1 id="рецепты">Рецепты</h1>
-<h2 id="вытащить-столбцыв-произвольном-порядке">Вытащить столбцы(в произвольном порядке)</h2>
+<h2 id="select">SELECT</h2>
+<p>Вытащить столбцы, в произвольном порядке:</p>
 <pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> Pc;
 </code></pre>
-<h2 id="вытащить-столбцыупорядоченно">Вытащить столбцы(упорядоченно)</h2>
+<p>Вытащить столбцы, упорядоченно:</p>
 <pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> speed, ram <span class="hljs-keyword">FROM</span> Pc;
 </code></pre>
-<h2 id="вытащить-столбцыс-уникальными-строками">Вытащить столбцы(с уникальными строками)</h2>
+<p>Вытащить столбцы,с уникальными строками:</p>
 <pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> speed, ram <span class="hljs-keyword">FROM</span> Pc;
 </code></pre>
-<h2 id="получить-строки-с-пустыми-значениями">Получить строки с пустыми значениями</h2>
+<p>Получить строки с пустыми значениями:</p>
 <pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> Pc <span class="hljs-keyword">WHERE</span> price <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span>;
 </code></pre>
-<h2 id="подзапрос-внутри-from">Подзапрос внутри FROM</h2>
-<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> PC.model, maker
-<span class="hljs-keyword">FROM</span> PC, (<span class="hljs-keyword">SELECT</span> maker, model <span class="hljs-keyword">FROM</span> Product) <span class="hljs-keyword">AS</span> prod
-<span class="hljs-keyword">WHERE</span> PC.model <span class="hljs-operator">=</span> prod.model <span class="hljs-keyword">AND</span> price <span class="hljs-operator">&gt;</span> <span class="hljs-number">600</span>;
-</code></pre>
-<h2 id="переименовать-столбцы">Переименовать столбцы</h2>
+<p>Переименовать столбцы:</p>
 <pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> ram <span class="hljs-keyword">AS</span> Mb, hd Gb <span class="hljs-keyword">FROM</span> ... <span class="hljs-keyword">WHERE</span> ...;
 </code></pre>
-<h2 id="горизонтальная-выборка">Горизонтальная выборка</h2>
-<pre><code class="hljs language-sql"> <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> speed, ram 
+<p>Горизонтальная выборка:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> speed, ram 
 <span class="hljs-keyword">FROM</span> Pc
 <span class="hljs-keyword">WHERE</span> price<span class="hljs-operator">&lt;</span><span class="hljs-number">500</span>
 <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-number">2</span> <span class="hljs-keyword">DESC</span>;
 </code></pre>
-<p>Так же можно производить математические операции со значениями столбцов:</p>
-<pre><code class="hljs language-sql">...
-ram <span class="hljs-operator">-</span> <span class="hljs-number">128</span> <span class="hljs-operator">&gt;</span> <span class="hljs-number">0</span>
-...
+<p>Применить математическое преобразование к столбцу</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> ram <span class="hljs-operator">*</span> <span class="hljs-number">1024</span> <span class="hljs-keyword">AS</span> Kb, hd Gb
+<span class="hljs-keyword">FROM</span> Pc
+<span class="hljs-keyword">WHERE</span> cd <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;24x&#x27;</span>;
 </code></pre>
-<pre><code class="hljs language-sql">...
-price <span class="hljs-operator">&lt;=</span> speed<span class="hljs-operator">*</span><span class="hljs-number">2</span> 
-...
+<p>Столбец заполненный константами. В примере, каждая ячейка столбца ram_units будет содержать 'Mb':</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> ram, <span class="hljs-string">&#x27;Mb&#x27;</span> <span class="hljs-keyword">AS</span> ram_units, hd
+<span class="hljs-keyword">FROM</span> Pc
+<span class="hljs-keyword">WHERE</span> cd <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;24x&#x27;</span>;
 </code></pre>
+<h2 id="order-by">ORDER BY</h2>
+<p>Представляет из себя сортировку данных. Можно сортировать:</p>
+<ul>
+<li>ASC  - по возрастанию. Используется по усолчанию, так что можно не писать</li>
+<li>DESC - по убывнаию</li>
+</ul>
+<p>Пример:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> speed, ram <span class="hljs-keyword">FROM</span> Pc <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> ram <span class="hljs-keyword">DESC</span>;
+
+<span class="hljs-keyword">SELECT</span> speed, ram <span class="hljs-keyword">FROM</span> Pc <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> ram <span class="hljs-keyword">ASC</span>;
+</code></pre>
+<p>Также можно сортировать не по имени столбца а по порядкову номеру:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> speed, ram <span class="hljs-keyword">FROM</span> Pc <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-number">2</span> <span class="hljs-keyword">ASC</span>;
+</code></pre>
+<p>При упорядочивании по нескольким столбцам. Сначала сортирует по первому прописанному, а потом, если значения равны, то по второму:</p>
+<pre><code class="hljs language-sql">Упорядочить по нескольким столбцам 
+<span class="hljs-keyword">SELECT</span> speed, ram <span class="hljs-keyword">FROM</span> Pc
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> ram <span class="hljs-keyword">DESC</span>, speed <span class="hljs-keyword">ASC</span>;
+</code></pre>
+<p>Из-за особенности в порядке обработки запроса селект, агргетные функции которые были прописаны в начале работают только в разделе ORDER BY</p>
 <h2 id="агрегатные-функции">Агрегатные функции</h2>
 <table>
 <thead>
@@ -142,5 +143,501 @@ price <span class="hljs-operator">&lt;=</span> speed<span class="hljs-operator">
 </table>
 <p>Пример:</p>
 <pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">MIN</span>(price) <span class="hljs-keyword">AS</span> Min_price, <span class="hljs-built_in">MAX</span>(price) <span class="hljs-keyword">AS</span> Max_price <span class="hljs-keyword">FROM</span> PC;
+</code></pre>
+<h1 id="объединение-таблиц">Объединение таблиц</h1>
+<h2 id="join">JOIN</h2>
+<p>Объединение столбцов двух таблиц. После ON, идет инструкция, по которой мы сопоставяем строки в соединяемых таблицах:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> maker, Product.model <span class="hljs-keyword">AS</span> model_1, PC.model <span class="hljs-keyword">AS</span> model_2, price
+<span class="hljs-keyword">FROM</span> Product
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> PC <span class="hljs-keyword">ON</span> PC.model <span class="hljs-operator">=</span> Product.model
+</code></pre>
+<p>Так де имеется настройка того как соединять табллицы. Они связаны с диаграмами Венна:</p>
+<ul>
+<li>INNER - пересечение таблиц. То есть внутрення часть диаграммы Венна</li>
+<li>LEFT JOIN - к значениям 1 табл, добавляют соотвествующие значения 2 табл. Левая и внутренняя часть диаграммы Венна</li>
+<li>RIGHT JOIN - к значениям 2 табл, добавляют соотвествующие значения 1 табл. Правая и внутренняя часть диаграммы Венна</li>
+<li>FULL JOIN - соединяет как может. Где нечего соединять втыкает NULL. Левая, внутренняя и правая часть диаграмымы Венна</li>
+</ul>
+<h2 id="union">UNION</h2>
+<p>Объединение всез строк в двух таблицах. Для этого таблицы должны соответствовать следующим условиям:</p>
+<ul>
+<li>Количество выходных столбцов каждого из запросов должно быть одинаковым.</li>
+<li>Выходные столбцы каждого из запросов должны быть сравнимыми между собой (в порядке их следования) по типам данных.</li>
+<li>В результирующем наборе используются имена столбцов, заданные в первом запросе.</li>
+<li>Предложение ORDER BY применяется к результату соединения, поэтому оно может быть указано только в конце составного запроса</li>
+</ul>
+<p>Общая структура:</p>
+<pre><code class="hljs language-sql"><span class="hljs-operator">&lt;</span>запрос <span class="hljs-number">1</span><span class="hljs-operator">&gt;</span>
+<span class="hljs-keyword">UNION</span> [<span class="hljs-keyword">ALL</span>]
+<span class="hljs-operator">&lt;</span>запрос <span class="hljs-number">2</span><span class="hljs-operator">&gt;</span>
+</code></pre>
+<p>По умолчанию UNION удаляет дублирующие строки. Если использовать ALL, то будет их оставлять:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> Goods.good_name <span class="hljs-keyword">AS</span> name <span class="hljs-keyword">FROM</span> Goods
+<span class="hljs-keyword">UNION</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> FamilyMembers.member_name <span class="hljs-keyword">AS</span> name <span class="hljs-keyword">FROM</span> FamilyMembers;
+</code></pre>
+<p>Так же существуют INTERSECT(пересечение) и EXCEPT(разность). Принцип работы аналогичен UNION, но есть далеко не во всех реализация SQL</p>
+<h1 id="работа-с-базами-данных">Работа с базами данных</h1>
+<h2 id="create-database">CREATE DATABASE</h2>
+<p>Создает базу данных:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE</span> DATABASE DataBase_name$<span class="hljs-number">1</span>;
+</code></pre>
+<h2 id="drop-database">DROP DATABASE</h2>
+<p>Удаляет базу данных:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">DROP</span> DATABASE DataBase_name$<span class="hljs-number">1</span>;
+</code></pre>
+<h2 id="show-database">SHOW DATABASE</h2>
+<p>Отображает список баз данных, включая служебные(information_schema, mysql, performance_schema, sys):</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SHOW</span> DATABASE;
+</code></pre>
+<h1 id="работа-с-таблицами">Работа с таблицами</h1>
+<h2 id="drop-table">DROP TABLE</h2>
+<p>Удалить таблицу:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TABLE</span> TableName; 
+</code></pre>
+<h2 id="create-table">CREATE TABLE</h2>
+<p>Итак, сначало нужно сздать базу данных:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE</span> DATABASE DataBase_name$<span class="hljs-number">1</span>;
+</code></pre>
+<p>Потом указать что сейчас будем использовать эту базу данных</p>
+<pre><code class="hljs language-sql">USE DataBase_name$<span class="hljs-number">1</span>;
+</code></pre>
+<p>Теперь создаем таблицу:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Users (
+    id <span class="hljs-type">INT</span>,
+    name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">255</span>),
+    age <span class="hljs-type">INT</span>
+);
+</code></pre>
+<h2 id="описание-столбцов-таблицы">Описание столбцов таблицы</h2>
+<p>Так же можно указать дополнительный парамет:</p>
+<ul>
+<li>PRIMARY KEY - указывает, что стобец является первичным ключом. Несколько столбцов могут быть первичными ключами</li>
+<li>AUTO_INCREMENT - фактически это id-шник. Только одна колонка на таблицу может иметь это свойство. При добавлении значения 0 или NULL, автоматически найдет наибольшее значение и добавит ему единичку</li>
+<li>UNIQUE - значение в данной таблице для всех данных должны быть уникальны</li>
+<li>NOT NULL - в столбце не должно быть NULL значений</li>
+<li>DEFAULT - задает значение по умолчанию</li>
+</ul>
+<p>Пример:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Users (
+    id <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY</span> KEY,
+    name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+    age <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-number">18</span>
+);
+</code></pre>
+<p>Чтобы просмотреть описание созданной таблицы можно вызвать:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">DESCRIBE</span> TableName;
+</code></pre>
+<h2 id="foreign-key">Foreign key</h2>
+<p>Foreign key - внешний ключ. Например, у нас есть таблица компний:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Companies (
+    id <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY</span> KEY,
+    name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+    <span class="hljs-keyword">PRIMARY</span> KEY (id)
+);
+</code></pre>
+<p>И мы создаем таблицу работников. Внутри таблицы работников мы хотим ссылаться на компанию в которой они работают(см. предпоследнюю строку):</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Users (
+    id <span class="hljs-type">INT</span> <span class="hljs-keyword">PRIMARY</span> KEY,
+    name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,
+    age <span class="hljs-type">INT</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-number">18</span>,
+    company <span class="hljs-type">INT</span>,
+    <span class="hljs-keyword">FOREIGN</span> KEY (company) <span class="hljs-keyword">REFERENCES</span> Companies (id)
+);
+</code></pre>
+<p>Можно так же определить поведение данных, при удалении и изменении в другой таблице. Сделав вот так:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Users (
+    ...
+    <span class="hljs-keyword">FOREIGN</span> KEY (company) <span class="hljs-keyword">REFERENCES</span> Companies (id)
+    <span class="hljs-keyword">ON</span> <span class="hljs-keyword">DELETE</span> RESTRICT <span class="hljs-keyword">ON</span> <span class="hljs-keyword">UPDATE</span> CASCADE
+);
+</code></pre>
+<p>Возможные действия:</p>
+<ul>
+<li>ON DELETE RESTRICT - если попробовать удалить компанию, у которой в таблице Users есть данные, база данных не даст этого сделать</li>
+<li>ON DELETE CASCADE  - при удалении компании были бы удалены все пользователи, ссылающиеся на эту компанию</li>
+<li>ON DELETE SET NULL - при удалении компании в таблице пользвателей значения, ссылающиеся на эту команию, заменяться на NULL</li>
+<li>ON UPDATE CASCADE  - означает, что если компания изменит свой идентификатор, то все пользователи получат новый идентификатор в поле company</li>
+</ul>
+<h1 id="работа-с-данными-существующей-таблицы">Работа с данными существующей таблицы</h1>
+<h2 id="insert-into">INSERT INTO</h2>
+<p>Вставить новые данные в существующую таблицу</p>
+<p>Вставляем в таблицу Goods, в столбцы good_id, good_name, type, данные:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> Goods (good_id, good_name, type) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">20</span>, <span class="hljs-string">&#x27;Table&#x27;</span>, <span class="hljs-number">2</span>);
+</code></pre>
+<p>Вставляем в таблицу Goods, подзапрос:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> Goods (good_id, good_name, type) <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-operator">+</span> <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;Table&#x27;</span>, <span class="hljs-number">2</span> <span class="hljs-keyword">FROM</span> Goods;
+</code></pre>
+<p>Вставляем в таблицу Goods, подзапрос, без описания нужных столбцов:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> Goods <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-operator">+</span> <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;Table&#x27;</span>, <span class="hljs-number">2</span> <span class="hljs-keyword">FROM</span> Goods;
+</code></pre>
+<h2 id="update">UPDATE</h2>
+<p>Запрос изменяет значения полей таблицы</p>
+<p>В таблице FamilyMembers, в столбце member_name, все значения &quot;Andie Quincey&quot;, меняем на &quot;Andie Anthony&quot;:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">UPDATE</span> FamilyMembers <span class="hljs-keyword">SET</span> member_name <span class="hljs-operator">=</span> &quot;Andie Anthony&quot; <span class="hljs-keyword">WHERE</span> member_name <span class="hljs-operator">=</span> &quot;Andie Quincey&quot;;
+</code></pre>
+<p>В увеличиваем значения столбца unit_price в два раза:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">UPDATE</span> FamilyMembers <span class="hljs-keyword">SET</span> unit_price <span class="hljs-operator">=</span> unit_price <span class="hljs-operator">*</span> <span class="hljs-number">2</span>;
+</code></pre>
+<p>Меняем сразу два столбца:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">UPDATE</span> FamilyMembers <span class="hljs-keyword">SET</span> unit_price <span class="hljs-operator">=</span> unit_price <span class="hljs-operator">*</span> <span class="hljs-number">2</span>, id <span class="hljs-operator">=</span> id <span class="hljs-operator">+</span> <span class="hljs-number">1</span>;
+</code></pre>
+<h2 id="delete">DELETE</h2>
+<p>Запрос удаляет строки из таблицы:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">DELETE</span> Roomds <span class="hljs-keyword">FROM</span> Reservation <span class="hljs-keyword">WHERE</span> Rooms.has_kitchen <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;
+</code></pre>
+<p>Пример запроса с объединением:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">DELETE</span> Reservations, Rooms <span class="hljs-keyword">FROM</span> Reservations <span class="hljs-keyword">JOIN</span> Rooms <span class="hljs-keyword">ON</span> Reservations.room_id <span class="hljs-operator">=</span> Rooms.id <span class="hljs-keyword">WHERE</span> Rooms.has_kitchen <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;
+</code></pre>
+<h1 id="типы-данных">Типы данных</h1>
+<p>В разных реализациях БД разные типы данных, поэтому не могу привести пример</p>
+<h2 id="типы-данных">Типы данных</h2>
+<p>Строковые типы данных:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Название</th>
+<th style="text-align:left">Описание</th>
+<th style="text-align:center">Размер</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">CHAR(X)</td>
+<td style="text-align:left">строка длинной до 255 символов</td>
+<td style="text-align:center">до 255 символов</td>
+</tr>
+<tr>
+<td style="text-align:left">VARCHAR(X)</td>
+<td style="text-align:left">текстовые строки с динамической длинной</td>
+<td style="text-align:center">до 65 535 символов</td>
+</tr>
+<tr>
+<td style="text-align:left">BINARY(X)</td>
+<td style="text-align:left">двоичная строк длинной до 255 символов</td>
+<td style="text-align:center">до 255 символов</td>
+</tr>
+<tr>
+<td style="text-align:left">VARBINARY(X)</td>
+<td style="text-align:left">двоичная строка произвольной длины</td>
+<td style="text-align:center">до 65 535 символов</td>
+</tr>
+<tr>
+<td style="text-align:left">TINYBLOB</td>
+<td style="text-align:left">Смотри BLOB</td>
+<td style="text-align:center">до 255 символов</td>
+</tr>
+<tr>
+<td style="text-align:left">BLOB</td>
+<td style="text-align:left">содержи неограниченный двоичный текст<br>Предназначен для хранения картинок<br><br>В зависимости от размера содержимого бывает: TINYBLOB, MEDIUMBLOB, LONGBLOB</td>
+<td style="text-align:center">до 65 535 символов</td>
+</tr>
+<tr>
+<td style="text-align:left">MEDIUMBLOB</td>
+<td style="text-align:left">Смотри BLOB</td>
+<td style="text-align:center">до 16 777 215 символов</td>
+</tr>
+<tr>
+<td style="text-align:left">LONGBLOB</td>
+<td style="text-align:left">Смотри BLOB</td>
+<td style="text-align:center">до 4 294 967 295 символов</td>
+</tr>
+<tr>
+<td style="text-align:left">TINYTEXT</td>
+<td style="text-align:left">Смотри TEXT</td>
+<td style="text-align:center">до 255 символов</td>
+</tr>
+<tr>
+<td style="text-align:left">TEXT</td>
+<td style="text-align:left">содержи неограниченный текст<br>В отличии от BLOB не чувствителен к регистру при сравнении<br><br>В зависимости от размера содержимого бывает: TINYTEXT, MEDIUMTEXT, LONGTEXT</td>
+<td style="text-align:center">до 65 535 символов</td>
+</tr>
+<tr>
+<td style="text-align:left">MEDIUMTEXT</td>
+<td style="text-align:left">Смотри TEXT</td>
+<td style="text-align:center">до 16 777 215 символов</td>
+</tr>
+<tr>
+<td style="text-align:left">LONGTEXT</td>
+<td style="text-align:left">Смотри TEXT</td>
+<td style="text-align:center">до 4 294 967 295 символов</td>
+</tr>
+</tbody>
+</table>
+<p>Числовые типы данных:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Название</th>
+<th style="text-align:left">Описание</th>
+<th style="text-align:left">Пример</th>
+<th style="text-align:center">Размер</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">TINYINT</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:center">1 байт</td>
+</tr>
+<tr>
+<td style="text-align:left">SMALLINT</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:center">2 байт</td>
+</tr>
+<tr>
+<td style="text-align:left">MEDIUMINT</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:center">3 байт</td>
+</tr>
+<tr>
+<td style="text-align:left">INT</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:center">4 байт</td>
+</tr>
+<tr>
+<td style="text-align:left">BIGINT</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:center">8 байт</td>
+</tr>
+<tr>
+<td style="text-align:left">DECIMAL(M, D)</td>
+<td style="text-align:left">хранит точную вещественну, десятичную дробь. M - сколько всего цифр хранит, D - сколько цифр после запятой</td>
+<td style="text-align:left"></td>
+<td style="text-align:center">зависит от указанных размеров</td>
+</tr>
+<tr>
+<td style="text-align:left">BIT(M)</td>
+<td style="text-align:left">хранит число в двоичном виде. M - число хранимых бит</td>
+<td style="text-align:left"></td>
+<td style="text-align:center">не более 64</td>
+</tr>
+<tr>
+<td style="text-align:left">BOOL</td>
+<td style="text-align:left">логический тип. Либо 1, либо 0</td>
+<td style="text-align:left">b'101'</td>
+<td style="text-align:center">1 байт</td>
+</tr>
+<tr>
+<td style="text-align:left">FLOAT(M, D)</td>
+<td style="text-align:left">числа с плавающей запятой</td>
+<td style="text-align:left"></td>
+<td style="text-align:center">4 байта</td>
+</tr>
+<tr>
+<td style="text-align:left">REAL(M, D)</td>
+<td style="text-align:left">числа с плавающей запятой</td>
+<td style="text-align:left"></td>
+<td style="text-align:center">8 байт</td>
+</tr>
+</tbody>
+</table>
+<p>Дата и время:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Название</th>
+<th style="text-align:left">Описание</th>
+<th style="text-align:left">Пример</th>
+<th style="text-align:center">Размер</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">DATE</td>
+<td style="text-align:left">данные вида ГГГГ-ММ-ДД</td>
+<td style="text-align:left">&quot;2022-12-03&quot;</td>
+<td style="text-align:center">3 байта</td>
+</tr>
+<tr>
+<td style="text-align:left">TIME</td>
+<td style="text-align:left">данные вида ЧЧ:ММ:СС или ЧЧЧ:ММ:СС</td>
+<td style="text-align:left">&quot;178:10:23&quot;</td>
+<td style="text-align:center">3 байта</td>
+</tr>
+<tr>
+<td style="text-align:left">DATETIME</td>
+<td style="text-align:left">данные вида ГГГГ-ММ-СС ЧЧ:ММ:СС</td>
+<td style="text-align:left">&quot;2022-12-03 78:10:23&quot;</td>
+<td style="text-align:center">8 байта</td>
+</tr>
+<tr>
+<td style="text-align:left">TIMESTAMP</td>
+<td style="text-align:left">данные вида ГГГГ-ММ-СС ЧЧ:ММ:СС</td>
+<td style="text-align:left">&quot;2022-12-03 78:10:23&quot;</td>
+<td style="text-align:center">4 байта</td>
+</tr>
+</tbody>
+</table>
+<p>TIMESTAMP хранит сколько секунд прошло от 0 часа выбранного часового пояса. Поэтому при смене часового пояса, будут выводиться другие данные. Кроме того огранимчен датами от 1970 до 2038</p>
+<h2 id="преобразование-типов">Преобразование типов</h2>
+<p>Явное преобразование типа</p>
+<pre><code class="hljs language-sql"><span class="hljs-built_in">CAST</span>(<span class="hljs-operator">&lt;</span>выражение<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">AS</span> <span class="hljs-operator">&lt;</span>тип данных<span class="hljs-operator">&gt;</span>)
+</code></pre>
+<p>Число в строку:</p>
+<pre><code class="hljs language-sql"><span class="hljs-built_in">CAST</span>(<span class="hljs-built_in">AVG</span>(price) <span class="hljs-keyword">AS</span> <span class="hljs-type">CHAR</span>(<span class="hljs-number">15</span>))
+</code></pre>
+<p>Округление:</p>
+<pre><code class="hljs language-sql"><span class="hljs-built_in">CAST</span>(<span class="hljs-built_in">AVG</span>(launched) <span class="hljs-keyword">AS</span> <span class="hljs-type">NUMERIC</span>(<span class="hljs-number">6</span>,<span class="hljs-number">2</span>))
+</code></pre>
+<h1 id="логика-и-условия">Логика и условия</h1>
+<h2 id="предикат">Предикат</h2>
+<p>Предикат - логическое выражение, возвращающее:</p>
+<ol>
+<li>FALSE - 0</li>
+<li>TRUE - 1</li>
+<li>UNKNOWN - 1/2</li>
+</ol>
+<p>NOT:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> Printer
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">NOT</span> (type <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;matrix&#x27;</span>);
+</code></pre>
+<p>AND:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> Printer
+<span class="hljs-keyword">WHERE</span> (type <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;matrix&#x27;</span>) <span class="hljs-keyword">AND</span> price <span class="hljs-operator">&lt;</span> <span class="hljs-number">300</span>;
+</code></pre>
+<p>OR:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> Printer
+<span class="hljs-keyword">WHERE</span> (type <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;matrix&#x27;</span>) <span class="hljs-keyword">OR</span> price <span class="hljs-operator">&lt;</span> <span class="hljs-number">300</span>;
+</code></pre>
+<p>BETWEEN:</p>
+<pre><code class="hljs language-sql">exp1 <span class="hljs-keyword">BETWEEN</span> exp2 <span class="hljs-keyword">AND</span> exp3
+это то же что и:
+exp1<span class="hljs-operator">&gt;=</span>exp2 <span class="hljs-keyword">AND</span> exp1<span class="hljs-operator">&lt;=</span>exp3
+</code></pre>
+<p>IN:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> model, speed, hd <span class="hljs-keyword">FROM</span> Pc
+<span class="hljs-keyword">WHERE</span> hd <span class="hljs-keyword">IN</span> (<span class="hljs-number">10</span>, <span class="hljs-number">20</span>);
+</code></pre>
+<p>IN с использование подзапроса:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> Reservations
+    <span class="hljs-keyword">WHERE</span> (room_id, price) <span class="hljs-keyword">IN</span> (<span class="hljs-keyword">SELECT</span> id, price <span class="hljs-keyword">FROM</span> Rooms);
+</code></pre>
+<p>IS NULL</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> model, speed, hd <span class="hljs-keyword">FROM</span> Pc
+<span class="hljs-keyword">WHERE</span> model <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span>;
+</code></pre>
+<p>EXISTS - возвращает значение TRUE, если подзапрос возвращает любое количество строк, иначе его значение равно FALSE.</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">EXISTS</span> (<span class="hljs-operator">&lt;</span>табличный подзапрос<span class="hljs-operator">&gt;</span>)
+
+<span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> (<span class="hljs-operator">&lt;</span>табличный подзапрос<span class="hljs-operator">&gt;</span>)
+</code></pre>
+<p>LIKE - ищет текст похожий на то что в кавычках. Особенности:</p>
+<ol>
+<li>% - любая последовательность символов</li>
+<li>_ - один любой символ</li>
+<li>ESCAPE - то что в указано в кавычках после ESCAPE становится эскейп-символом</li>
+</ol>
+<p>Пример:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> class FORM Ships
+<span class="hljs-keyword">WHERE</span> class <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%Class#__&#x27;</span> <span class="hljs-keyword">ESCAPE</span> <span class="hljs-string">&#x27;#&#x27;</span>;
+</code></pre>
+<p>Комбиниированный пример:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> model, speed, hd
+<span class="hljs-keyword">FROM</span> Pc
+<span class="hljs-keyword">WHERE</span> hd <span class="hljs-keyword">IN</span> (<span class="hljs-number">10</span>, <span class="hljs-number">20</span>) <span class="hljs-keyword">AND</span>
+            model <span class="hljs-keyword">IN</span> (<span class="hljs-keyword">SELECT</span> model  <span class="hljs-keyword">FROM</span> product
+            <span class="hljs-keyword">WHERE</span> maker <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;A&#x27;</span>);
+</code></pre>
+<h2 id="классические-операторы-сравнения">Классические операторы сравнения</h2>
+<p>Классические операторы сравнения: &gt;, &lt;, &gt;=, &lt;=, =, &lt;&gt;</p>
+<p>Сревнение различных типов данных:</p>
+<ul>
+<li>Данные типа NUMERIC (числа) сравниваются в соответствии с их алгебраическим значением.</li>
+<li>Данные типа CHARACTER STRING (символьные строки) сравниваются в соответствии с их алфавитной последовательностью(&quot;fol&quot;&lt;&quot;for&quot;, &quot;bar&quot;&lt;&quot;barber&quot;)</li>
+<li>Данные типа DATETIME (дата/время) сравниваются в хронологическом порядке.</li>
+<li>Данные типа INTERVAL (временной интервал) преобразуются в соответствующие типы, а затем сравниваются как обычные числовые значения типа NUMERIC</li>
+</ul>
+<h2 id="some-any-all">SOME, ANY, ALL</h2>
+<p>Прменяет логическое выражение к результату подзапроса и возвращает TRUE, FALSE или UNKNOWN. Общая структура такова:</p>
+<ul>
+<li>&lt;подзапрос&gt; - должен возвращать один столбец величин</li>
+</ul>
+<pre><code class="hljs language-sql"><span class="hljs-operator">&lt;</span>выражение<span class="hljs-operator">&gt;</span> <span class="hljs-operator">&lt;</span>оператор сравнения<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">SOME</span><span class="hljs-operator">|</span><span class="hljs-keyword">ANY</span><span class="hljs-operator">|</span><span class="hljs-keyword">ALL</span> (<span class="hljs-operator">&lt;</span>подзапрос<span class="hljs-operator">&gt;</span>)
+</code></pre>
+<p>SOME - если хотя бы одно сравнение вернет TRUE, то SOME вернет TRUE:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> dbo.TestTable
+   <span class="hljs-keyword">WHERE</span> CategoryID <span class="hljs-operator">=</span> <span class="hljs-number">1</span> 
+     <span class="hljs-keyword">AND</span> Price <span class="hljs-operator">&gt;</span> <span class="hljs-keyword">SOME</span> (<span class="hljs-keyword">SELECT</span> Price 
+                         <span class="hljs-keyword">FROM</span> dbo.TestTable 
+                         <span class="hljs-keyword">WHERE</span> CategoryID <span class="hljs-operator">=</span> <span class="hljs-number">2</span>)
+</code></pre>
+<p>ANY - если хотя бы одно сравнение вернет TRUE, то ANY вернет TRUE:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> dbo.TestTable
+   <span class="hljs-keyword">WHERE</span> CategoryID <span class="hljs-operator">=</span> <span class="hljs-number">1</span> 
+     <span class="hljs-keyword">AND</span> Price <span class="hljs-operator">&gt;</span> <span class="hljs-keyword">ANY</span> (<span class="hljs-keyword">SELECT</span> Price 
+                         <span class="hljs-keyword">FROM</span> dbo.TestTable 
+                         <span class="hljs-keyword">WHERE</span> CategoryID <span class="hljs-operator">=</span> <span class="hljs-number">2</span>)
+</code></pre>
+<p>ALL - если сравнения вернут TRUE, то ALL вернет TRUE:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> dbo.TestTable
+   <span class="hljs-keyword">WHERE</span> CategoryID <span class="hljs-operator">=</span> <span class="hljs-number">1</span> 
+     <span class="hljs-keyword">AND</span> Price <span class="hljs-operator">&gt;</span> <span class="hljs-keyword">ALL</span> (<span class="hljs-keyword">SELECT</span> Price 
+                         <span class="hljs-keyword">FROM</span> dbo.TestTable 
+                         <span class="hljs-keyword">WHERE</span> CategoryID <span class="hljs-operator">=</span> <span class="hljs-number">2</span>)
+</code></pre>
+<h2 id="if">IF</h2>
+<p>Классический if, но без else:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> id, price,
+    IF(price <span class="hljs-operator">&gt;=</span> <span class="hljs-number">150</span>, &quot;Комфорт-класс&quot;, &quot;Эконом-класс&quot;) <span class="hljs-keyword">AS</span> category
+    <span class="hljs-keyword">FROM</span> Rooms
+</code></pre>
+<p>Вложенный IF:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> id, price,
+    IF(price <span class="hljs-operator">&gt;=</span> <span class="hljs-number">200</span>, &quot;Бизнес-класс&quot;,
+        IF(price <span class="hljs-operator">&gt;=</span> <span class="hljs-number">150</span>,
+            &quot;Комфорт-класс&quot;, &quot;Эконом-класс&quot;)) <span class="hljs-keyword">AS</span> category
+    <span class="hljs-keyword">FROM</span> Rooms
+</code></pre>
+<h2 id="case">CASE</h2>
+<p>Классический CASE</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">CASE</span> <span class="hljs-operator">&lt;</span>проверяемое выражение<span class="hljs-operator">&gt;</span>
+   <span class="hljs-keyword">WHEN</span> <span class="hljs-operator">&lt;</span>сравниваемое выражение <span class="hljs-number">1</span><span class="hljs-operator">&gt;</span>
+   <span class="hljs-keyword">THEN</span> <span class="hljs-operator">&lt;</span>возвращаемое значение <span class="hljs-number">1</span><span class="hljs-operator">&gt;</span>
+   …
+   <span class="hljs-keyword">WHEN</span> <span class="hljs-operator">&lt;</span>сравниваемое выражение N<span class="hljs-operator">&gt;</span>
+   <span class="hljs-keyword">THEN</span> <span class="hljs-operator">&lt;</span>возвращаемое значение N<span class="hljs-operator">&gt;</span>
+[<span class="hljs-keyword">ELSE</span> <span class="hljs-operator">&lt;</span>возвращаемое значение<span class="hljs-operator">&gt;</span>]
+<span class="hljs-keyword">END</span>
+</code></pre>
+<p>2-я форма этого выражения</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">CASE</span>
+   <span class="hljs-keyword">WHEN</span> <span class="hljs-operator">&lt;</span>предикат <span class="hljs-number">1</span><span class="hljs-operator">&gt;</span>
+   <span class="hljs-keyword">THEN</span> <span class="hljs-operator">&lt;</span>возвращаемое значение <span class="hljs-number">1</span><span class="hljs-operator">&gt;</span>
+   …
+   <span class="hljs-keyword">WHEN</span> <span class="hljs-operator">&lt;</span>предикат N<span class="hljs-operator">&gt;</span>
+   <span class="hljs-keyword">THEN</span> <span class="hljs-operator">&lt;</span>возвращаемое значение N<span class="hljs-operator">&gt;</span>
+[<span class="hljs-keyword">ELSE</span> <span class="hljs-operator">&lt;</span>возвращаемое значение<span class="hljs-operator">&gt;</span>]
+<span class="hljs-keyword">END</span>
+</code></pre>
+<p>Пример:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">SELECT</span> ProductNumber,
+    Category <span class="hljs-operator">=</span> <span class="hljs-keyword">CASE</span> ProductLine
+        <span class="hljs-keyword">WHEN</span> <span class="hljs-string">&#x27;R&#x27;</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&#x27;Road&#x27;</span>
+        <span class="hljs-keyword">WHEN</span> <span class="hljs-string">&#x27;M&#x27;</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&#x27;Mountain&#x27;</span>
+        <span class="hljs-keyword">WHEN</span> <span class="hljs-string">&#x27;T&#x27;</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&#x27;Touring&#x27;</span>
+        <span class="hljs-keyword">WHEN</span> <span class="hljs-string">&#x27;S&#x27;</span> <span class="hljs-keyword">THEN</span> <span class="hljs-string">&#x27;Other sale items&#x27;</span>
+        <span class="hljs-keyword">ELSE</span> <span class="hljs-string">&#x27;Not for sale&#x27;</span>
+        <span class="hljs-keyword">END</span>,
+    Name
+<span class="hljs-keyword">FROM</span> Production.Product
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> ProductNumber;
+</code></pre>
+<h2 id="with">WITH</h2>
+<p>Временный набор данных, к которым могут обращаться следующие запросы. Очень удобненько:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">WITH</span> название_cte [(столбец_1 [, столбец_2 ] …)] <span class="hljs-keyword">AS</span> (подзапрос)
+    [, название_cte [(столбец_1 [, столбец_2 ] …)] <span class="hljs-keyword">AS</span> (подзапрос)] …
+</code></pre>
+<p>Пример:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">WITH</span> Aeroflot_trips (aeroflot_plane, town_from, town_to) <span class="hljs-keyword">AS</span>
+    (<span class="hljs-keyword">SELECT</span> plane, town_from, town_to <span class="hljs-keyword">FROM</span> Company
+        <span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> Trip <span class="hljs-keyword">ON</span> Trip.company <span class="hljs-operator">=</span> Company.id <span class="hljs-keyword">WHERE</span> name <span class="hljs-operator">=</span> &quot;Aeroflot&quot;)
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> Aeroflot_trips;
 </code></pre>
 </div>

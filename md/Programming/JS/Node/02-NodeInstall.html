@@ -1,0 +1,168 @@
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#установка-модулей-в-node"><li>Установка модулей в Node</li></a><ul><a href="#используя-npm"><li>Используя: npm</li></a><a href="#используя-github"><li>Используя: github</li></a><a href="#используя-locale"><li>Используя: locale</li></a><a href="#npm-install-global"><li>npm install: global</li></a><a href="#npm-install-save"><li>npm install: save</li></a><a href="#npm-install-save-dev"><li>npm install: save-dev</li></a><a href="#npm-install-save-optional"><li>npm install: save-optional</li></a><a href="#npm-install-save-optional"><li>npm install: save-optional</li></a></ul><a href="#настройка-npm-модуля"><li>Настройка npm модуля</li></a><ul><a href="#создать-packagejson"><li>Создать package.json</li></a><a href="#основные-поля-в-packagejson"><li>Основные поля в package.json</li></a><a href="#команды-cli"><li>Команды cli</li></a></ul><a href="#команды-npm"><li>Команды NPM</li></a><ul><a href="#проверить-версию"><li>Проверить версию</li></a><a href="#список-модулей"><li>Список модулей</li></a><a href="#путь-до-папки-модулей"><li>Путь до папки модулей</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../../static/style.css "><h1 id="установка-модулей-в-node">Установка модулей в Node</h1>
+<p>Для установки модулей используют npm. Идет с node по умолчанию. Организует модули проекта. Устанавливает нужные и следит за версиями модулей. Устанавливает все в node_modules</p>
+<h2 id="используя-npm">Используя: npm</h2>
+<p>Модули которые лежат на npm можно установить так:</p>
+<pre><code class="hljs language-bash">npm install module_name
+</code></pre>
+<h2 id="используя-github">Используя: github</h2>
+<p>Модули которые лежат на github можно установить так:</p>
+<pre><code class="hljs language-bash">npm install git+https://github.com/&lt;user_name&gt;/&lt;project_name&gt;.git
+</code></pre>
+<p>Или по SSH:</p>
+<pre><code class="hljs language-bash">npm install git+ssh://git@github.com/&lt;user_name&gt;/&lt;project_name&gt;.git
+</code></pre>
+<p>Установка из конкретно ветки:</p>
+<pre><code class="hljs language-bash">npm install git+...git<span class="hljs-comment">#&lt;branch&gt;</span>
+</code></pre>
+<h2 id="используя-locale">Используя: locale</h2>
+<p>Можно установить прямо из локаьной директории</p>
+<pre><code class="hljs language-bash">npm install /path
+</code></pre>
+<h2 id="npm-install-global">npm install: global</h2>
+<p>Есть несколько важных флагов. Позволяющих установить пакет глобально. После чего его можно будет запускать из любой папки без npm:</p>
+<pre><code class="hljs language-bash">npm install &lt;package_name&gt; -g 
+
+&lt;package_name&gt; &lt;cmd_name&gt; &lt;cmd_params&gt;
+</code></pre>
+<h2 id="npm-install-save">npm install: save</h2>
+<p>Добавить зависимость в список dependencies. Можно не прописывать так как npm при установке модуля делает это по умолчанию:</p>
+<pre><code class="hljs language-bash">npm install &lt;pkg_name&gt; --save
+npm install &lt;pkg_name&gt; -S
+</code></pre>
+<p>В package.json, появляется запись в dependencies:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+    ...<span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;dependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">&quot;markdown-it&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^13.0.1&quot;</span><span class="hljs-punctuation">,</span>
+        ...
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    ...<span class="hljs-punctuation">,</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h2 id="npm-install-save-dev">npm install: save-dev</h2>
+<p>Добавить зависимость в список devDependencies:</p>
+<pre><code class="hljs language-bash">npm install &lt;pkg_name&gt; --save
+npm install &lt;pkg_name&gt; -S
+</code></pre>
+<p>В package.json, появляется запись в devDependencies:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+    ...<span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;devDependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">&quot;markdown-it&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^13.0.1&quot;</span><span class="hljs-punctuation">,</span>
+        ...
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    ...<span class="hljs-punctuation">,</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h2 id="npm-install-save-optional">npm install: save-optional</h2>
+<p>Добавить зависимость в список optionalDependencies:</p>
+<pre><code class="hljs language-bash">npm install &lt;pkg_name&gt; --save
+npm install &lt;pkg_name&gt; -S
+</code></pre>
+<p>В package.json, появляется запись в optionalDependencies:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+    ...<span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;optionalDependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">&quot;markdown-it&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^13.0.1&quot;</span><span class="hljs-punctuation">,</span>
+        ...
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    ...<span class="hljs-punctuation">,</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h2 id="npm-install-save-optional">npm install: save-optional</h2>
+<p>Никуда не записывать:</p>
+<pre><code class="hljs language-bash">npm install &lt;pkg_name&gt; --no-save
+</code></pre>
+<h1 id="настройка-npm-модуля">Настройка npm модуля</h1>
+<p>Для создаваемых модулей есть файл настройки - package.json</p>
+<h2 id="создать-packagejson">Создать package.json</h2>
+<p>Можно руками, а можно использовать cli комманду:</p>
+<pre><code class="hljs language-bash">npm init 
+</code></pre>
+<h2 id="основные-поля-в-packagejson">Основные поля в package.json</h2>
+<p>Пример:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+    <span class="hljs-comment">// имя проекта. Не должно пересекаться на npm с другими </span>
+    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;name_project&quot;</span><span class="hljs-punctuation">,</span>
+
+    <span class="hljs-comment">// при каждой публикации на npm версия должна отсличаться от существующей </span>
+    <span class="hljs-comment">// рекомендации по ведению версии:</span>
+    <span class="hljs-comment">// 1.0.0 - типа готова к использованию</span>
+    <span class="hljs-comment">// +1.0.0 - глобальное обновление</span>
+    <span class="hljs-comment">// +0.1.0 - новая фича</span>
+    <span class="hljs-comment">// +0.0.1 - фикс багов</span>
+    <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;0.0.2&quot;</span><span class="hljs-punctuation">,</span>
+
+    <span class="hljs-comment">// текстовое описание </span>
+    <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;It is a description&quot;</span> 
+
+    <span class="hljs-comment">// ключевые слова по которым на npm.org можно будет найти пакет </span>
+    <span class="hljs-attr">&quot;keywords&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+        <span class="hljs-string">&quot;physic&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-string">&quot;postfix&quot;</span>
+    <span class="hljs-punctuation">]</span>
+
+    <span class="hljs-comment">// домашняя страница, сайт проекта</span>
+    <span class="hljs-attr">&quot;homepage&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;htps://site_name.org&quot;</span><span class="hljs-punctuation">,</span>
+
+    <span class="hljs-comment">// куда отправлять инфу по багам </span>
+    <span class="hljs-attr">&quot;bugs&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;http://github.com/CatOnDrugs/name_project&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;email&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;name_project@gmail.com&quot;</span>
+    <span class="hljs-punctuation">}</span>
+
+    <span class="hljs-comment">// лицензия, иногда кладут файл текстом лицензии в проект</span>
+    <span class="hljs-attr">&quot;license&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;GPL v3&quot;</span><span class="hljs-punctuation">,</span>
+
+    <span class="hljs-comment">// автор</span>
+    <span class="hljs-attr">&quot;author&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;CatOnDrugs&quot;</span><span class="hljs-punctuation">,</span>
+
+    <span class="hljs-comment">// точка входа в проект. Отсуда начинается запуск</span>
+    <span class="hljs-attr">&quot;main&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;./index.js&quot;</span><span class="hljs-punctuation">,</span>
+
+    <span class="hljs-comment">// cli команды модуля. Смотри раздел: &quot;Команды cli&quot;</span>
+    <span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>
+
+    <span class="hljs-comment">// зависимости проекта. Смотри раздел: &quot;Установка модулей в Node&quot;</span>
+    <span class="hljs-attr">&quot;dependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h2 id="команды-cli">Команды cli</h2>
+<p>Команды которые можно вызвать из консоли:</p>
+<pre><code class="hljs language-bash">npm run &lt;cmd_name&gt; &lt;cmd_params&gt;
+</code></pre>
+<p>Для вызова команд не проекта, а пакета лежащего в node_modules, служит npx:</p>
+<pre><code class="hljs language-bash">npx &lt;package_naem&gt; &lt;cmd_name&gt;
+</code></pre>
+<p>Чтобы определить cli команду для текущего проекта нужно в package.json прописать:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+    ...
+    <span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        <span class="hljs-attr">&quot;dev&quot;</span> <span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;webpack --mode development&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;build&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;webpack --mode production&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;&lt;command&gt;&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&lt;cli&gt;&quot;</span><span class="hljs-punctuation">,</span>
+        ...
+    <span class="hljs-punctuation">}</span>
+    ...
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h1 id="команды-npm">Команды NPM</h1>
+<h2 id="проверить-версию">Проверить версию</h2>
+<p>Версия ноды. Просто проверить установлен ли вообще:</p>
+<pre><code class="hljs language-bash">npm -v 
+</code></pre>
+<h2 id="список-модулей">Список модулей</h2>
+<p>Список модулей из ./node_modules в локальном локальном пространстве</p>
+<pre><code class="hljs language-bash">npm list
+</code></pre>
+<p>Список модулей из ./node_modules в глобальном пространстве</p>
+<pre><code class="hljs language-bash">npm list -g
+</code></pre>
+<h2 id="путь-до-папки-модулей">Путь до папки модулей</h2>
+<p>Путь до папки node_modules в текущем модуле</p>
+<pre><code class="hljs language-bash">npm root
+</code></pre>
+<p>Путь до папки node_modules в глобальном модуле</p>
+<pre><code class="hljs language-bash">npm root -g
+</code></pre>
+</div>
