@@ -4,13 +4,15 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "build": "node ./ --build",
-    "dev": "node ./ --dev"
+    "build": "node ./ --folder-from './md' --folder-to './dist'"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "TarhunNyan",
+  "license": "GPL v3",
   "dependencies": {
     "@iktakahiro/markdown-it-katex": "^4.0.1",
+    "cstm-argsparser": "github:TarhunNyan/cstm-argsParser",
+    "cstm-fileprocess": "github:TarhunNyan/cstm-fileprocess",
+    "cstm-jssupport": "github:TarhunNyan/cstm-jssupport",
     "markdown-it": "^13.0.1",
     "markdown-it-highlightjs": "^4.0.1"
   }
