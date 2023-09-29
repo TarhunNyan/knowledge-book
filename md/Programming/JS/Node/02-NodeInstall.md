@@ -4,62 +4,62 @@
 
 ## Используя: npm
 
-Модули которые лежат на npm можно установить так: 
+Модули которые лежат на npm можно установить так:
 
-````bash 
+```bash
 npm install module_name
-````
+```
 
 ## Используя: github
 
-Модули которые лежат на github можно установить так: 
+Модули которые лежат на github можно установить так:
 
-````bash 
+```bash
 npm install git+https://github.com/<user_name>/<project_name>.git
-````
+```
 
 Или по SSH:
 
-````bash 
+```bash
 npm install git+ssh://git@github.com/<user_name>/<project_name>.git
-````
+```
 
 Установка из конкретно ветки:
 
-````bash 
+```bash
 npm install git+...git#<branch>
-````
+```
 
 ## Используя: locale
 
 Можно установить прямо из локаьной директории
 
-````bash 
+```bash
 npm install /path
-````
+```
 
 ## npm install: global
 
-Есть несколько важных флагов. Позволяющих установить пакет глобально. После чего его можно будет запускать из любой папки без npm: 
+Есть несколько важных флагов. Позволяющих установить пакет глобально. После чего его можно будет запускать из любой папки без npm:
 
-````bash 
-npm install <package_name> -g 
+```bash
+npm install <package_name> -g
 
 <package_name> <cmd_name> <cmd_params>
-````
+```
 
 ## npm install: save
 
 Добавить зависимость в список dependencies. Можно не прописывать так как npm при установке модуля делает это по умолчанию:
 
-````bash
+```bash
 npm install <pkg_name> --save
 npm install <pkg_name> -S
-````
+```
 
-В package.json, появляется запись в dependencies: 
+В package.json, появляется запись в dependencies:
 
-````json 
+```json
 {
     ...,
     "dependencies": {
@@ -68,20 +68,20 @@ npm install <pkg_name> -S
     },
     ...,
 }
-````
+```
 
 ## npm install: save-dev
 
 Добавить зависимость в список devDependencies:
 
-````bash
+```bash
 npm install <pkg_name> --save
 npm install <pkg_name> -S
-````
+```
 
-В package.json, появляется запись в devDependencies: 
+В package.json, появляется запись в devDependencies:
 
-````json 
+```json
 {
     ...,
     "devDependencies": {
@@ -90,20 +90,20 @@ npm install <pkg_name> -S
     },
     ...,
 }
-````
+```
 
 ## npm install: save-optional
 
 Добавить зависимость в список optionalDependencies:
 
-````bash
+```bash
 npm install <pkg_name> --save
 npm install <pkg_name> -S
-````
+```
 
-В package.json, появляется запись в optionalDependencies: 
+В package.json, появляется запись в optionalDependencies:
 
-````json 
+```json
 {
     ...,
     "optionalDependencies": {
@@ -112,38 +112,60 @@ npm install <pkg_name> -S
     },
     ...,
 }
-````
+```
 
 ## npm install: save-optional
 
 Никуда не записывать:
 
-````bash
+```bash
 npm install <pkg_name> --no-save
-````
+```
 
-# Настройка npm модуля 
+# Обновить модуль
+
+Обновить все модули
+
+```bash
+npm update
+```
+
+Обновить модуль
+
+```bash
+npm update <module_name>
+```
+
+# Удалить модуль
+
+Удалить модуль
+
+```bash
+npm remove <module_name>
+```
+
+# Настройка npm модуля
 
 Для создаваемых модулей есть файл настройки - package.json
 
-## Создать package.json 
+## Создать package.json
 
-Можно руками, а можно использовать cli комманду: 
+Можно руками, а можно использовать cli комманду:
 
-````bash 
-npm init 
-````
+```bash
+npm init
+```
 
-## Основные поля в package.json 
+## Основные поля в package.json
 
 Пример:
 
-````json 
+```json
 {
-    // имя проекта. Не должно пересекаться на npm с другими 
+    // имя проекта. Не должно пересекаться на npm с другими
     "name": "name_project",
 
-    // при каждой публикации на npm версия должна отсличаться от существующей 
+    // при каждой публикации на npm версия должна отсличаться от существующей
     // рекомендации по ведению версии:
     // 1.0.0 - типа готова к использованию
     // +1.0.0 - глобальное обновление
@@ -151,10 +173,10 @@ npm init
     // +0.0.1 - фикс багов
     "version": "0.0.2",
 
-    // текстовое описание 
-    "description": "It is a description" 
+    // текстовое описание
+    "description": "It is a description"
 
-    // ключевые слова по которым на npm.org можно будет найти пакет 
+    // ключевые слова по которым на npm.org можно будет найти пакет
     "keywords": [
         "physic",
         "postfix"
@@ -163,7 +185,7 @@ npm init
     // домашняя страница, сайт проекта
     "homepage": "htps://site_name.org",
 
-    // куда отправлять инфу по багам 
+    // куда отправлять инфу по багам
     "bugs": {
         "url": "http://github.com/CatOnDrugs/name_project",
         "email": "name_project@gmail.com"
@@ -184,25 +206,25 @@ npm init
     // зависимости проекта. Смотри раздел: "Установка модулей в Node"
     "dependencies": {}
 }
-````
+```
 
 ## Команды cli
 
 Команды которые можно вызвать из консоли:
 
-````bash 
+```bash
 npm run <cmd_name> <cmd_params>
-````
+```
 
-Для вызова команд не проекта, а пакета лежащего в node_modules, служит npx: 
+Для вызова команд не проекта, а пакета лежащего в node_modules, служит npx:
 
-````bash 
+```bash
 npx <package_naem> <cmd_name>
-````
+```
 
 Чтобы определить cli команду для текущего проекта нужно в package.json прописать:
 
-````json
+```json
 {
     ...
     "scripts": {
@@ -213,7 +235,7 @@ npx <package_naem> <cmd_name>
     }
     ...
 }
-````
+```
 
 # Команды NPM
 
@@ -221,34 +243,34 @@ npx <package_naem> <cmd_name>
 
 Версия ноды. Просто проверить установлен ли вообще:
 
-````bash
-npm -v 
-````
+```bash
+npm -v
+```
 
 ## Список модулей
 
 Список модулей из ./node_modules в локальном локальном пространстве
 
-````bash
+```bash
 npm list
-````
+```
 
 Список модулей из ./node_modules в глобальном пространстве
 
-````bash
+```bash
 npm list -g
-````
+```
 
 ## Путь до папки модулей
 
 Путь до папки node_modules в текущем модуле
 
-````bash
+```bash
 npm root
-````
+```
 
 Путь до папки node_modules в глобальном модуле
 
-````bash
+```bash
 npm root -g
-````
+```
