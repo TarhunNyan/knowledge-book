@@ -4,7 +4,7 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "build": "node ./ --folder-from './md' --folder-to './dist'"
+    "build": "node ./ --folder-from='./md' --folder-to='./dist'"
   },
   "author": "TarhunNyan",
   "license": "GPL v3",
