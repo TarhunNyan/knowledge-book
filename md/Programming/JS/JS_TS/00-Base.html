@@ -1,0 +1,323 @@
+<input type="checkbox" id="isClose"></input><div class="left-menu"><div class="control-panel"><label for="isClose"><div class="isClose"></div></label></div><div class="left-side-menu"><ul><a href="#typescript"><li>TypeScript</li></a><a href="#настройка"><li>Настройка</li></a><ul><a href="#базовая-настройка"><li>Базовая настройка</li></a><a href="#файл-конигурации"><li>Файл конигурации</li></a></ul><a href="#запуск"><li>Запуск</li></a><ul><a href="#скомпилировать-все"><li>Скомпилировать все</li></a><a href="#компиляция-файла"><li>Компиляция файла</li></a><a href="#автоматическая-компиляция"><li>Автоматическая компиляция</li></a></ul><a href="#как-использовать-язык"><li>Как использовать язык</li></a><ul><a href="#поддерживаемые-примитивы"><li>Поддерживаемые примитивы</li></a><a href="#объявление-типа"><li>Объявление типа</li></a><a href="#объявление-типа-литералконстанта"><li>Объявление типа: литерал(константа)</li></a><a href="#объявление-типа-массив"><li>Объявление типа: массив</li></a><a href="#объявление-типа-объект"><li>Объявление типа: объект</li></a><a href="#объявление-типа-функция"><li>Объявление типа: функция</li></a><a href="#объявление-типа-dom"><li>Объявление типа: DOM</li></a><a href="#объявление-типа-псевдонимы"><li>Объявление типа: Псевдонимы</li></a><a href="#объявление-типа-class"><li>Объявление типа: Class</li></a><a href="#объявление-типа-дженерики"><li>Объявление типа: Дженерики</li></a><a href="#объявление-типа-enum"><li>Объявление типа: enum</li></a></ul></ul></div></div><div class="main"><link rel="stylesheet" href="../../../static/style.css "><h1 id="typescript">TypeScript</h1>
+<p>Расширенная версия js, в которой есть возможность строго типизации</p>
+<h1 id="настройка">Настройка</h1>
+<h2 id="базовая-настройка">Базовая настройка</h2>
+<p>Устанавливаем typescript:</p>
+<pre><code class="hljs language-bash">npm -i g typescript
+</code></pre>
+<h2 id="файл-конигурации">Файл конигурации</h2>
+<p>Создаем tsconfig.json:</p>
+<pre><code class="hljs language-bash">tsc -init
+</code></pre>
+<p>Примр конфигурации:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;compilerOptions&quot;</span> <span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+        ...
+        <span class="hljs-comment">// Компиляция в ES6</span>
+        <span class="hljs-attr">&quot;target&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;es2015&quot;</span><span class="hljs-punctuation">,</span>
+
+        <span class="hljs-comment">// Поддержка модульного импорта и экспорта</span>
+        <span class="hljs-attr">&quot;module&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;es2015&quot;</span><span class="hljs-punctuation">,</span>
+
+        <span class="hljs-comment">// rootDir - Корень скомпилированной папки</span>
+        <span class="hljs-comment">// outDit  - Куда компилируем</span>
+        <span class="hljs-attr">&quot;rootDir&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;./src&quot;</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;outDir&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;./public&quot;</span><span class="hljs-punctuation">,</span>
+
+        <span class="hljs-comment">// allowJS - компиляция JS файлов</span>
+        <span class="hljs-comment">// checkJS - проверка типов в JS файлах</span>
+        <span class="hljs-attr">&quot;allowJS&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;checkJS&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+
+        <span class="hljs-comment">// Удалять комментарии</span>
+        <span class="hljs-attr">&quot;removeComments&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+
+        <span class="hljs-comment">// Строгая проверка типов. Никаких any и undefined и null не прощаются</span>
+        <span class="hljs-attr">&quot;strict&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">}</span>
+
+    <span class="hljs-comment">// Компилировать файлы только из папки &quot;src&quot;</span>
+    <span class="hljs-attr">&quot;include&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;scr&quot;</span><span class="hljs-punctuation">]</span>
+
+    <span class="hljs-comment">// Генерирует sourceMap файлы</span>
+    <span class="hljs-comment">// Позволяют через DevTools, узнать, какая часть сгенерированног кода где находится в исходном</span>
+    <span class="hljs-attr">&quot;sourceMap&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h1 id="запуск">Запуск</h1>
+<h2 id="скомпилировать-все">Скомпилировать все</h2>
+<p>Компилирует все файлы в проекте и начинает наблюдать изменения:</p>
+<pre><code class="hljs language-bash">tsc -w
+</code></pre>
+<h2 id="компиляция-файла">Компиляция файла</h2>
+<p>Компилируем index.ts в index.js:</p>
+<pre><code class="hljs language-bash">tsc index
+</code></pre>
+<p>Компилируем index.ts в new-filename.js:</p>
+<pre><code class="hljs language-bash">tsc index.ts --outfile new-filename.js
+</code></pre>
+<h2 id="автоматическая-компиляция">Автоматическая компиляция</h2>
+<p>Мы можем сказать TypeScript, чтобы отслеживал изменения:</p>
+<pre><code class="hljs language-bash">tsc index.js -w
+</code></pre>
+<h1 id="как-использовать-язык">Как использовать язык</h1>
+<h2 id="поддерживаемые-примитивы">Поддерживаемые примитивы</h2>
+<p>Поддержка 7 примитивных типов данных:</p>
+<ul>
+<li>string</li>
+<li>number</li>
+<li>bigint</li>
+<li>boolean</li>
+<li>undefined</li>
+<li>null</li>
+<li>symbol</li>
+</ul>
+<h2 id="объявление-типа">Объявление типа</h2>
+<p>Явное объявление типа:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span> = <span class="hljs-number">5</span>;
+</code></pre>
+<p>Неявное объявление типа:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">let</span> id = <span class="hljs-number">5</span>;
+</code></pre>
+<p>Объединенный тип:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">age</span>: <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>;
+age = <span class="hljs-number">26</span>;
+age = <span class="hljs-string">&quot;26&quot;</span>;
+</code></pre>
+<p>Любой тип:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">age</span>: <span class="hljs-built_in">any</span>;
+age = <span class="hljs-number">10</span>;
+age = <span class="hljs-string">&quot;10&quot;</span>;
+</code></pre>
+<h2 id="объявление-типа-литералконстанта">Объявление типа: литерал(константа)</h2>
+<p>Мы можем указать какие конкретно значения может принимать переменная:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">color</span>: <span class="hljs-string">&quot;red&quot;</span> | <span class="hljs-string">&quot;blue&quot;</span> | <span class="hljs-string">&quot;green&quot;</span> | <span class="hljs-number">0</span>;
+</code></pre>
+<h2 id="объявление-типа-массив">Объявление типа: массив</h2>
+<p>Явное объявление:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">ids</span>: <span class="hljs-built_in">number</span>[] = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">let</span> <span class="hljs-attr">ids</span>: <span class="hljs-title class_">Array</span>&lt;<span class="hljs-built_in">number</span>&gt; = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+
+<span class="hljs-keyword">let</span> <span class="hljs-attr">names</span>: <span class="hljs-built_in">object</span>[] = [
+	{ <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Jhon&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-string">&quot;20&quot;</span> },
+	{ <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Valera&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-string">&quot;42&quot;</span> },
+];
+</code></pre>
+<p>Неявное объявление типа, только при инициализации со значением:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-string">&quot;Hello&quot;</span>, <span class="hljs-number">10</span>, <span class="hljs-literal">true</span>];
+
+<span class="hljs-comment">// Аналогично</span>
+<span class="hljs-keyword">let</span> <span class="hljs-attr">arr</span>: (<span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> | <span class="hljs-built_in">boolean</span>)[] = [<span class="hljs-string">&quot;Hello&quot;</span>, <span class="hljs-number">10</span>, <span class="hljs-literal">true</span>];
+</code></pre>
+<p>Объединенный тип:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">arr</span>: (<span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span> | <span class="hljs-built_in">boolean</span>)[] = [<span class="hljs-string">&quot;Hello&quot;</span>, <span class="hljs-number">10</span>, <span class="hljs-literal">true</span>];
+</code></pre>
+<p>Любой тип:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">arr</span>: <span class="hljs-built_in">any</span>[] = [<span class="hljs-string">&quot;Hello&quot;</span>, <span class="hljs-number">10</span>, <span class="hljs-literal">true</span>];
+</code></pre>
+<h2 id="объявление-типа-объект">Объявление типа: объект</h2>
+<p>Объявление типа переменной:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">person</span>: {
+	<span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+	<span class="hljs-attr">location</span>: <span class="hljs-built_in">string</span>;
+	<span class="hljs-attr">isProgramming</span>: <span class="hljs-built_in">boolean</span>;
+	<span class="hljs-attr">sayHi</span>: <span class="hljs-function">(<span class="hljs-params">text: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-built_in">string</span>;
+};
+
+person = {
+	<span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Petia&quot;</span>,
+	<span class="hljs-attr">location</span>: <span class="hljs-string">&quot;RU&quot;</span>,
+	<span class="hljs-attr">isProgramming</span>: <span class="hljs-literal">true</span>,
+	<span class="hljs-attr">sayHi</span>: <span class="hljs-function">(<span class="hljs-params">text</span>) =&gt;</span> <span class="hljs-string">&quot;Hi, &quot;</span> + text,
+};
+</code></pre>
+<p>Шаблон, для использования в нескольких местах:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Person</span> {
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">location</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">isProgramming</span>: <span class="hljs-built_in">boolean</span>;
+    <span class="hljs-attr">sayHi</span>: <span class="hljs-function">(<span class="hljs-params">text: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">let</span> <span class="hljs-attr">person1</span>: <span class="hljs-title class_">Person</span> = {
+    ...
+}
+
+<span class="hljs-keyword">let</span> <span class="hljs-attr">person2</span>: <span class="hljs-title class_">Person</span> = {
+    ...
+}
+</code></pre>
+<p>Наследование, interface:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Person</span> {
+	<span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+	<span class="hljs-attr">location</span>: <span class="hljs-built_in">string</span>;
+	<span class="hljs-attr">isProgramming</span>: <span class="hljs-built_in">boolean</span>;
+}
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">PersonSay</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Person</span> {
+	<span class="hljs-attr">sayHi</span>: <span class="hljs-function">(<span class="hljs-params">text: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-built_in">string</span>;
+}
+</code></pre>
+<p>Изменяемость, interface:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Animal</span> {
+	<span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">Animal</span> {
+	<span class="hljs-attr">weight</span>: <span class="hljs-built_in">number</span>;
+}
+</code></pre>
+<h2 id="объявление-типа-функция">Объявление типа: функция</h2>
+<p>Явное объявление типа:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">let</span> <span class="hljs-attr">circle</span>: <span class="hljs-title class_">Function</span> = (<span class="hljs-attr">diam</span>: <span class="hljs-built_in">number</span>): <span class="hljs-function"><span class="hljs-params">string</span> =&gt;</span> {
+	<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Circle length: &quot;</span> + <span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span> * diam;
+};
+</code></pre>
+<p>Неявное объявление типа:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">let</span> <span class="hljs-title function_">circle</span> = (<span class="hljs-params">diam: <span class="hljs-built_in">number</span></span>) =&gt; {
+	<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Circle length: &quot;</span> + <span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span> * diam;
+};
+</code></pre>
+<p>Необязательный параметр, c:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">let</span> <span class="hljs-title function_">func</span> = (<span class="hljs-params">a: <span class="hljs-built_in">number</span>, b: <span class="hljs-built_in">number</span>, c?: <span class="hljs-built_in">number</span> | <span class="hljs-built_in">string</span></span>) =&gt; {
+    ...
+};
+</code></pre>
+<p>Функция ничего не возвращает, void:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">let</span> <span class="hljs-title function_">func</span> = (<span class="hljs-params">a: <span class="hljs-built_in">number</span></span>) =&gt; <span class="hljs-built_in">void</span> {
+    ...
+};
+</code></pre>
+<h2 id="объявление-типа-dom">Объявление типа: DOM</h2>
+<p>Для работы с DOM, можно использовать приведение типа, as:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> form = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;signup-form&quot;</span>) <span class="hljs-keyword">as</span> <span class="hljs-title class_">HTMLFormElement</span>;
+</code></pre>
+<p>TypeScript имеет поддуржку типа Event:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> form = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;signup-form&#x27;</span>) <span class="hljs-keyword">as</span> <span class="hljs-title class_">HTMLFormElement</span>;
+
+form.<span class="hljs-title function_">addEventListener</span>( <span class="hljs-string">&#x27;submit&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e: Event</span>) =&gt;</span> {
+    ...
+});
+</code></pre>
+<h2 id="объявление-типа-псевдонимы">Объявление типа: Псевдонимы</h2>
+<p>Псевдонимы позволяют не повторяться, type:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">type</span> <span class="hljs-title class_">StringOrNumber</span> = <span class="hljs-built_in">string</span> | <span class="hljs-built_in">number</span>;
+</code></pre>
+<p>Используя, type:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Person</span> = {
+    <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">location</span>: <span class="hljs-built_in">string</span>;
+    <span class="hljs-attr">isProgramming</span>: <span class="hljs-built_in">boolean</span>;
+    <span class="hljs-attr">sayHi</span>: <span class="hljs-function">(<span class="hljs-params">text: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">let</span> <span class="hljs-attr">person1</span>: <span class="hljs-title class_">Person</span> = {
+    ...
+}
+
+<span class="hljs-keyword">let</span> <span class="hljs-attr">person2</span>: <span class="hljs-title class_">Person</span> = {
+    ...
+}
+</code></pre>
+<p>Для объектов существует interface. Разница в том, что interface - можно наследовать, а type - нельзя, хотя есть трюк:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Animal</span> = {
+	<span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+};
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Bear</span> = <span class="hljs-title class_">Animal</span> &amp; {
+	<span class="hljs-attr">isHoney</span>: <span class="hljs-built_in">boolean</span>;
+};
+</code></pre>
+<h2 id="объявление-типа-class">Объявление типа: Class</h2>
+<p>Просто объявляем типы:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Persom</span> {
+	<span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+
+	<span class="hljs-title function_">constructor</span>(<span class="hljs-params">name: <span class="hljs-built_in">string</span></span>) {
+		<span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;
+	}
+}
+</code></pre>
+<p>Методы доступа:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Persom</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-attr">friends</span>: <span class="hljs-built_in">number</span>;  <span class="hljs-comment">// чтение и изменение откуда угодно</span>
+    protect <span class="hljs-attr">email</span>: <span class="hljs-built_in">string</span>;   <span class="hljs-comment">// чтение и изменение только в пределах класса и наследников</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-attr">iscool</span>: <span class="hljs-built_in">boolean</span>; <span class="hljs-comment">// чтение и изменение только в пределах класса</span>
+    <span class="hljs-keyword">readonly</span> <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;   <span class="hljs-comment">// только чтение</span>
+
+    ...
+}
+</code></pre>
+<p>Имплементация интерфейса:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">HasFormatter</span> {
+	<span class="hljs-title function_">format</span>(): <span class="hljs-built_in">string</span>;
+}
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Persom</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">HasFormatter</span> {
+	<span class="hljs-title function_">format</span>(<span class="hljs-params"></span>) {
+		<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Formatted string&quot;</span>;
+	}
+}
+
+<span class="hljs-keyword">let</span> <span class="hljs-attr">person</span>: <span class="hljs-title class_">HasFormatter</span>;
+person = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>();
+</code></pre>
+<h2 id="объявление-типа-дженерики">Объявление типа: Дженерики</h2>
+<p>Проблема: typescript знает только про поле id:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">addId</span> = (<span class="hljs-params">obj: <span class="hljs-built_in">object</span></span>) =&gt; {
+	<span class="hljs-keyword">const</span> id = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">1000</span>);
+	<span class="hljs-keyword">return</span> { ...obj, id };
+};
+
+<span class="hljs-keyword">const</span> person = { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Jhon&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">40</span> };
+<span class="hljs-keyword">const</span> newPerson = <span class="hljs-title function_">addId</span>(person);
+
+<span class="hljs-comment">// Ошибка</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newPerson.<span class="hljs-property">name</span>);
+</code></pre>
+<p>Добавили дженерик - &lt;T&gt;. Проблема: typescript согласен принять все что угодно:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> addId = &lt;T&gt;<span class="hljs-function">(<span class="hljs-params">obj: T</span>) =&gt;</span> {
+	<span class="hljs-keyword">const</span> id = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">1000</span>);
+	<span class="hljs-keyword">return</span> { ...obj, id };
+};
+
+<span class="hljs-comment">// Передали строку, а ошибки нет</span>
+<span class="hljs-keyword">const</span> newPerson = <span class="hljs-title function_">addId</span>(<span class="hljs-string">&quot;Person&quot;</span>);
+</code></pre>
+<p>Исключили свойство length - &lt;T extend { length?: never }&gt;:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> addId = <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">T</span> <span class="hljs-attr">extend</span> { <span class="hljs-attr">length</span>?<span class="hljs-attr">:</span> <span class="hljs-attr">never</span> }&gt;</span>(obj: T) =&gt; {
+    const id = Math.floor(Math.random() * 1000);
+    return { ...obj, id };
+};
+</span></code></pre>
+<h2 id="объявление-типа-enum">Объявление типа: enum</h2>
+<p>Набор констант. TypeScript их автоматически сгенерирует:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">enum</span> <span class="hljs-title class_">Direction</span> {
+	<span class="hljs-variable constant_">UP</span> = <span class="hljs-string">&quot;up&quot;</span>,
+	<span class="hljs-variable constant_">RIGHT</span> = <span class="hljs-string">&quot;right&quot;</span>,
+	<span class="hljs-variable constant_">DOWN</span> = <span class="hljs-string">&quot;down&quot;</span>,
+	<span class="hljs-variable constant_">LEFT</span> = <span class="hljs-string">&quot;left&quot;</span>,
+}
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Direction</span>.<span class="hljs-property">UP</span>);
+<span class="hljs-comment">// =&gt; up</span>
+</code></pre>
+<p>Автогенераця числовых значений:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">enum</span> <span class="hljs-title class_">ResourceType</span> {
+	<span class="hljs-variable constant_">BOOK</span>,
+	<span class="hljs-variable constant_">FILM</span>,
+}
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Direction</span>.<span class="hljs-property">BOOK</span>);
+<span class="hljs-comment">// =&gt; 0</span>
+</code></pre>
+<p>Автогенераця числовых значений, начиная с n:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">enum</span> <span class="hljs-title class_">ResourceType</span> {
+	<span class="hljs-variable constant_">BOOK</span> = <span class="hljs-number">10</span>,
+	<span class="hljs-variable constant_">FILM</span>,
+}
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Direction</span>.<span class="hljs-property">FILM</span>);
+<span class="hljs-comment">// =&gt; 11</span>
+</code></pre>
+</div>
